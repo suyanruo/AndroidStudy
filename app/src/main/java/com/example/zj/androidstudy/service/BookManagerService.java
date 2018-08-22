@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 
 import com.example.zj.aidl.Book;
@@ -17,7 +18,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class BookManagerService extends Service {
     private AtomicBoolean mIsDestoryed = new AtomicBoolean(false);
     private CopyOnWriteArrayList<Book> mBookList = new CopyOnWriteArrayList<>();
-    private CopyOnWriteArrayList<IOnNewBookArrivedListener> mListenerList = new CopyOnWriteArrayList<>();
+    /**
+     * 定义监听者列表
+     * 方式一：使用CopyOnWriteArrayList，接触监听时存在问题
+     * 方式二：使用RemoteCallbackList，利用binder映射listener，保证在解除监听者时的正确性
+     */
+//    private CopyOnWriteArrayList<IOnNewBookArrivedListener> mListenerList = new CopyOnWriteArrayList<>();
+    private RemoteCallbackList<IOnNewBookArrivedListener> mRemoteListenerList = new RemoteCallbackList<>();
 
     private Binder mBinder = new IBookManager.Stub() {
         @Override
@@ -32,16 +39,18 @@ public class BookManagerService extends Service {
 
         @Override
         public void registerListener(IOnNewBookArrivedListener listener) throws RemoteException {
-            if (!mListenerList.contains(listener)) {
-                mListenerList.add(listener);
-            }
+//            if (!mListenerList.contains(listener)) {
+//                mListenerList.add(listener);
+//            }
+            mRemoteListenerList.register(listener);
         }
 
         @Override
         public void unregisterListener(IOnNewBookArrivedListener listener) throws RemoteException {
-            if (mListenerList.contains(listener)) {
-                mListenerList.remove(listener);
-            }
+//            if (mListenerList.contains(listener)) {
+//                mListenerList.remove(listener);
+//            }
+            mRemoteListenerList.unregister(listener);
         }
     };
 
@@ -63,11 +72,26 @@ public class BookManagerService extends Service {
         return mBinder;
     }
 
+    @Override
+    public void onDestroy() {
+        mIsDestoryed.set(true);
+        super.onDestroy();
+    }
+
     private void onNewBookArrived(Book book) throws RemoteException {
         mBookList.add(book);
-        for (IOnNewBookArrivedListener listener : mListenerList) {
-            listener.onNewBookArrived(book);
+        final int size = mRemoteListenerList.beginBroadcast();
+        for (int i = 0; i < size; i++) {
+            IOnNewBookArrivedListener listener = mRemoteListenerList.getBroadcastItem(i);
+            if (listener != null) {
+                listener.onNewBookArrived(book);
+            }
         }
+        mRemoteListenerList.finishBroadcast();
+
+//        for (IOnNewBookArrivedListener listener : mListenerList) {
+//            listener.onNewBookArrived(book);
+//        }
     }
 
     private class ServiceWorker implements Runnable {

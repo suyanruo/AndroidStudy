@@ -1,24 +1,26 @@
-package com.example.zj.androidstudy;
+package com.example.zj.androidstudy.activity;
 
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 
 import com.example.zj.aidl.Book;
 import com.example.zj.aidl.IBookManager;
 import com.example.zj.aidl.IOnNewBookArrivedListener;
+import com.example.zj.androidstudy.R;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class BinderActivity extends AppCompatActivity {
+
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 mRemoteBookManager = iBookManager;
                 mRemoteBookManager.registerListener(mOnNewBookArrivedListener);
+                // 为了防止耗时操作导致ANR，建议执行服务端耗时方法时放在子线程中执行
                 List<Book> books = iBookManager.getBookList();
                 printBook(books);
                 iBookManager.addBook(new Book("android", 100));
@@ -61,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_binder);
 
         // 考虑到5.0以上系统不能使用隐式调用，跨应用调用service，谷歌推荐使用方法：
         Intent intent = new Intent();

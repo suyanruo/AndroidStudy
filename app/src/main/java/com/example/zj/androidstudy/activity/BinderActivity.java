@@ -36,9 +36,27 @@ public class BinderActivity extends AppCompatActivity {
             mHandler.obtainMessage(1, newBook).sendToTarget();
         }
     };
+    private IBinder.DeathRecipient mDeathRecipient = new IBinder.DeathRecipient() {
+        @Override
+        public void binderDied() {
+            // binder死亡时，重新绑定远程服务的流程
+            if (mRemoteBookManager == null) {
+                return;
+            }
+            mRemoteBookManager.asBinder().unlinkToDeath(mDeathRecipient, 0);
+            mRemoteBookManager = null;
+            bindBinderService();
+        }
+    };
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
+            try {
+                // 添加死亡代理
+                service.linkToDeath(mDeathRecipient, 0);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
             IBookManager iBookManager = IBookManager.Stub.asInterface(service);
             try {
                 mRemoteBookManager = iBookManager;
@@ -66,6 +84,10 @@ public class BinderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_binder);
 
+        bindBinderService();
+    }
+
+    private void bindBinderService() {
         // 考虑到5.0以上系统不能使用隐式调用，跨应用调用service，谷歌推荐使用方法：
         Intent intent = new Intent();
         intent.setAction("com.example.zj.bookManagerService");

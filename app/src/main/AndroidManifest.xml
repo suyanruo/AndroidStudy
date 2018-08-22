@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".service.BookManagerService"
+            android:process="com.example.zj.androidstudy.BookManagerService">
+            <intent-filter>
+                <action android:name="com.example.zj.bookManagerService" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

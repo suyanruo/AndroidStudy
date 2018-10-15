@@ -16,15 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.BinderActivity" />
 
-        <service android:name=".service.BookManagerService"
+        <service
+            android:name=".service.BookManagerService"
             android:process="com.example.zj.androidstudy.BookManagerService">
             <intent-filter>
                 <action android:name="com.example.zj.bookManagerService" />
             </intent-filter>
         </service>
+
+        <activity android:name=".activity.TestActivity"></activity>
     </application>
 
 </manifest>

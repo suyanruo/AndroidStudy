@@ -26,6 +26,9 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".activity.MaterialDesignActivity"></activity>
+        <activity android:name=".activity.TabLayoutActivity"
+            android:theme="@style/AppThemeNoActionBar"></activity>
     </application>
 
 </manifest>

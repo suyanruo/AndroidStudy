@@ -20,5 +20,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, BinderActivity.class));
             }
         });
+
+        findViewById(R.id.btn_material_design).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MaterialDesignActivity.class));
+            }
+        });
     }
 }

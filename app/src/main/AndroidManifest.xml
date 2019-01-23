@@ -29,6 +29,8 @@
         <activity android:name=".activity.MaterialDesignActivity"></activity>
         <activity android:name=".activity.TabLayoutActivity"
             android:theme="@style/AppTheme.Base"></activity>
+        <activity android:name=".activity.CoordinatorActivity"
+            android:theme="@style/AppThemeNoActionBar" />
     </application>
 
 </manifest>

@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.zj.androidstudy.R;
+import com.example.zj.androidstudy.activity.CoordinatorActivity;
 import com.example.zj.androidstudy.activity.TabLayoutActivity;
 import com.example.zj.androidstudy.base.BaseFragment;
 import com.example.zj.androidstudy.tool.FragmentUtil;
@@ -44,6 +45,13 @@ public class ShowToastFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), TabLayoutActivity.class);
+                startActivity(intent);
+            }
+        });
+        view.findViewById(R.id.btn_coordinatorlayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), CoordinatorActivity.class);
                 startActivity(intent);
             }
         });

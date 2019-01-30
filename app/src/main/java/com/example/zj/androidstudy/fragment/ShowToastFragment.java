@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.activity.CoordinatorActivity;
+import com.example.zj.androidstudy.activity.CoordinatorActivity2;
 import com.example.zj.androidstudy.activity.TabLayoutActivity;
 import com.example.zj.androidstudy.base.BaseFragment;
 import com.example.zj.androidstudy.tool.FragmentUtil;
@@ -53,6 +54,19 @@ public class ShowToastFragment extends BaseFragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), CoordinatorActivity.class);
                 startActivity(intent);
+            }
+        });
+        view.findViewById(R.id.btn_coordinatorlayout2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), CoordinatorActivity2.class);
+                startActivity(intent);
+            }
+        });
+        view.findViewById(R.id.btn_slide_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentUtil.enterNewFragment((AppCompatActivity) getActivity(), R.id.root_material, ShowToastFragment.this, new SlideViewFragment());
             }
         });
         mBtnShowToast.setOnClickListener(new View.OnClickListener() {

@@ -31,6 +31,8 @@
             android:theme="@style/AppTheme.Base"></activity>
         <activity android:name=".activity.CoordinatorActivity"
             android:theme="@style/AppThemeNoActionBar" />
+        <activity android:name=".activity.CoordinatorActivity2"
+            android:theme="@style/AppThemeNoActionBar" />
     </application>
 
 </manifest>

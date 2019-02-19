@@ -29,4 +29,12 @@
         android:textAllCaps="false"
         android:text="materialDesign"
         app:layout_constraintLeft_toRightOf="@id/btn_binder"/>
+
+    <Button
+        android:id="@+id/btn_content_provider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="contentProvider"
+        app:layout_constraintTop_toBottomOf="@id/btn_binder"/>
 </android.support.constraint.ConstraintLayout>

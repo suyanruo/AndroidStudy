@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.zj.androidstudy.R;
+import com.example.zj.androidstudy.chapterNetwork.HttpClientManager;
+import com.example.zj.androidstudy.chapterNetwork.HttpConnManager;
+import com.example.zj.androidstudy.contentProvider.ContentActivity;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -14,6 +17,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                new HttpClientManager().usePost("http://ip.taobao.com/service/getIpInfo.php");
+//                new HttpConnManager().usePost("http://ip.taobao.com/service/getIpInfo.php");
+//            }
+//        }).start();
         findViewById(R.id.btn_binder).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -25,6 +35,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, MaterialDesignActivity.class));
+            }
+        });
+
+        findViewById(R.id.btn_content_provider).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ContentActivity.class));
             }
         });
     }

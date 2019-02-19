@@ -13,6 +13,7 @@ import com.example.zj.androidstudy.adapter.RecyclerViewAdapter;
 import com.example.zj.androidstudy.base.BaseActivity;
 
 public class CoordinatorActivity2 extends BaseActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

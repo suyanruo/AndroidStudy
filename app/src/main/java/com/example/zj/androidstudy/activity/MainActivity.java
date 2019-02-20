@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.zj.androidstudy.R;
-import com.example.zj.androidstudy.chapterNetwork.HttpClientManager;
-import com.example.zj.androidstudy.chapterNetwork.HttpConnManager;
 import com.example.zj.androidstudy.contentProvider.ContentActivity;
+import com.example.zj.androidstudy.media.PhotoActivity;
+import com.example.zj.androidstudy.tool.NotificationUtil;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -41,7 +41,15 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_content_provider).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ContentActivity.class));
+//                startActivity(new Intent(MainActivity.this, ContentActivity.class));
+                NotificationUtil.showNotification(MainActivity.this, new Intent(MainActivity.this, ContentActivity.class));
+            }
+        });
+
+        findViewById(R.id.btn_photo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, PhotoActivity.class));
             }
         });
     }

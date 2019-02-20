@@ -39,7 +39,7 @@ public class ContentProviderFragment extends BaseFragment {
         mContactsListView.setAdapter(mArrayAdapter);
     }
 
-    public static int REQUEST_CODE = 1;
+    public static final int REQUEST_CODE = 1;
     @Override
     protected void initWorkers() {
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
@@ -52,7 +52,7 @@ public class ContentProviderFragment extends BaseFragment {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
-            case 1:
+            case REQUEST_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     readContacts();
                 } else {

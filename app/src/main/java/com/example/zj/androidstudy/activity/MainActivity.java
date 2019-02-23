@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.zj.androidstudy.R;
+import com.example.zj.androidstudy.baidu.MapActivity;
 import com.example.zj.androidstudy.contentProvider.ContentActivity;
 import com.example.zj.androidstudy.media.PhotoActivity;
+import com.example.zj.androidstudy.service.ServiceActivity;
 import com.example.zj.androidstudy.tool.NotificationUtil;
 
 public class MainActivity extends AppCompatActivity {
@@ -50,6 +52,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, PhotoActivity.class));
+            }
+        });
+
+        findViewById(R.id.btn_service).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ServiceActivity.class));
+            }
+        });
+
+        findViewById(R.id.btn_map).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, MapActivity.class));
             }
         });
     }

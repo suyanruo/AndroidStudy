@@ -1,5 +1,7 @@
 package com.example.zj.androidstudy.tool;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -34,9 +36,9 @@ public class NotificationUtil {
                 .setSound(uri)
                 .setVibrate(new long[] {0, 1000, 1000, 1000})
                 .setLights(Color.RED, 1500, 500)
-                .setStyle(new NotificationCompat.BigTextStyle().bigText("Handle window ActivityRecord{6819b43 " +
-                        "token=android.os.BinderProxy@eac84e8 {com.example.zj.androidstudy/com.example.zj.androidstudy.activity.MainActivity}} visibility: " +
-                        "false"))
+//                .setStyle(new NotificationCompat.BigTextStyle().bigText("Handle window ActivityRecord{6819b43 " +
+//                        "token=android.os.BinderProxy@eac84e8 {com.example.zj.androidstudy/com.example.zj.androidstudy.activity.MainActivity}} visibility: " +
+//                        "false"))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         // 在8.0以上的系统需要设置channelId才能显示通知
@@ -60,5 +62,34 @@ public class NotificationUtil {
         }
 
         notificationManager.notify(1, builder.build());
+    }
+
+
+    public static NotificationCompat.Builder getNotificationBuilder(Context context, String channelId, int importance) {
+        NotificationCompat.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            prepareChannel(context, channelId, importance);
+            builder = new NotificationCompat.Builder(context, channelId);
+        } else {
+            builder = new NotificationCompat.Builder(context);
+        }
+        return builder;
+    }
+
+    @TargetApi(26)
+    private static void prepareChannel(Context context, String id, int importance) {
+        final String appName = context.getString(R.string.app_name);
+        String description = context.getString(R.string.notifications_channel_description);
+        final NotificationManager nm = (NotificationManager) context.getSystemService(Activity.NOTIFICATION_SERVICE);
+
+        if(nm != null) {
+            NotificationChannel nChannel = nm.getNotificationChannel(id);
+
+            if (nChannel == null) {
+                nChannel = new NotificationChannel(id, appName, importance);
+                nChannel.setDescription(description);
+                nm.createNotificationChannel(nChannel);
+            }
+        }
     }
 }

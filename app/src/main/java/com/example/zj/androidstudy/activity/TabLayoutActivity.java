@@ -49,6 +49,7 @@ public class TabLayoutActivity extends BaseActivity {
         mDrawerLayout = findViewById(R.id.dl_main_drawer);
         mNavigationView = findViewById(R.id.nv_main_navigation);
         if (mNavigationView != null) {
+//            mNavigationView.setCheckedItem(R.id.nav_home); // 设置默认选中项
             mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {

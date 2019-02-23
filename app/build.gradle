@@ -24,6 +24,13 @@ android {
 //        }
 //    }
 
+    // 保证百度地图开发包中拷贝需要的CPU架构对应的so文件文件夹可以在app/libs目录下使用
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
+
     useLibrary 'org.apache.http.legacy'
 }
 

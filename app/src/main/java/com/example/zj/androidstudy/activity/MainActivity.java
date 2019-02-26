@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.baidu.MapActivity;
+import com.example.zj.androidstudy.bigImage.LargeImageViewActivity;
 import com.example.zj.androidstudy.contentProvider.ContentActivity;
 import com.example.zj.androidstudy.media.PhotoActivity;
 import com.example.zj.androidstudy.service.ServiceActivity;
@@ -66,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, MapActivity.class));
+            }
+        });
+
+        findViewById(R.id.btn_load_big_image).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, LargeImageViewActivity.class));
             }
         });
     }

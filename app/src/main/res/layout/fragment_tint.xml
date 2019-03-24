@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:elevation="8dp"
+        android:src="@mipmap/ic_launcher"/>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:elevation="8dp"
+        android:src="@mipmap/ic_launcher"
+        android:tint="@android:color/holo_blue_light"/>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:elevation="8dp"
+        android:src="@mipmap/ic_launcher"
+        android:tint="@android:color/holo_blue_light"
+        android:tintMode="add"/>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:elevation="8dp"
+        android:src="@mipmap/ic_launcher"
+        android:tint="@android:color/holo_blue_light"
+        android:tintMode="multiply"/>
+
+    <TextView
+        android:id="@+id/tv_rect"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:elevation="2dp"/>
+
+    <TextView
+        android:id="@+id/tv_circle"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:elevation="2dp"/>
+</LinearLayout>

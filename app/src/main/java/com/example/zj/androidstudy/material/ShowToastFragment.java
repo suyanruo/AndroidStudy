@@ -31,41 +31,9 @@ public class ShowToastFragment extends BaseFragment {
 
     @Override
     protected void initViews(View view) {
-        mRlFragment = view.findViewById(R.id.rl_material_fragment);
+        mRlFragment = view.findViewById(R.id.rl_toast_fragment);
         mBtnShowToast = view.findViewById(R.id.btn_show_toast);
-        view.findViewById(R.id.btn_go_login).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentUtil.enterNewFragment((AppCompatActivity) getActivity(), R.id.root_material, ShowToastFragment.this, new LoginFragment());
-            }
-        });
-        view.findViewById(R.id.btn_tablayout).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), TabLayoutActivity.class);
-                startActivity(intent);
-            }
-        });
-        view.findViewById(R.id.btn_coordinatorlayout).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CoordinatorActivity.class);
-                startActivity(intent);
-            }
-        });
-        view.findViewById(R.id.btn_coordinatorlayout2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CoordinatorActivity2.class);
-                startActivity(intent);
-            }
-        });
-        view.findViewById(R.id.btn_slide_view).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentUtil.enterNewFragment((AppCompatActivity) getActivity(), R.id.root_material, ShowToastFragment.this, new SlideViewFragment());
-            }
-        });
+
         mBtnShowToast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

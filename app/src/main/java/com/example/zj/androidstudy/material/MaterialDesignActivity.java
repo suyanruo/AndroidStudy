@@ -13,6 +13,6 @@ public class MaterialDesignActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_material_design);
 
-        FragmentUtil.setRootFragment(MaterialDesignActivity.this, R.id.root_material, new ShowToastFragment());
+        FragmentUtil.setRootFragment(MaterialDesignActivity.this, R.id.root_material, new MaterialDesignFragment());
     }
 }

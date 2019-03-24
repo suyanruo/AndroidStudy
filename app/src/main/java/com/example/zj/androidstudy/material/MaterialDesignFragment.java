@@ -68,6 +68,12 @@ public class MaterialDesignFragment extends BaseFragment {
                 FragmentUtil.enterNewFragment((AppCompatActivity) getActivity(), R.id.root_material, MaterialDesignFragment.this, new TintFragment());
             }
         });
+        view.findViewById(R.id.btn_go_recycler).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentUtil.enterNewFragment((AppCompatActivity) getActivity(), R.id.root_material, MaterialDesignFragment.this, new RecyclerFragment());
+            }
+        });
     }
 
     @Override

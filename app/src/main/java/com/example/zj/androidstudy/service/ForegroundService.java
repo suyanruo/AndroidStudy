@@ -11,7 +11,7 @@ import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 
 import com.example.zj.androidstudy.R;
-import com.example.zj.androidstudy.activity.MaterialDesignActivity;
+import com.example.zj.androidstudy.material.MaterialDesignActivity;
 import com.example.zj.androidstudy.tool.NotificationUtil;
 
 public class ForegroundService extends Service {

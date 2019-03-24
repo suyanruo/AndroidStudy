@@ -1,4 +1,4 @@
-package com.example.zj.androidstudy.activity;
+package com.example.zj.androidstudy.material;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;

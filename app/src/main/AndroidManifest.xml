@@ -56,15 +56,15 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".activity.MaterialDesignActivity" />
+        <activity android:name=".material.MaterialDesignActivity" />
         <activity
             android:name=".activity.TabLayoutActivity"
             android:theme="@style/AppTheme.Base" />
         <activity
-            android:name=".activity.CoordinatorActivity"
+            android:name=".material.CoordinatorActivity"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".activity.CoordinatorActivity2"
+            android:name=".material.CoordinatorActivity2"
             android:theme="@style/AppThemeNoActionBar" />
         <activity android:name=".contentProvider.ContentActivity" />
         <activity android:name=".media.PhotoActivity" />

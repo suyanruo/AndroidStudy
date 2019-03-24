@@ -1,4 +1,4 @@
-package com.example.zj.androidstudy.fragment;
+package com.example.zj.androidstudy.material;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.zj.androidstudy.R;
-import com.example.zj.androidstudy.activity.CoordinatorActivity;
-import com.example.zj.androidstudy.activity.CoordinatorActivity2;
+import com.example.zj.androidstudy.fragment.LoginFragment;
+import com.example.zj.androidstudy.fragment.SlideViewFragment;
 import com.example.zj.androidstudy.activity.TabLayoutActivity;
 import com.example.zj.androidstudy.base.BaseFragment;
 import com.example.zj.androidstudy.tool.FragmentUtil;

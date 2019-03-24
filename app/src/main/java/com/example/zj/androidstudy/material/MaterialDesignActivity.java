@@ -1,10 +1,9 @@
-package com.example.zj.androidstudy.activity;
+package com.example.zj.androidstudy.material;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.zj.androidstudy.R;
-import com.example.zj.androidstudy.fragment.ShowToastFragment;
 import com.example.zj.androidstudy.tool.FragmentUtil;
 
 public class MaterialDesignActivity extends AppCompatActivity {

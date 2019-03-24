@@ -2,14 +2,22 @@ package com.example.zj.androidstudy.activity;
 
 import android.content.Intent;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.graphics.Palette;
 import android.view.View;
+import android.view.Window;
 
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.baidu.MapActivity;
 import com.example.zj.androidstudy.bigImage.LargeImageViewActivity;
 import com.example.zj.androidstudy.contentProvider.ContentActivity;
+import com.example.zj.androidstudy.material.MaterialDesignActivity;
 import com.example.zj.androidstudy.media.PhotoActivity;
 import com.example.zj.androidstudy.service.ServiceActivity;
 import com.example.zj.androidstudy.tool.NotificationUtil;
@@ -19,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        showPalette();
 
 //        new Thread(new Runnable() {
 //            @Override
@@ -76,5 +86,24 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, LargeImageViewActivity.class));
             }
         });
+    }
+
+    private void showPalette() {
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_back);
+        Palette.Builder builder = Palette.from(bitmap);
+        builder.generate(new Palette.PaletteAsyncListener() {
+            @Override
+            public void onGenerated(@NonNull Palette palette) {
+                // 通过Palette获取相应的色调
+                Palette.Swatch vibrant = palette.getVibrantSwatch();
+                // 将颜色设置给对应的组件
+                getSupportActionBar().setBackgroundDrawable(new ColorDrawable(vibrant.getRgb()));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    Window window = getWindow();
+                    window.setStatusBarColor(vibrant.getRgb());
+                }
+            }
+        });
+
     }
 }

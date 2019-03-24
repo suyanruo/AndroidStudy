@@ -1,4 +1,4 @@
-package com.example.zj.androidstudy.fragment;
+package com.example.zj.androidstudy.material;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;

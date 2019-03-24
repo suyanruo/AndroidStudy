@@ -14,9 +14,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.zj.androidstudy.R;
-import com.example.zj.androidstudy.fragment.LoginFragment;
-import com.example.zj.androidstudy.fragment.SlideViewFragment;
-import com.example.zj.androidstudy.activity.TabLayoutActivity;
 import com.example.zj.androidstudy.base.BaseFragment;
 import com.example.zj.androidstudy.tool.FragmentUtil;
 

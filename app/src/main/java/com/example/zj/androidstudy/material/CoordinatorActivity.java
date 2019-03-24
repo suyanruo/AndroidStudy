@@ -12,7 +12,6 @@ import android.view.View;
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.adapter.FragmentAdapter;
 import com.example.zj.androidstudy.base.BaseActivity;
-import com.example.zj.androidstudy.fragment.ListFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;

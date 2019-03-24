@@ -58,7 +58,7 @@
 
         <activity android:name=".material.MaterialDesignActivity" />
         <activity
-            android:name=".activity.TabLayoutActivity"
+            android:name=".material.TabLayoutActivity"
             android:theme="@style/AppTheme.Base" />
         <activity
             android:name=".material.CoordinatorActivity"

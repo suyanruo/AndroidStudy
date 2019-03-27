@@ -19,6 +19,7 @@ import com.example.zj.androidstudy.bigImage.LargeImageViewActivity;
 import com.example.zj.androidstudy.contentProvider.ContentActivity;
 import com.example.zj.androidstudy.material.MaterialDesignActivity;
 import com.example.zj.androidstudy.media.PhotoActivity;
+import com.example.zj.androidstudy.puzzle.PuzzleActivity;
 import com.example.zj.androidstudy.service.ServiceActivity;
 import com.example.zj.androidstudy.tool.NotificationUtil;
 
@@ -84,6 +85,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, LargeImageViewActivity.class));
+            }
+        });
+        findViewById(R.id.btn_puzzle).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, PuzzleActivity.class));
             }
         });
     }

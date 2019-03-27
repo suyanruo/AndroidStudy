@@ -91,6 +91,8 @@
             android:process=":remote"/>
         <activity android:name=".bigImage.LargeImageViewActivity"
             android:theme="@style/AppThemeNoActionBar"/>
+        <activity android:name=".puzzle.PuzzleActivity"
+            android:theme="@style/AppThemeNoActionBar" />
     </application>
 
 </manifest>

@@ -20,4 +20,17 @@
     </style>
 
     <style name="StatusBarTheme" parent="AppTheme"></style>
+
+    <!--Toolbar的Theme的设置，都是针对popup的设置-->
+    <style name="ToolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorBackground">#223344</item><!--设置背景颜色的-->
+        <item name="android:textColorPrimary">@android:color/white</item><!--设置文字颜色的-->
+        <item name="android:textSize">16sp</item><!--设置文字大小的-->
+        <item name="actionOverflowMenuStyle">@style/OverflowMenuTheme</item><!--设置弹出位置的主题-->
+    </style>
+
+    <!--Toolbar弹出popup主题的设置-->
+    <style name="OverflowMenuTheme" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item><!--这个属性设置为false，就能使得popup在Toolbar的下面显示-->
+    </style>
 </resources>

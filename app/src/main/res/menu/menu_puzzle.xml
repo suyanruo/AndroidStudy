@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/actions_choose_image"
+        android:title="选择图片"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/actions_choose_type"
+        android:title="选择难度"
+        app:showAsAction="never" />
+</menu>

@@ -12,6 +12,29 @@
         android:textAllCaps="false"
         android:text="showToast" />
 
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="80dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:text="有界波纹" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="100dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:text="无界波纹" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="200dp"
+        android:background="@drawable/ripple_wave"
+        android:text="无界波纹" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"

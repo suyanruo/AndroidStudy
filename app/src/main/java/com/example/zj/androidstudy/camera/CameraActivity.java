@@ -3,10 +3,12 @@ package com.example.zj.androidstudy.camera;
 import android.hardware.Camera;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.zj.androidstudy.R;
 
 public class CameraActivity extends AppCompatActivity {
+  private static final String TAG = "CameraActivity";
   private int numbersOfCameras;
   private int faceBackCameraId;
   private int faceFrontCameraId;
@@ -19,7 +21,21 @@ public class CameraActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_camera);
+    openCamera();
+  }
 
+  @Override
+  protected void onResume() {
+    super.onResume();
+
+    Log.e(TAG, "onResume");
+    startCamera();
+  }
+
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
+    closeCamera();
   }
 
   /**
@@ -47,8 +63,11 @@ public class CameraActivity extends AppCompatActivity {
   }
 
   private void openCamera() {
-    camera = Camera.open();
-//    camera = Camera.open(id);
+    camera = Camera.open(0);
+  }
+
+  private void startCamera() {
+    camera.startPreview();
   }
 
   private void get() {

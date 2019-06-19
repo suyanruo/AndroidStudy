@@ -16,6 +16,7 @@ import android.view.Window;
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.baidu.MapActivity;
 import com.example.zj.androidstudy.bigImage.LargeImageViewActivity;
+import com.example.zj.androidstudy.camera.CameraActivity;
 import com.example.zj.androidstudy.contentProvider.ContentActivity;
 import com.example.zj.androidstudy.material.MaterialDesignActivity;
 import com.example.zj.androidstudy.media.PhotoActivity;
@@ -91,6 +92,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, PuzzleActivity.class));
+            }
+        });
+        findViewById(R.id.btn_camera).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, CameraActivity.class));
             }
         });
     }

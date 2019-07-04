@@ -2,6 +2,7 @@ package com.example.zj.androidstudy.tool;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.WindowManager;
 
 public class ScreenUtil {
@@ -26,5 +27,9 @@ public class ScreenUtil {
     public static float getDeviceDensity(Context context) {
         if (context == null) return 0;
         return getScreenSize(context).density;
+    }
+
+    public static int dp2px(Context context, int dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
     }
 }

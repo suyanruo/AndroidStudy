@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.support.v7.graphics.Palette;
 import android.view.View;
 import android.view.Window;
+import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.baidu.MapActivity;
@@ -22,13 +24,23 @@ import com.example.zj.androidstudy.material.MaterialDesignActivity;
 import com.example.zj.androidstudy.media.PhotoActivity;
 import com.example.zj.androidstudy.puzzle.PuzzleActivity;
 import com.example.zj.androidstudy.service.ServiceActivity;
+import com.example.zj.androidstudy.tool.ExpandUtil;
 import com.example.zj.androidstudy.tool.NotificationUtil;
+import com.example.zj.androidstudy.tool.ScreenUtil;
+import com.example.zj.androidstudy.view.ExpandLayout;
+import com.example.zj.androidstudy.view.expandLayout.ExpandableLayout;
 
 public class MainActivity extends AppCompatActivity {
+    ExpandableListView expandableListView;
+    ExpandLayout expandLayout;
+    ExpandableLayout expandableLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        expandableLayout = findViewById(R.id.elv_expand);
 
         showPalette();
 
@@ -100,6 +112,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, CameraActivity.class));
             }
         });
+        findViewById(R.id.btn_expand_view).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeExpandViewStatus();
+            }
+        });
     }
 
     private void showPalette() {
@@ -119,5 +137,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void changeExpandViewStatus() {
+        expandableLayout.toggle(true);
     }
 }

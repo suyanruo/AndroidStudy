@@ -11,6 +11,7 @@ import android.util.AttributeSet;
 
 /**
  * Created on 2019-07-16.
+ * 源码：https://blog.csdn.net/u011176685/article/details/48295185
  */
 public class AutoWrapTextView extends AppCompatTextView {
   private int mLineY;

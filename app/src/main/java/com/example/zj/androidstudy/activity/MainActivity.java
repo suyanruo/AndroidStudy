@@ -13,6 +13,7 @@ import android.support.v7.graphics.Palette;
 import android.view.View;
 import android.view.ViewStub;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.baidu.MapActivity;
@@ -24,6 +25,7 @@ import com.example.zj.androidstudy.media.PhotoActivity;
 import com.example.zj.androidstudy.puzzle.PuzzleActivity;
 import com.example.zj.androidstudy.service.ServiceActivity;
 import com.example.zj.androidstudy.tool.NotificationUtil;
+import com.example.zj.androidstudy.tool.ScreenUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         showPalette();
+
+        if (ScreenUtil.hasNotchInScreen(this)) {
+            Toast.makeText(this, "刘海屏", Toast.LENGTH_SHORT).show();
+        }
 
 //        new Thread(new Runnable() {
 //            @Override

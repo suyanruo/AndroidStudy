@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
 import android.view.View;
+import android.view.ViewStub;
 import android.view.Window;
 
 import com.example.zj.androidstudy.R;
@@ -113,6 +114,19 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(new Intent(MainActivity.this, DialogActivity.class));
             }
         });
+        findViewById(R.id.btn_activity_constraint).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.this.startActivity(new Intent(MainActivity.this, ConstraintActivity.class));
+            }
+        });
+
+        findViewById(R.id.btn_activity_viewpager).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.this.startActivity(new Intent(MainActivity.this, ViewPagerActivity.class));
+            }
+        });
     }
 
     /**
@@ -136,4 +150,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+//    ViewStub vsRateUs;
+//    private View inflateView;
+//
+//    //fragment在onDetach之后重新attach，ViewStub需要重新inflate一次View才能正常展示
+//    if (vsRateUs.getParent() != null) {
+//        initRateUs();
+//    } else if (inflateView != null) {
+//        inflateView.setVisibility(View.VISIBLE);
+//    }
 }

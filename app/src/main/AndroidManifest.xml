@@ -26,6 +26,10 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
+    <activity android:name=".activity.ViewPagerActivity">
+    </activity>
+    <activity android:name=".activity.ConstraintActivity">
+    </activity>
 
     <meta-data
         android:name="com.baidu.lbsapi.API_KEY"
@@ -39,7 +43,6 @@
       </intent-filter>
     </activity>
     <activity android:name=".activity.BinderActivity" />
-
     <activity android:name=".material.MaterialDesignActivity" />
     <activity
         android:name=".material.TabLayoutActivity"
@@ -52,9 +55,7 @@
         android:theme="@style/AppThemeNoActionBar" />
     <activity android:name=".contentProvider.ContentActivity" />
     <activity android:name=".media.PhotoActivity" />
-
     <activity android:name=".service.ServiceActivity" />
-
     <activity
         android:name=".baidu.MapActivity"
         android:theme="@style/AppThemeNoActionBar" />
@@ -67,7 +68,8 @@
     <activity android:name=".camera.CameraActivity" />
     <activity android:name=".activity.DialogActivity">
     </activity>
-    <activity android:name=".activity.CustomViewActivity"
+    <activity
+        android:name=".activity.CustomViewActivity"
         android:theme="@style/DialogStyle" />
 
     <service

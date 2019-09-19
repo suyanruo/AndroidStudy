@@ -48,7 +48,6 @@ public class AutoFillSmsCodeActivity extends AppCompatActivity {
         smsManager.sendTextMessage(mEtReceiverPhone.getText().toString(),
             null, MessageFormat.format("{0} {1}", createMessageToken(), "141212"),
             null, null);
-        finish();
       }
     });
   }

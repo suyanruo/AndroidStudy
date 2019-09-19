@@ -16,6 +16,7 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.example.zj.androidstudy.R;
+import com.example.zj.androidstudy.autoFillCode.AutoFillSmsCodeActivity;
 import com.example.zj.androidstudy.baidu.MapActivity;
 import com.example.zj.androidstudy.bigImage.LargeImageViewActivity;
 import com.example.zj.androidstudy.camera.CameraActivity;
@@ -131,6 +132,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 MainActivity.this.startActivity(new Intent(MainActivity.this, ViewPagerActivity.class));
+            }
+        });
+
+        findViewById(R.id.btn_activity_auto_fill_sms).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.this.startActivity(new Intent(MainActivity.this, AutoFillSmsCodeActivity.class));
             }
         });
     }

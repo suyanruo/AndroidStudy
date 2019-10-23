@@ -1,55 +1,63 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
+  <!-- Base application theme. -->
+  <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+  </style>
 
-    <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
-    </style>
+  <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar"></style>
 
-    <style name="AppTheme.Base" parent="Theme.AppCompat">
-        <!--隐藏原来的ActionBar，为了在本project中使用ToolBar-->
-        <item name="windowActionBar">false</item>
+  <style name="AppTheme.Base" parent="Theme.AppCompat">
+    <!--隐藏原来的ActionBar，为了在本project中使用ToolBar-->
+    <item name="windowActionBar">false</item>
 
-        <!--隐藏ActionBar的标题-->
-        <item name="windowNoTitle">true</item>
-    </style>
+    <!--隐藏ActionBar的标题-->
+    <item name="windowNoTitle">true</item>
+  </style>
 
-    <style name="StatusBarTheme" parent="AppTheme"></style>
+  <style name="StatusBarTheme" parent="AppTheme"></style>
 
-    <!--Toolbar的Theme的设置，都是针对popup的设置-->
-    <style name="ToolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:colorBackground">#223344</item><!--设置背景颜色的-->
-        <item name="android:textColorPrimary">@android:color/white</item><!--设置文字颜色的-->
-        <item name="android:textSize">16sp</item><!--设置文字大小的-->
-        <item name="actionOverflowMenuStyle">@style/OverflowMenuTheme</item><!--设置弹出位置的主题-->
-    </style>
+  <!--Toolbar的Theme的设置，都是针对popup的设置-->
+  <style name="ToolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:colorBackground">#223344</item><!--设置背景颜色的-->
+    <item name="android:textColorPrimary">@android:color/white</item><!--设置文字颜色的-->
+    <item name="android:textSize">16sp</item><!--设置文字大小的-->
+    <item name="actionOverflowMenuStyle">@style/OverflowMenuTheme</item><!--设置弹出位置的主题-->
+  </style>
 
-    <!--Toolbar弹出popup主题的设置-->
-    <style name="OverflowMenuTheme" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
-        <item name="overlapAnchor">false</item><!--这个属性设置为false，就能使得popup在Toolbar的下面显示-->
-    </style>
+  <!--Toolbar弹出popup主题的设置-->
+  <style name="OverflowMenuTheme" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+    <item name="overlapAnchor">false</item><!--这个属性设置为false，就能使得popup在Toolbar的下面显示-->
+  </style>
 
-    <style name="DialogStyle">
-        <!--设置dialog的背景-->
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <!--设置Dialog的windowFrame框为无-->
-        <item name="android:windowFrame">@null</item>
-        <!--设置无标题-->
-        <item name="android:windowNoTitle">true</item>
-        <!--是否浮现在activity之上-->
-        <item name="android:windowIsFloating">true</item>
-        <!--是否半透明-->
-        <item name="android:windowIsTranslucent">true</item>
-        <!--设置窗口内容不覆盖-->
-        <item name="android:windowContentOverlay">@null</item>
-        <!--设置动画，在这里使用让它继承系统的Animation.Dialog-->
-        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
-        <!--背景是否模糊显示-->
-        <item name="android:backgroundDimEnabled">true</item>
-    </style>
+  <style name="DialogStyle">
+    <!--设置dialog的背景-->
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <!--设置Dialog的windowFrame框为无-->
+    <item name="android:windowFrame">@null</item>
+    <!--设置无标题-->
+    <item name="android:windowNoTitle">true</item>
+    <!--是否浮现在activity之上-->
+    <item name="android:windowIsFloating">true</item>
+    <!--是否半透明-->
+    <item name="android:windowIsTranslucent">true</item>
+    <!--设置窗口内容不覆盖-->
+    <item name="android:windowContentOverlay">@null</item>
+    <!--设置动画，在这里使用让它继承系统的Animation.Dialog-->
+    <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    <!--背景是否模糊显示-->
+    <item name="android:backgroundDimEnabled">true</item>
+  </style>
+
+  <style name="AppTheme.NoActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+  </style>
+
+  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+  <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

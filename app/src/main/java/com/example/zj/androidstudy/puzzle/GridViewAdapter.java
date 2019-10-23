@@ -2,14 +2,12 @@ package com.example.zj.androidstudy.puzzle;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.v7.widget.GridLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 
-import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.tool.ScreenUtil;
 
 import java.util.ArrayList;

@@ -1,12 +1,11 @@
 package com.example.zj.androidstudy.material;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import android.widget.Toast;
 
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.base.BaseFragment;
-import com.example.zj.androidstudy.tool.FragmentUtil;
 
 public class ShowToastFragment extends BaseFragment {
     // SnackBar配合CoordinatorLayout使用可实现右滑删除效果

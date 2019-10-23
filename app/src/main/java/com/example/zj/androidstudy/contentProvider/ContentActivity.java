@@ -1,7 +1,7 @@
 package com.example.zj.androidstudy.contentProvider;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.base.BaseActivity;

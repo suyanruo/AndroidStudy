@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
 import android.provider.Telephony;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.telephony.SmsMessage;
 import android.text.TextUtils;
 import android.util.Log;

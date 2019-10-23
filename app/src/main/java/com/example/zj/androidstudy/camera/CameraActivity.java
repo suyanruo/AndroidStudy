@@ -1,7 +1,7 @@
 package com.example.zj.androidstudy.camera;
 
 import android.hardware.Camera;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 

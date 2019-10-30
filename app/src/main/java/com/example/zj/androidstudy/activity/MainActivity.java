@@ -24,6 +24,7 @@ import com.example.zj.androidstudy.material.MaterialDesignActivity;
 import com.example.zj.androidstudy.media.PhotoActivity;
 import com.example.zj.androidstudy.puzzle.PuzzleActivity;
 import com.example.zj.androidstudy.service.ServiceActivity;
+import com.example.zj.androidstudy.shareElement.ShareElementActivity;
 import com.example.zj.androidstudy.tool.NotificationUtil;
 import com.example.zj.androidstudy.tool.ScreenUtil;
 
@@ -134,10 +135,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btn_activity_auto_fill_sms).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_activity_share_element).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.this.startActivity(new Intent(MainActivity.this, AutoFillSmsCodeActivity.class));
+                MainActivity.this.startActivity(new Intent(MainActivity.this, ShareElementActivity.class));
             }
         });
     }

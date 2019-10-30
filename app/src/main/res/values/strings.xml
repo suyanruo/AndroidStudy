@@ -8,6 +8,6 @@
   <string name="dota2_info">Ti9国际邀请赛，第九届DOTA2国际邀请赛赛程已于5月份正式公布，公开赛时间定于7月3日-6日进行，各地区预选赛将在7月7日-14日进行，而主赛事将在8月20-25日在上海梅赛德斯奔驰文化中心举行。六大赛区（中国、欧洲、南美、北美、东南亚、独联体），总共18支战队将在上海争夺冠军盾。Ti9基础奖金为160万美元，小绿本收入的25%将加入总奖金池。</string>
   <string name="chinese_english">请将近3个月的通话详单发送至以下邮箱地址。请以姓名和cpf号命名邮件主题，例：MarceloAzerelaPaulo67876598701</string>
 
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="share_element_img">share element</string>
+
 </resources>

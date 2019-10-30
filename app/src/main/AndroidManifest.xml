@@ -40,8 +40,7 @@
 
     <activity
         android:name=".firebase.FirebaseActivity"
-        android:theme="@style/AppTheme.NoActionBar"></activity>
-
+        android:theme="@style/AppTheme.NoActionBar" />
     <activity android:name=".activity.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -49,7 +48,6 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-
     <activity android:name=".activity.BinderActivity" />
     <activity android:name=".material.MaterialDesignActivity" />
     <activity
@@ -81,7 +79,8 @@
     <activity android:name=".autoFillCode.AutoFillSmsCodeActivity" />
     <activity android:name=".activity.ViewPagerActivity" />
     <activity android:name=".activity.ConstraintActivity" />
-
+    <activity android:name=".shareElement.ShareElement2Activity" />
+    <activity android:name=".shareElement.ShareElementActivity" />
 
     <provider
         android:name="androidx.core.content.FileProvider"
@@ -92,6 +91,7 @@
           android:name="android.support.FILE_PROVIDER_PATHS"
           android:resource="@xml/file_paths" />
     </provider>
+
     <service
         android:name=".service.BookManagerService"
         android:process="com.example.zj.androidstudy.BookManagerService">
@@ -103,12 +103,10 @@
         android:name=".service.ForegroundService"
         android:enabled="true"
         android:exported="true" />
-
     <service
         android:name="com.baidu.location.f"
         android:enabled="true"
         android:process=":remote" />
-
     <service
         android:name=".autoFillCode.AutoFillSmsService"
         android:enabled="true"

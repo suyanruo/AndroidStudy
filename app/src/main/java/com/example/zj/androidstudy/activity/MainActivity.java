@@ -135,6 +135,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.btn_activity_auto_fill_sms).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              MainActivity.this.startActivity(new Intent(MainActivity.this, AutoFillSmsCodeActivity.class));
+            }
+          });
         findViewById(R.id.btn_activity_share_element).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -30,6 +30,7 @@ import java.text.MessageFormat;
 public class AutoFillSmsCodeActivity extends AppCompatActivity {
   EditText mEtReceiverPhone;
   TextView mTvSmsCode;
+  int code = 141212;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +62,9 @@ public class AutoFillSmsCodeActivity extends AppCompatActivity {
      * 接收人的手机号码，第三个参数用于指定短信的内容，其他的几个参数我们暂时用不到，
      * 直接传入null就可以了。
      * */
-    SmsManager smsManager = AppUtil.getSmsManager(this, mEtReceiverPhone.getText().toString());
+    SmsManager smsManager = SmsManager.getDefault();
     smsManager.sendTextMessage(mEtReceiverPhone.getText().toString(),
-        null, MessageFormat.format("{0} {1}", createMessageToken(), "141212"),
+        null, MessageFormat.format("{0} {1}", createMessageToken(), "" + code++),
         null, null);
   }
 

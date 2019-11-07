@@ -23,3 +23,24 @@
 -keep class com.baidu.** {*;}
 -keep class mapsdkvi.com.** {*;}
 -dontwarn com.baidu.**
+
+# 表示所有实现了 Serializable 接口的类及其成员都不进行混淆
+-keepnames class * implements java.io.Serializable
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    !static !transient <fields>;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
+# keep annotated by NotProguard
+-keep @com.example.zj.androidstudy.annotation.NotProguard class * {*;}
+-keep class * {
+    @com.example.zj.androidstudy.annotation.NotProguard <fields>;
+}
+-keepclassmembers class * {
+    @com.example.zj.androidstudy.annotation.NotProguard <methods>;
+}

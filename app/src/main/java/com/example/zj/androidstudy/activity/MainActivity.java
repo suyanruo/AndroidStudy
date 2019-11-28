@@ -20,6 +20,7 @@ import com.example.zj.androidstudy.baidu.MapActivity;
 import com.example.zj.androidstudy.bigImage.LargeImageViewActivity;
 import com.example.zj.androidstudy.camera.CameraActivity;
 import com.example.zj.androidstudy.contentProvider.ContentActivity;
+import com.example.zj.androidstudy.cutOut.CutOutActivity;
 import com.example.zj.androidstudy.material.MaterialDesignActivity;
 import com.example.zj.androidstudy.media.PhotoActivity;
 import com.example.zj.androidstudy.puzzle.PuzzleActivity;
@@ -145,6 +146,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 MainActivity.this.startActivity(new Intent(MainActivity.this, ShareElementActivity.class));
+            }
+        });
+        findViewById(R.id.btn_activity_cut_out).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.this.startActivity(new Intent(MainActivity.this, CutOutActivity.class));
             }
         });
     }

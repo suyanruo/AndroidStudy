@@ -145,4 +145,13 @@
         android:text="cutOut"
         app:layout_constraintTop_toBottomOf="@id/btn_custom_view"
         app:layout_constraintStart_toEndOf="@id/btn_activity_share_element" />
+
+    <Button
+        android:id="@+id/btn_activity_scroll_viewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="scrollViewpager"
+        app:layout_constraintTop_toBottomOf="@id/btn_custom_view"
+        app:layout_constraintStart_toEndOf="@id/btn_activity_cut_out" />
 </androidx.constraintlayout.widget.ConstraintLayout>

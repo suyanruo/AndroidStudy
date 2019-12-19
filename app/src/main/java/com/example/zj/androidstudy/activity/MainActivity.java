@@ -24,6 +24,7 @@ import com.example.zj.androidstudy.cutOut.CutOutActivity;
 import com.example.zj.androidstudy.material.MaterialDesignActivity;
 import com.example.zj.androidstudy.media.PhotoActivity;
 import com.example.zj.androidstudy.puzzle.PuzzleActivity;
+import com.example.zj.androidstudy.scrollAndViewpager.ScrollViewPagerActivity;
 import com.example.zj.androidstudy.service.ServiceActivity;
 import com.example.zj.androidstudy.shareElement.ShareElementActivity;
 import com.example.zj.androidstudy.tool.NotificationUtil;
@@ -152,6 +153,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 MainActivity.this.startActivity(new Intent(MainActivity.this, CutOutActivity.class));
+            }
+        });
+        findViewById(R.id.btn_activity_scroll_viewpager).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.this.startActivity(new Intent(MainActivity.this, ScrollViewPagerActivity.class));
             }
         });
     }

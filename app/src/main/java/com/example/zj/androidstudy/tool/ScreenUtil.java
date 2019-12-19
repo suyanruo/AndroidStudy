@@ -8,13 +8,17 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.DisplayCutout;
+import android.view.View;
+import android.view.View.MeasureSpec;
 import android.view.WindowInsets;
 import android.view.WindowManager;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.List;
 
 public class ScreenUtil {
+  private static int statusBarHeight = 0;
 
   public static DisplayMetrics getScreenSize(Context context) {
     DisplayMetrics metrics = new DisplayMetrics();
@@ -173,5 +177,34 @@ public class ScreenUtil {
     } catch (Exception e) {
       return false;
     }
+  }
+
+  public static int getStatusBarHeight(Context context) {
+    if (statusBarHeight != 0) {
+      return statusBarHeight;
+    } else {
+      Class<?> c = null;
+      Object obj = null;
+      Field field = null;
+      int sbar = 0;
+
+      try {
+        c = Class.forName("com.android.internal.R$dimen");
+        obj = c.newInstance();
+        field = c.getField("status_bar_height");
+        int x = Integer.parseInt(field.get(obj).toString());
+        sbar = context.getResources().getDimensionPixelSize(x);
+      } catch (Exception var7) {
+        var7.printStackTrace();
+      }
+
+      statusBarHeight = sbar;
+      return statusBarHeight;
+    }
+  }
+
+  public static int getMeasureHeight(View view) {
+    view.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+    return view.getMeasuredHeight();
   }
 }

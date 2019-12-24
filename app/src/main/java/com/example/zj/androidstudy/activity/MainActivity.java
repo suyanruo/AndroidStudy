@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.palette.graphics.Palette;
+
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
@@ -38,10 +40,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         showPalette();
+        fetchIntentData();
 
-        if (ScreenUtil.hasNotchInScreen(this)) {
-            Toast.makeText(this, "刘海屏", Toast.LENGTH_SHORT).show();
-        }
+//        if (ScreenUtil.hasNotchInScreen(this)) {
+//            Toast.makeText(this, "刘海屏", Toast.LENGTH_SHORT).show();
+//        }
 
 //        new Thread(new Runnable() {
 //            @Override
@@ -183,6 +186,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void fetchIntentData() {
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        if (Intent.ACTION_VIEW.equals(action)) {
+            Uri uri = intent.getData();
+            String str = Uri.decode(uri.getEncodedPath()) + "\n" + intent.getDataString();
+            Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+        }
     }
 
 //    ViewStub vsRateUs;

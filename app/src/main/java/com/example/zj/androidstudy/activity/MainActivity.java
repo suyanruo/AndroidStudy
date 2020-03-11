@@ -23,14 +23,15 @@ import com.example.zj.androidstudy.bigImage.LargeImageViewActivity;
 import com.example.zj.androidstudy.camera.CameraActivity;
 import com.example.zj.androidstudy.contentProvider.ContentActivity;
 import com.example.zj.androidstudy.cutOut.CutOutActivity;
+import com.example.zj.androidstudy.markdown.MarkdownActivity;
 import com.example.zj.androidstudy.material.MaterialDesignActivity;
 import com.example.zj.androidstudy.media.PhotoActivity;
+import com.example.zj.androidstudy.pdf.PdfSearchActivity;
 import com.example.zj.androidstudy.puzzle.PuzzleActivity;
 import com.example.zj.androidstudy.scrollAndViewpager.ScrollViewPagerActivity;
 import com.example.zj.androidstudy.service.ServiceActivity;
 import com.example.zj.androidstudy.shareElement.ShareElementActivity;
 import com.example.zj.androidstudy.tool.NotificationUtil;
-import com.example.zj.androidstudy.tool.ScreenUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -164,6 +165,20 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(new Intent(MainActivity.this, ScrollViewPagerActivity.class));
             }
         });
+        findViewById(R.id.btn_activity_pdf).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.this.startActivity(new Intent(MainActivity.this, PdfSearchActivity.class));
+            }
+        });
+        findViewById(R.id.btn_activity_markdown).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.this.startActivity(new Intent(MainActivity.this, MarkdownActivity.class));
+            }
+        });
+
+//        RxjavaDemo.testCreate2();
     }
 
     /**

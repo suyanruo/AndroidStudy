@@ -1,4 +1,5 @@
 package com.example.zj.androidstudy.bigImage;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -45,6 +46,8 @@ public class LargeImageView extends View {
             BitmapFactory.decodeStream(is, null, tmpOptions);
             mImageWidth = tmpOptions.outWidth;
             mImageHeight = tmpOptions.outHeight;
+            if (mImageWidth < 0) mImageWidth = mDecoder.getWidth();
+            if (mImageHeight < 0) mImageHeight = mDecoder.getHeight();
 
             requestLayout();
             invalidate();

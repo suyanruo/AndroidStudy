@@ -23,6 +23,7 @@ import com.example.zj.androidstudy.bigImage.LargeImageViewActivity;
 import com.example.zj.androidstudy.camera.CameraActivity;
 import com.example.zj.androidstudy.contentProvider.ContentActivity;
 import com.example.zj.androidstudy.cutOut.CutOutActivity;
+import com.example.zj.androidstudy.firebase.FirebaseActivity;
 import com.example.zj.androidstudy.markdown.MarkdownActivity;
 import com.example.zj.androidstudy.material.MaterialDesignActivity;
 import com.example.zj.androidstudy.media.PhotoActivity;
@@ -175,6 +176,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 MainActivity.this.startActivity(new Intent(MainActivity.this, MarkdownActivity.class));
+            }
+        });
+        findViewById(R.id.btn_activity_firebase).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.this.startActivity(new Intent(MainActivity.this, FirebaseActivity.class));
             }
         });
 

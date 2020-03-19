@@ -17,10 +17,16 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [
+                    FIREBASE_MESSAGE_CHANNEL_ID: "firebase_message_channel_release"
+            ]
         }
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [
+                    FIREBASE_MESSAGE_CHANNEL_ID: "firebase_message_channel_debug"
+            ]
         }
     }
 

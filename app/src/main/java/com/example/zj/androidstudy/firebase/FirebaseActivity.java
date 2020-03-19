@@ -19,6 +19,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
 public class FirebaseActivity extends AppCompatActivity {
+  private static final String TAG = "FirebaseActivity";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class FirebaseActivity extends AppCompatActivity {
 
             // Get new Instance ID token
             String token = task.getResult().getToken();
+            Log.e(TAG, "firebase token: " + token);
             refreshToken(token);
           }
         });

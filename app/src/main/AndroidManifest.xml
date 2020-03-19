@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="com.example.zj.androidstudy"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:android="http://schemas.android.com/apk/res/android">
   <!-- 读取设备硬件信息，统计数据 -->
   <application
       android:name=".StudyApplication"
@@ -74,9 +73,22 @@
     <meta-data
         android:name="com.baidu.lbsapi.API_KEY"
         android:value="FnLX3vzTOsavvqiPqcAhPwNuf6ehIZXV" />
+
+    <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more. -->
     <meta-data
         android:name="com.google.firebase.messaging.default_notification_icon"
         android:resource="${LAUNCH_ICON}" />
+    <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+         notification message. See README(https://goo.gl/6BKBk7) for more. -->
+    <meta-data
+        android:name="com.google.firebase.messaging.default_notification_color"
+        android:resource="@color/colorAccent" />
+
+    <!--firebase message通知渠道-->
+    <meta-data
+        android:name="com.google.firebase.messaging.default_notification_channel_id"
+        android:value="${FIREBASE_MESSAGE_CHANNEL_ID}" />
 
     <provider
         android:name="androidx.core.content.FileProvider"

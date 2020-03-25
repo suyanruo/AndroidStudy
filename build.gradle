@@ -33,3 +33,7 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+this.tasks.create(name: 'helloTask', group: 'build') {
+    // todo 自定义task
+}

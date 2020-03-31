@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'com.google.gms.google-services'
+
+//com.test.gradle为resources/META-INF/gradle-plugins下的properties文件名称
+apply plugin: 'com.example.modulepluginlib'
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
@@ -34,7 +39,7 @@ android {
     // list each dimension determines its priority, from highest to lowest,
     // when Gradle merges variant sources and configurations. You must assign
     // each product flavor you configure to one of the flavor dimensions.
-    flavorDimensions "api", "mode"
+    flavorDimensions  "api","mode"
 
     productFlavors {
         demo {
@@ -86,18 +91,12 @@ android {
         }
     }
 
-
-//    把 java 代码的访问路径设置成了 java 包和 aidl 包，这样一来系统就会到 aidl 包里面去查找 java 文件
-//    sourceSets {
-//        main {
-//            java.srcDirs = ['src/main/java', 'src/main/aidl']
-//        }
-//    }
-
     // 保证百度地图开发包中拷贝需要的CPU架构对应的so文件文件夹可以在app/libs目录下使用
     sourceSets {
         main {
             jniLibs.srcDir 'libs'
+            // 把 java 代码的访问路径设置成了 java 包和 aidl 包，这样一来系统就会到 aidl 包里面去查找 java 文件
+            // java.srcDirs = ['src/main/java', 'src/main/aidl']
         }
     }
 
@@ -144,7 +143,39 @@ buildscript {
     }
 }
 
-apply plugin: 'com.google.gms.google-services'
+// 介于Initiliazation phase和Configuration phase之间，setting.gralde已执行完
+gradle.beforeProject {
+    println"execute before project configuration"
+}
 
-//com.test.gradle为resources/META-INF/gradle-plugins下的properties文件名称
-apply plugin: 'com.example.modulepluginlib'
+// 介于Configuration phase与Execution phase之间，各个module的build.gradle已经解析完毕，生成tasks执行顺序图
+gradle.taskGraph.whenReady {
+    println"taskGraph when ready function"
+}
+
+// 在Execution phase之后，tasks执行完成
+gradle.buildFinished {
+    println"build is finished"
+
+    println "User Home Dir:" + gradle.gradleUserHomeDir
+}
+
+//clean是一个Task的名字，这个Task好像是Java插件（这里是Android插件）引入的。
+//dependsOn是一个函数，下面这句话的意思是 clean任务依赖casCleanTask任务。所以
+//当你gradle clean以执行clean Task的时候，casCleanTask也会执行
+clean.dependsOn 'casCleanTask'
+//创建一个Task
+task casCleanTask() {
+    it.doLast {
+        cleanOutput(true)  //cleanOutput是util.gradle中通过extra属性设置的Closure
+    }
+}
+
+tasks.getByName("assemble") {
+    it.doLast {
+        println "$project.name: After assemble, jar libs are copied tolocal repository"
+        project.ext.versionName = android.defaultConfig.versionName
+        println "\t versionName = $versionName"
+        copyOutput(false)  //copyOutput是util.gradle输出的closure
+    }
+}

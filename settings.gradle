@@ -1,10 +1,38 @@
-// ref：https://blog.csdn.net/innost/article/details/48228651
+/*我们团队内部建立的编译环境初始化函数
+  这个函数的目的是
+  1  解析一个名为local.properties的文件，读取AndroidSDK和NDK的路径
+  2  获取最终产出物目录的路径。这样，编译完的apk或者jar包将拷贝到这个最终产出物目录中
+  3 获取Android SDK指定编译的版本
+  ref：https://blog.csdn.net/innost/article/details/48228651
+*/
 def initGradleEnvironment(){
     println"initialize Gradle Environment ....."
-    //干一些special的私活....
+
+    // 干一些special的私活....
+
+    // 属性值从local.properties中读取
+    Properties properties = new Properties()
+    File propertyFile = new File(rootDir.getAbsolutePath() + "/local.properties")
+    properties.load(propertyFile.newDataInputStream())
+    // gradle就是gradle对象。它默认是Settings和Project的成员变量。可直接获取ext前缀，表明操作的是外置属性。
+    // api是一个新的属性名。前面说过，只在第一次定义或者设置它的时候需要ext前缀
+    gradle.ext.sdkDir = properties.getProperty('sdk.dir')
+    println gradle.sdkDir  //再次存取sdkDir的时候，就不需要ext前缀了
+    /*
+      根据Project、Gradle生命周期的介绍，settings对象的创建位于具体Project创建之前
+      而Gradle底对象已经创建好了。所以，我们把local.properties的信息读出来后，通过
+     extra属性的方式设置到gradle对象中
+      而具体Project在执行的时候，就可以直接从gradle对象中得到这些属性了！
+    */
+    gradle.ext.api = properties.getProperty('sdk.api')
+    gradle.ext.ndkDir = properties.getProperty('ndk.dir')
+    gradle.ext.localDir = properties.getProperty('local.dir')
+    //指定debugkeystore文件的位置，debug版apk签名的时候会用到
+    gradle.ext.debugKeystore = properties.getProperty('debug.keystore')
+
     println"initialize Gradle Environment completes..."
 }
-//settings.gradle加载的时候，会执行initGradleEnvironment
+// settings.gradle加载的时候，会执行initGradleEnvironment
 initGradleEnvironment()
 
 include ':app', ':modulepluginlib'

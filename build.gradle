@@ -1,17 +1,22 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-buildscript {
-    
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
-        classpath 'com.google.gms:google-services:4.3.2'
+subprojects {
+    println"Configure for $project.name" //遍历子Project，project变量对应每个子Project
+    buildscript {
+        repositories {
+            google()
+            jcenter()
+        }
+        dependencies {
+            classpath 'com.android.tools.build:gradle:3.4.1'
+            classpath 'com.google.gms:google-services:4.3.2'
 
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+            // NOTE: Do not place your application dependencies here; they belong
+            // in the individual module build.gradle files
+        }
+        // 为每个子Project加载util.gradle。当然，这句话可以放到build script花括号之后
+        // 当一个Project apply一个gradle文件的时候，这个gradle文件会转换成一个Script对象
+        apply from: rootProject.getRootDir().getAbsolutePath() + "/util.gradle"
     }
 }
 
@@ -30,10 +35,11 @@ allprojects {
     }
 }
 
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-this.tasks.create(name: 'helloTask', group: 'build') {
-    // todo 自定义task
+tasks.create(name: 'helloTask', group: 'build') {
+    // 自定义task
 }

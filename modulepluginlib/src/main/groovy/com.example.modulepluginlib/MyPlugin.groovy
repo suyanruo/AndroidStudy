@@ -17,12 +17,6 @@ class MyPlugin implements Plugin<Project> {
         def android = project.extensions.getByType(AppExtension)
         // 注册Transform，其实就是添加了Task
         android.registerTransform(new InjectTransform(project))
-
-        // 这里只是随便定义一个Task而已，和Transform无关
-        project.task('JustTask') {
-            doLast {
-                println('InjectTransform task')
-            }
-        }
+        android.registerTransform(new AsmTransform(project))
     }
 }

@@ -2,6 +2,7 @@ package com.example.modulepluginlib
 
 import com.android.build.api.transform.*
 import com.android.build.gradle.internal.pipeline.TransformManager
+import com.example.modulepluginlib.addlog.TestMethodClassAdapter
 import org.apache.commons.io.FileUtils
 import org.gradle.api.Project
 import org.objectweb.asm.ClassReader
@@ -100,7 +101,7 @@ class AsmTransform extends Transform {
 
     private static void transformSingleFile(File input, File dest) {
         println("=== transformSingleFile ===")
-        if (input.name.contains("TestAsm")) {
+        if (input.name.contains("TestAsm")) {//只对TestAsm类做加工处理
             weave(input.getAbsolutePath(), dest.getAbsolutePath())
         } else {
             FileUtils.copyFile(input, dest)

@@ -18,5 +18,6 @@ class MyPlugin implements Plugin<Project> {
         // 注册Transform，其实就是添加了Task
         android.registerTransform(new InjectTransform(project))
         android.registerTransform(new AsmTransform(project))
+        android.registerTransform(new LifecycleTransform(project))
     }
 }

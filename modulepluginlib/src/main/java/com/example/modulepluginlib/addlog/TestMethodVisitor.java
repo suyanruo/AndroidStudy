@@ -1,4 +1,4 @@
-package com.example.modulepluginlib;
+package com.example.modulepluginlib.addlog;
 
 import org.objectweb.asm.MethodVisitor;
 

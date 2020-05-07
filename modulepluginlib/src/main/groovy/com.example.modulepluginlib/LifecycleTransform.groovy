@@ -141,10 +141,15 @@ class LifecycleTransform extends Transform {
                     //class文件处理
                     println '----------- deal with "jar" class file <' + entryName + '> -----------'
                     jarOutputStream.putNextEntry(zipEntry)
+                    //创建ClassReader，传入class字节码的输入流
                     ClassReader classReader = new ClassReader(IOUtils.toByteArray(inputStream))
+                    //创建ClassWriter，绑定classReader
                     ClassWriter classWriter = new ClassWriter(classReader, ClassWriter.COMPUTE_MAXS)
+                    //创建自定义的LifecycleClassVisitor，并绑定classWriter
                     ClassVisitor cv = new LifecycleClassVisitor(classWriter)
+                    //接受一个实现了 ClassVisitor接口的对象实例作为参数，然后依次调用 ClassVisitor接口的各个方法
                     classReader.accept(cv, EXPAND_FRAMES)
+                    //toByteArray方法会将最终修改的字节码以 byte 数组形式返回
                     byte[] code = classWriter.toByteArray()
                     jarOutputStream.write(code)
                 } else {

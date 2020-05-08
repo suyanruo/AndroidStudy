@@ -11,8 +11,16 @@ import com.baidu.mapapi.SDKInitializer;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import androidx.multidex.MultiDex;
+
 public class StudyApplication extends Application {
     private static Context mContext;
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
 
     @Override
     public void onCreate() {

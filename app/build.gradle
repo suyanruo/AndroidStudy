@@ -5,6 +5,10 @@ apply plugin: 'com.google.gms.google-services'
 //com.test.gradle为resources/META-INF/gradle-plugins下的properties文件名称
 apply plugin: 'com.example.modulepluginlib'
 
+import org.aspectj.bridge.IMessage
+import org.aspectj.bridge.MessageHandler
+import org.aspectj.tools.ajc.Main
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
@@ -17,6 +21,8 @@ android {
         manifestPlaceholders = [
                 LAUNCH_ICON: "@mipmap/ic_learn"
         ]
+
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -130,6 +136,12 @@ dependencies {
     implementation 'com.github.tiagohm.MarkdownView:library:0.17.0'
 
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+
+    // AspectJ
+    implementation 'org.aspectj:aspectjrt:1.8.10'
+
+    // 64k
+    implementation "androidx.multidex:multidex:${rootProject.ext.multidexVersion}"
 }
 
 buildscript {
@@ -179,5 +191,48 @@ tasks.getByName("assemble") {
         project.ext.versionName = android.defaultConfig.versionName
         println "\t versionName = $versionName"
         copyOutput(false)  //copyOutput是util.gradle输出的closure
+    }
+}
+
+final def log = project.logger
+final def variants = project.android.applicationVariants
+
+variants.all { variant ->
+    if (!variant.buildType.isDebuggable()) {
+        log.debug("Skipping non-debuggable build type '${variant.buildType.name}'.")
+        return
+    }
+
+    JavaCompile javaCompile = variant.javaCompile
+    javaCompile.doLast {
+        String[] args = ["-showWeaveInfo",
+                         "-1.8",
+                         "-inpath", javaCompile.destinationDir.toString(),
+                         "-aspectpath", javaCompile.classpath.asPath,
+                         "-d", javaCompile.destinationDir.toString(),
+                         "-classpath", javaCompile.classpath.asPath,
+                         "-bootclasspath", project.android.bootClasspath.join(File.pathSeparator)]
+        log.debug "ajc args: " + Arrays.toString(args)
+
+        MessageHandler handler = new MessageHandler(true);
+        new Main().run(args, handler);
+        for (IMessage message : handler.getMessages(null, true)) {
+            switch (message.getKind()) {
+                case IMessage.ABORT:
+                case IMessage.ERROR:
+                case IMessage.FAIL:
+                    log.error message.message, message.thrown
+                    break;
+                case IMessage.WARNING:
+                    log.warn message.message, message.thrown
+                    break;
+                case IMessage.INFO:
+                    log.info message.message, message.thrown
+                    break;
+                case IMessage.DEBUG:
+                    log.debug message.message, message.thrown
+                    break;
+            }
+        }
     }
 }

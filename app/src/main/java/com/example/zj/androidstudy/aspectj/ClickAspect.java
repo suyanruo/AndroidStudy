@@ -10,6 +10,7 @@ import org.aspectj.lang.annotation.Pointcut;
 
 /**
  * Created on 2020-05-07.
+ * 点击事件监听
  */
 @Aspect
 public class ClickAspect {

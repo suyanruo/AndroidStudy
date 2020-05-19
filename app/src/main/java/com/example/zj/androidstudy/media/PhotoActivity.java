@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.zj.androidstudy.R;
+import com.example.zj.androidstudy.aspectj.TimeSpend;
 import com.example.zj.androidstudy.base.BaseActivity;
 
 import java.io.File;
@@ -39,6 +40,7 @@ public class PhotoActivity extends BaseActivity {
         });
     }
 
+    @TimeSpend("拍照")
     private void takePhoto() {
         File file = new File(getExternalCacheDir(), "output_image.jpg");
         try {

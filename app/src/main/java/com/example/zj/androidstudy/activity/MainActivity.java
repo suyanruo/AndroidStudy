@@ -17,6 +17,7 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.example.zj.androidstudy.R;
+import com.example.zj.androidstudy.aspectj.TimeSpend;
 import com.example.zj.androidstudy.autoFillCode.AutoFillSmsCodeActivity;
 import com.example.zj.androidstudy.baidu.MapActivity;
 import com.example.zj.androidstudy.bigImage.LargeImageViewActivity;
@@ -191,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 设置actionBar颜色
      */
+    @TimeSpend("SetPalette")
     private void showPalette() {
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_back);
         Palette.Builder builder = Palette.from(bitmap);

@@ -71,6 +71,8 @@
         android:name=".cutOut.CutOutActivity"
         android:theme="@style/ActivityCutOutTheme" />
 
+    <activity android:name=".net.OkhttpActivity" />
+
     <meta-data
         android:name="com.baidu.lbsapi.API_KEY"
         android:value="FnLX3vzTOsavvqiPqcAhPwNuf6ehIZXV" />

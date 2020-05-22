@@ -28,6 +28,7 @@ import com.example.zj.androidstudy.firebase.FirebaseActivity;
 import com.example.zj.androidstudy.markdown.MarkdownActivity;
 import com.example.zj.androidstudy.material.MaterialDesignActivity;
 import com.example.zj.androidstudy.media.PhotoActivity;
+import com.example.zj.androidstudy.net.OkhttpActivity;
 import com.example.zj.androidstudy.pdf.PdfSearchActivity;
 import com.example.zj.androidstudy.puzzle.PuzzleActivity;
 import com.example.zj.androidstudy.scrollAndViewpager.ScrollViewPagerActivity;
@@ -183,6 +184,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 MainActivity.this.startActivity(new Intent(MainActivity.this, FirebaseActivity.class));
+            }
+        });
+        findViewById(R.id.btn_activity_okhttp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.this.startActivity(new Intent(MainActivity.this, OkhttpActivity.class));
             }
         });
 

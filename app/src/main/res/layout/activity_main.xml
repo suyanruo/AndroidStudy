@@ -196,4 +196,12 @@
         app:layout_constraintTop_toBottomOf="@id/btn_activity_auto_fill_sms"
         app:layout_constraintStart_toEndOf="@id/btn_activity_firebase" />
 
+    <Button
+        android:id="@+id/btn_activity_thread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="thread"
+        app:layout_constraintTop_toBottomOf="@id/btn_activity_pdf"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

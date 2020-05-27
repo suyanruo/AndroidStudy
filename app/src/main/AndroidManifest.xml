@@ -2,7 +2,7 @@
 <manifest package="com.example.zj.androidstudy"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:versionName="AndroidStudy">
-  <!-- 读取设备硬件信息，统计数据 -->
+  <!-- 读取系统信息，包含系统版本等信息，用作统计 -->
   <application
       android:name=".StudyApplication"
       android:allowBackup="true"
@@ -11,7 +11,8 @@
       android:roundIcon="@mipmap/ic_learn"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".markdown.MarkdownActivity"></activity>
+    <activity android:name=".thread.ThreadActivity" />
+    <activity android:name=".markdown.MarkdownActivity" />
     <activity android:name=".pdf.PdfSearchActivity" />
     <activity android:name=".scrollAndViewpager.ScrollViewPagerActivity" />
     <activity
@@ -70,7 +71,6 @@
     <activity
         android:name=".cutOut.CutOutActivity"
         android:theme="@style/ActivityCutOutTheme" />
-
     <activity android:name=".net.OkhttpActivity" />
 
     <meta-data
@@ -86,9 +86,7 @@
          notification message. See README(https://goo.gl/6BKBk7) for more. -->
     <meta-data
         android:name="com.google.firebase.messaging.default_notification_color"
-        android:resource="@color/colorAccent" />
-
-    <!--firebase message通知渠道-->
+        android:resource="@color/colorAccent" /> <!-- firebase message通知渠道 -->
     <meta-data
         android:name="com.google.firebase.messaging.default_notification_channel_id"
         android:value="${FIREBASE_MESSAGE_CHANNEL_ID}" />
@@ -133,16 +131,16 @@
         <action android:name="com.google.firebase.MESSAGING_EVENT" />
       </intent-filter>
     </service>
-  </application> <!-- 读取系统信息，包含系统版本等信息，用作统计 -->
-  <uses-permission android:name="android.permission.INTERNET" /> <!-- 获取设备的网络状态，鉴权所需网络代理 -->
-  <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- 允许sd卡写权限，需写入地图数据，禁用后无法显示地图 -->
+  </application> <!-- 获取设备的网络状态，鉴权所需网络代理 -->
+  <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许sd卡写权限，需写入地图数据，禁用后无法显示地图 -->
   <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
-  <uses-permission android:name="android.permission.VIBRATE" /> <!-- 这个权限用于访问GPS定位 -->
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 获取统计数据 -->
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 使用步行AR导航，配置Camera权限 -->
-  <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 程序在手机屏幕关闭后后台进程仍然运行 -->
-  <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
-  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 增加发送短信权限 -->
+  <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- 这个权限用于访问GPS定位 -->
+  <uses-permission android:name="android.permission.VIBRATE" /> <!-- 获取统计数据 -->
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 使用步行AR导航，配置Camera权限 -->
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 程序在手机屏幕关闭后后台进程仍然运行 -->
+  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+  <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" /> <!-- 增加发送短信权限 -->
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
   <uses-permission android:name="android.permission.WRITE_SETTINGS" />
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

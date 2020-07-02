@@ -8,4 +8,15 @@
         <attr name="android:orientation"/>
     </declare-styleable>
 
+    <!-- 自定义虚线 -->
+    <declare-styleable name="DashLineView">
+        <attr name="line_space" format="dimension" />
+        <attr name="dash_line_width" format="dimension" />
+        <attr name="blank_space" format="dimension" />
+        <attr name="line_color" format="color" />
+        <attr name="orientation">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+    </declare-styleable>
 </resources>

@@ -196,7 +196,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn_activity_thread).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.this.startActivity(new Intent(MainActivity.this, ThreadActivity.class));
+//                MainActivity.this.startActivity(new Intent(MainActivity.this, ThreadActivity.class));
+
+                Uri uri = Uri.parse("whatsapp://send?phone=8618709251910");
+                startActivity(new Intent(Intent.ACTION_VIEW,uri));
             }
         });
 

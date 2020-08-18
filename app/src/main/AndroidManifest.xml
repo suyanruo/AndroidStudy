@@ -11,6 +11,7 @@
       android:roundIcon="@mipmap/ic_learn"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
+    <activity android:name=".activity.OpNoteActivity" />
     <activity android:name=".thread.ThreadActivity" />
     <activity android:name=".markdown.MarkdownActivity" />
     <activity android:name=".pdf.PdfSearchActivity" />

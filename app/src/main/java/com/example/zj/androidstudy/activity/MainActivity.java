@@ -198,8 +198,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                MainActivity.this.startActivity(new Intent(MainActivity.this, ThreadActivity.class));
 
-                Uri uri = Uri.parse("whatsapp://send?phone=8618709251910");
-                startActivity(new Intent(Intent.ACTION_VIEW,uri));
+                startWhatsApp();
             }
         });
 
@@ -227,6 +226,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void startWhatsApp() {
+        Uri uri = Uri.parse("whatsapp://send?phone=8618709251910");
+        startActivity(new Intent(Intent.ACTION_VIEW,uri));
     }
 
     private void fetchIntentData() {

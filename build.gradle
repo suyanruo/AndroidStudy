@@ -29,7 +29,7 @@ subprojects {
 ext {
     compileSdkVersion = 30
     targetSdkVersion = 30
-    minSdkVersion = 16
+    minSdkVersion = 19
     androidxVersion = "1.0.0"
     multidexVersion = "2.0.1"
 }

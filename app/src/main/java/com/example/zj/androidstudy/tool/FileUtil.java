@@ -1,5 +1,6 @@
 package com.example.zj.androidstudy.tool;
 
+import android.os.Environment;
 import android.util.Log;
 
 import java.io.BufferedInputStream;
@@ -86,5 +87,17 @@ public class FileUtil {
       }
     }
     return false;
+  }
+
+  // Checks if a volume containing external storage is available
+  // for read and write.
+  private boolean isExternalStorageWritable() {
+    return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED;
+  }
+
+  // Checks if a volume containing external storage is available to at least read.
+  private boolean isExternalStorageReadable() {
+    return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED ||
+        Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED_READ_ONLY;
   }
 }

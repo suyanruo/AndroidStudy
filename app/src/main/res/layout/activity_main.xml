@@ -204,4 +204,13 @@
         android:text="thread"
         app:layout_constraintTop_toBottomOf="@id/btn_activity_pdf"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_activity_h5_jump"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="H5Jump"
+        app:layout_constraintTop_toBottomOf="@id/btn_activity_pdf"
+        app:layout_constraintStart_toEndOf="@id/btn_activity_thread" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -201,8 +201,12 @@ public class MainActivity extends AppCompatActivity {
                 startWhatsApp();
             }
         });
-
-//        RxjavaDemo.testCreate2();
+        findViewById(R.id.btn_activity_h5_jump).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity.this.startActivity(new Intent(MainActivity.this, H5ToAppActivity.class));
+            }
+        });
     }
 
     /**

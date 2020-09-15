@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+  <Button
+      android:id="@+id/btn_binder"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      android:textAllCaps="false"
+      android:text="binder" />
+
+  <Button
+      android:id="@+id/btn_material_design"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="materialDesign"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintLeft_toRightOf="@id/btn_binder"/>
+
+  <Button
+      android:id="@+id/btn_content_provider"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="contentProvider"
+      app:layout_constraintTop_toBottomOf="@id/btn_binder"
+      app:layout_constraintStart_toStartOf="parent"/>
+
+  <Button
+      android:id="@+id/btn_photo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="photo"
+      app:layout_constraintTop_toBottomOf="@id/btn_binder"
+      app:layout_constraintLeft_toRightOf="@id/btn_content_provider"/>
+
+  <Button
+      android:id="@+id/btn_service"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="service"
+      app:layout_constraintTop_toBottomOf="@id/btn_binder"
+      app:layout_constraintLeft_toRightOf="@id/btn_photo"/>
+
+  <Button
+      android:id="@+id/btn_map"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="map"
+      app:layout_constraintTop_toBottomOf="@id/btn_content_provider"
+      app:layout_constraintStart_toStartOf="parent"/>
+
+  <Button
+      android:id="@+id/btn_load_big_image"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="加载大图片"
+      app:layout_constraintTop_toBottomOf="@id/btn_content_provider"
+      app:layout_constraintLeft_toRightOf="@id/btn_map"/>
+
+  <Button
+      android:id="@+id/btn_puzzle"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="拼图"
+      app:layout_constraintTop_toBottomOf="@id/btn_content_provider"
+      app:layout_constraintLeft_toRightOf="@id/btn_load_big_image"/>
+
+
+  <Button
+      android:id="@+id/btn_camera"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="camera"
+      app:layout_constraintTop_toBottomOf="@id/btn_content_provider"
+      app:layout_constraintLeft_toRightOf="@id/btn_puzzle"/>
+
+  <Button
+      android:id="@+id/btn_custom_view"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="customView"
+      app:layout_constraintTop_toBottomOf="@id/btn_camera"
+      app:layout_constraintLeft_toLeftOf="parent"/>
+
+  <Button
+      android:id="@+id/btn_activity_dialog"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="actDialog"
+      app:layout_constraintTop_toBottomOf="@id/btn_camera"
+      app:layout_constraintLeft_toRightOf="@id/btn_custom_view"/>
+
+  <Button
+      android:id="@+id/btn_activity_constraint"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="constraint"
+      app:layout_constraintTop_toBottomOf="@id/btn_camera"
+      app:layout_constraintLeft_toRightOf="@id/btn_activity_dialog"/>
+
+  <Button
+      android:id="@+id/btn_activity_viewpager"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="viewpager"
+      app:layout_constraintTop_toBottomOf="@id/btn_camera"
+      app:layout_constraintLeft_toRightOf="@id/btn_activity_constraint"/>
+
+  <Button
+      android:id="@+id/btn_activity_auto_fill_sms"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="autoFillCode"
+      app:layout_constraintTop_toBottomOf="@id/btn_custom_view"
+      app:layout_constraintLeft_toLeftOf="parent" />
+
+  <Button
+      android:id="@+id/btn_activity_share_element"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="shareElement"
+      app:layout_constraintTop_toBottomOf="@id/btn_custom_view"
+      app:layout_constraintStart_toEndOf="@id/btn_activity_auto_fill_sms" />
+
+  <Button
+      android:id="@+id/btn_activity_cut_out"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="cutOut"
+      app:layout_constraintTop_toBottomOf="@id/btn_custom_view"
+      app:layout_constraintStart_toEndOf="@id/btn_activity_share_element" />
+
+  <Button
+      android:id="@+id/btn_activity_scroll_viewpager"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="scrollViewpager"
+      app:layout_constraintTop_toBottomOf="@id/btn_custom_view"
+      app:layout_constraintStart_toEndOf="@id/btn_activity_cut_out" />
+
+  <Button
+      android:id="@+id/btn_activity_pdf"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="pdf"
+      app:layout_constraintTop_toBottomOf="@id/btn_activity_auto_fill_sms"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <Button
+      android:id="@+id/btn_activity_markdown"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="markdown"
+      app:layout_constraintTop_toBottomOf="@id/btn_activity_auto_fill_sms"
+      app:layout_constraintStart_toEndOf="@id/btn_activity_pdf" />
+
+  <Button
+      android:id="@+id/btn_activity_firebase"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="firebase"
+      app:layout_constraintTop_toBottomOf="@id/btn_activity_auto_fill_sms"
+      app:layout_constraintStart_toEndOf="@id/btn_activity_markdown" />
+
+  <Button
+      android:id="@+id/btn_activity_okhttp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="okhttp"
+      app:layout_constraintTop_toBottomOf="@id/btn_activity_auto_fill_sms"
+      app:layout_constraintStart_toEndOf="@id/btn_activity_firebase" />
+
+  <Button
+      android:id="@+id/btn_activity_thread"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="thread"
+      app:layout_constraintTop_toBottomOf="@id/btn_activity_pdf"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <Button
+      android:id="@+id/btn_activity_h5_jump"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="H5Jump"
+      app:layout_constraintTop_toBottomOf="@id/btn_activity_pdf"
+      app:layout_constraintStart_toEndOf="@id/btn_activity_thread" />
+</androidx.constraintlayout.widget.ConstraintLayout>

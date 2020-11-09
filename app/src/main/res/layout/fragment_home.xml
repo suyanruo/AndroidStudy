@@ -213,4 +213,48 @@
       android:text="H5Jump"
       app:layout_constraintTop_toBottomOf="@id/btn_activity_pdf"
       app:layout_constraintStart_toEndOf="@id/btn_activity_thread" />
+
+  <TextView
+      android:id="@+id/tv_navigation_format"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintTop_toBottomOf="@id/btn_activity_h5_jump"
+      android:layout_marginTop="@dimen/dp_10"
+      android:text="Navigation Format to go to new page:"/>
+
+  <Button
+      android:id="@+id/btn_fragment_login"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="Login"
+      app:layout_constraintTop_toBottomOf="@id/tv_navigation_format"
+      app:layout_constraintStart_toStartOf="parent"/>
+
+  <Button
+    android:id="@+id/btn_fragment_pay"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAllCaps="false"
+    android:text="pay"
+    app:layout_constraintTop_toBottomOf="@id/tv_navigation_format"
+    app:layout_constraintStart_toEndOf="@id/btn_fragment_login"/>
+
+  <Button
+      android:id="@+id/btn_fragment_include_start"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="include"
+      app:layout_constraintTop_toBottomOf="@id/tv_navigation_format"
+      app:layout_constraintStart_toEndOf="@id/btn_fragment_pay"/>
+
+  <Button
+      android:id="@+id/btn_fragment_profile"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="profile"
+      app:layout_constraintTop_toBottomOf="@id/tv_navigation_format"
+      app:layout_constraintStart_toEndOf="@id/btn_fragment_include_start"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

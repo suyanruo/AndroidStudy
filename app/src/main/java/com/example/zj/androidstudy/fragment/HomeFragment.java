@@ -35,6 +35,9 @@ import com.example.zj.androidstudy.shareElement.ShareElementActivity;
 import com.example.zj.androidstudy.thread.ThreadActivity;
 import com.example.zj.androidstudy.tool.NotificationUtil;
 
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+
 public class HomeFragment extends BaseFragment {
 
   @Override
@@ -97,7 +100,10 @@ public class HomeFragment extends BaseFragment {
     view.findViewById(R.id.btn_puzzle).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        startActivity(new Intent(getActivity(), PuzzleActivity.class));
+        // 隐式调用
+        Intent intent = new Intent(getActivity(), PuzzleActivity.class);
+        intent.addCategory("com.example.zj.puzzle");
+        startActivity(intent);
       }
     });
     view.findViewById(R.id.btn_camera).setOnClickListener(new View.OnClickListener() {
@@ -191,6 +197,25 @@ public class HomeFragment extends BaseFragment {
       @Override
       public void onClick(View view) {
         getActivity().startActivity(new Intent(getActivity(), H5ToAppActivity.class));
+      }
+    });
+    view.findViewById(R.id.btn_fragment_login).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_loginFragment);
+      }
+    });
+    view.findViewById(R.id.btn_fragment_pay).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_homeFragment_to_chooseRecipientFragment);
+      }
+    });
+    view.findViewById(R.id.btn_fragment_include_start).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_homeFragment_to_includedStart, null));
+    view.findViewById(R.id.btn_fragment_profile).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_profileFragment);
       }
     });
   }

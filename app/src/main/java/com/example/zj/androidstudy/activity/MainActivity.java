@@ -32,10 +32,12 @@ public class MainActivity extends AppCompatActivity {
         showPalette();
         fetchIntentData();
 
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.main_content, new HomeFragment());
-        transaction.commitAllowingStateLoss();
+//        FragmentManager manager = getSupportFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        transaction.add(R.id.main_content, new HomeFragment());
+//        transaction.commitAllowingStateLoss();
+
+
 
 //        if (ScreenUtil.hasNotchInScreen(this)) {
 //            Toast.makeText(this, "刘海屏", Toast.LENGTH_SHORT).show();

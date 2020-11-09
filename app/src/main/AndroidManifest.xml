@@ -70,7 +70,11 @@
         android:theme="@style/AppThemeNoActionBar" />
     <activity
         android:name=".puzzle.PuzzleActivity"
-        android:theme="@style/AppThemeNoActionBar" />
+        android:theme="@style/AppThemeNoActionBar" >
+      <intent-filter>
+        <category android:name="com.example.zj.puzzle" />
+      </intent-filter>
+    </activity>>
     <activity android:name=".camera.CameraActivity" />
     <activity android:name=".activity.DialogActivity" />
     <activity

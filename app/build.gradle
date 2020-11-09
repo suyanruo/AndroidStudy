@@ -8,6 +8,8 @@ apply plugin: 'com.example.modulepluginlib'
 // Apply the Crashlytics Gradle plugin
 apply plugin: 'com.google.firebase.crashlytics'
 
+apply plugin: "androidx.navigation.safeargs"
+
 import org.aspectj.bridge.IMessage
 import org.aspectj.bridge.MessageHandler
 import org.aspectj.tools.ajc.Main
@@ -151,6 +153,10 @@ dependencies {
 
     // Recommended: Add the Firebase SDK for Google Analytics.
     implementation 'com.google.firebase:firebase-analytics:17.4.3'
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment:2.3.0"
+    implementation "androidx.navigation:navigation-ui:2.3.0"
 }
 
 buildscript {

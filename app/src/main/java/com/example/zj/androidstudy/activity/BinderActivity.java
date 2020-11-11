@@ -20,10 +20,6 @@ import com.example.zj.androidstudy.R;
 import java.util.List;
 
 public class BinderActivity extends AppCompatActivity {
-    /**
-     * 是否需要重新绑定
-     */
-    private boolean mNeedReBound;
 
     private Handler mHandler = new Handler(){
         @Override
@@ -43,15 +39,15 @@ public class BinderActivity extends AppCompatActivity {
     private IBinder.DeathRecipient mDeathRecipient = new IBinder.DeathRecipient() {
         @Override
         public void binderDied() {
+            // 运行在客户端Binder线程池
             // binder死亡时，重新绑定远程服务的流程
             if (mRemoteBookManager == null) {
                 return;
             }
             mRemoteBookManager.asBinder().unlinkToDeath(mDeathRecipient, 0);
             mRemoteBookManager = null;
-            // 重新绑定远程服务
-            mNeedReBound = true;
-            unbindService(mConnection);
+            // 重新绑定远程服务方法一
+            bindBinderService();
         }
     };
     private ServiceConnection mConnection = new ServiceConnection() {
@@ -77,11 +73,10 @@ public class BinderActivity extends AppCompatActivity {
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
+            // 运行在UI线程
             mRemoteBookManager = null;
-            if (mNeedReBound) {
-                bindBinderService();
-                mNeedReBound = false;
-            }
+            // 重新绑定远程服务方法二
+            // bindBinderService();
         }
     };
 

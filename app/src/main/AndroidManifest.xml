@@ -2,7 +2,10 @@
 <manifest package="com.example.zj.androidstudy"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:versionName="AndroidStudy">
-  <!-- 获取统计数据 -->
+  <!--自定义权限，用于限制访问远程服务BookManagerService-->
+  <permission android:name="com.example.zj.androidstudy.permission.ACCESS_BOOK_SERVICE"
+      android:protectionLevel="normal" />
+
   <application
       android:name=".StudyApplication"
       android:allowBackup="true"
@@ -173,5 +176,6 @@
   <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
 
   <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+  <uses-permission android:name="com.example.zj.androidstudy.permission.ACCESS_BOOK_SERVICE" />
 
 </manifest>

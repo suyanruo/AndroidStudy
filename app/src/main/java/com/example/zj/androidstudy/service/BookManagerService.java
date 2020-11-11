@@ -2,8 +2,10 @@ package com.example.zj.androidstudy.service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Binder;
 import android.os.IBinder;
+import android.os.Parcel;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 
@@ -20,7 +22,7 @@ public class BookManagerService extends Service {
     private CopyOnWriteArrayList<Book> mBookList = new CopyOnWriteArrayList<>();
     /**
      * 定义监听者列表
-     * 方式一：使用CopyOnWriteArrayList，接触监听时存在问题
+     * 方式一：使用CopyOnWriteArrayList，解除监听时存在问题
      * 方式二：使用RemoteCallbackList，利用binder映射listener，保证在解除监听者时的正确性
      */
 //    private CopyOnWriteArrayList<IOnNewBookArrivedListener> mListenerList = new CopyOnWriteArrayList<>();
@@ -58,6 +60,27 @@ public class BookManagerService extends Service {
 //            }
             mRemoteListenerList.unregister(listener);
         }
+
+        @Override
+        public boolean onTransact(int code, Parcel data, Parcel reply, int flags) throws RemoteException {
+            // 权限验证渠道二：覆写onTransact方法。这种方式如果验证不通过只是执行一个空的远程方法，而不会终止执行AIDL中的方法
+            // 验证方法一：自定义权限
+            int check = checkCallingOrSelfPermission("com.example.zj.androidstudy.permission.ACCESS_BOOK_SERVICE");
+            if (check == PackageManager.PERMISSION_DENIED) {
+              return false;
+            }
+            // 验证方法二：通过Uid来获取包名，通过限制指定包名来验证身份
+            String packageName = "";
+            String[] packages = getPackageManager().getPackagesForUid(getCallingUid());
+            if (packages != null && packages.length > 0) {
+                packageName = packages[0];
+            }
+            if (!packageName.startsWith("com.example.zj.androidstudy")) {
+                return false;
+            }
+
+            return super.onTransact(code, data, reply, flags);
+        }
     };
 
     @Override
@@ -75,7 +98,12 @@ public class BookManagerService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
+      // 权限验证渠道一：在onBind方法中验证权限
+      int check = checkCallingOrSelfPermission("com.example.zj.androidstudy.permission.ACCESS_BOOK_SERVICE");
+      if (check == PackageManager.PERMISSION_GRANTED) {
         return mBinder;
+      }
+      return null;
     }
 
     @Override

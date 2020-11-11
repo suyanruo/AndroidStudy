@@ -74,7 +74,7 @@
       <intent-filter>
         <category android:name="com.example.zj.puzzle" />
       </intent-filter>
-    </activity>>
+    </activity>
     <activity android:name=".camera.CameraActivity" />
     <activity android:name=".activity.DialogActivity" />
     <activity

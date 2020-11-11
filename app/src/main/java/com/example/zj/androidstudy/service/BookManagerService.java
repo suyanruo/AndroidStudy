@@ -16,7 +16,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class BookManagerService extends Service {
-    private AtomicBoolean mIsDestoryed = new AtomicBoolean(false);
+    private AtomicBoolean mIsDestroyed = new AtomicBoolean(false);
     private CopyOnWriteArrayList<Book> mBookList = new CopyOnWriteArrayList<>();
     /**
      * 定义监听者列表
@@ -29,12 +29,18 @@ public class BookManagerService extends Service {
     private Binder mBinder = new IBookManager.Stub() {
         @Override
         public List<Book> getBookList() throws RemoteException {
-            return mBookList;
+            synchronized (mBookList) {
+                return mBookList;
+            }
         }
 
         @Override
         public void addBook(Book book) throws RemoteException {
-            mBookList.add(book);
+            synchronized (mBookList) {
+                if (!mBookList.contains(book)) {
+                    mBookList.add(book);
+                }
+            }
         }
 
         @Override
@@ -74,7 +80,7 @@ public class BookManagerService extends Service {
 
     @Override
     public void onDestroy() {
-        mIsDestoryed.set(true);
+        mIsDestroyed.set(true);
         super.onDestroy();
     }
 
@@ -98,7 +104,7 @@ public class BookManagerService extends Service {
 
         @Override
         public void run() {
-            while (!mIsDestoryed.get()) {
+            while (!mIsDestroyed.get()) {
                 try {
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {

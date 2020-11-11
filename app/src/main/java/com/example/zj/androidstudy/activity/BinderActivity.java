@@ -20,6 +20,10 @@ import com.example.zj.androidstudy.R;
 import java.util.List;
 
 public class BinderActivity extends AppCompatActivity {
+    /**
+     * 是否需要重新绑定
+     */
+    private boolean mNeedReBound;
 
     private Handler mHandler = new Handler(){
         @Override
@@ -45,20 +49,19 @@ public class BinderActivity extends AppCompatActivity {
             }
             mRemoteBookManager.asBinder().unlinkToDeath(mDeathRecipient, 0);
             mRemoteBookManager = null;
-            bindBinderService();
+            // 重新绑定远程服务
+            mNeedReBound = true;
+            unbindService(mConnection);
         }
     };
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
+            IBookManager iBookManager = IBookManager.Stub.asInterface(service);
             try {
                 // 添加死亡代理
                 service.linkToDeath(mDeathRecipient, 0);
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-            IBookManager iBookManager = IBookManager.Stub.asInterface(service);
-            try {
+
                 mRemoteBookManager = iBookManager;
                 mRemoteBookManager.registerListener(mOnNewBookArrivedListener);
                 // 为了防止耗时操作导致ANR，建议执行服务端耗时方法时放在子线程中执行
@@ -75,6 +78,10 @@ public class BinderActivity extends AppCompatActivity {
         @Override
         public void onServiceDisconnected(ComponentName name) {
             mRemoteBookManager = null;
+            if (mNeedReBound) {
+                bindBinderService();
+                mNeedReBound = false;
+            }
         }
     };
 

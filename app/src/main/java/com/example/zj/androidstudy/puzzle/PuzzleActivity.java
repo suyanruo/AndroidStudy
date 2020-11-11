@@ -32,7 +32,9 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.example.zj.androidstudy.Constants;
 import com.example.zj.androidstudy.R;
+import com.example.zj.androidstudy.tool.FileUtil;
 import com.example.zj.androidstudy.tool.ImageUtil;
 import com.example.zj.androidstudy.tool.ScreenUtil;
 
@@ -41,9 +43,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PuzzleActivity extends AppCompatActivity implements View.OnClickListener {
-    public static final String CACHE_PATH = Environment.getExternalStorageDirectory().getPath() + "/AndroidStudy/Cache";
-    public static String PICTURE_PATH = CACHE_PATH + "/picCache.png";
-    public static String CAMERA_PIC_PATH = CACHE_PATH + "/camera.png";
+    public static String PICTURE_NAME = "picCache.png";
+    public static String CAMERA_PIC_NAME = "camera.png";
     private static final int RESULT_IMAGE = 100;
     private static final int RESULT_CAMERA = 200;
     private static final String IMAGE_TYPE = "image/*";
@@ -259,7 +260,7 @@ public class PuzzleActivity extends AppCompatActivity implements View.OnClickLis
 
     private void getImageFromCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        Uri photoUri = Uri.fromFile(new File(CAMERA_PIC_PATH));
+        Uri photoUri = Uri.fromFile(new File(FileUtil.getFileCache(PuzzleActivity.this) + File.separator + CAMERA_PIC_NAME));
         intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
         startActivityForResult(intent, RESULT_CAMERA);
     }
@@ -278,15 +279,16 @@ public class PuzzleActivity extends AppCompatActivity implements View.OnClickLis
                 cursor.close();
             } else if (requestCode == RESULT_CAMERA){
                 // 相机
-                mImagePath = CAMERA_PIC_PATH;
+                mImagePath = FileUtil.getFileCache(PuzzleActivity.this) + File.separator + CAMERA_PIC_NAME;
             }
             if (!TextUtils.isEmpty(mImagePath)) {
-                File file = new File(CACHE_PATH);
+                File file = new File(FileUtil.getFileCache(PuzzleActivity.this));
                 if (!file.exists()) {
                     file.mkdirs();
                 }
-                ImageUtil.doCompressBySize(mImagePath, PICTURE_PATH);
-                mSelectBitmap = handlerImageSize(BitmapFactory.decodeFile(PICTURE_PATH));
+                String compressPath = FileUtil.getFileCache(PuzzleActivity.this) + File.separator + PICTURE_NAME;
+                ImageUtil.doCompressBySize(mImagePath, compressPath);
+                mSelectBitmap = handlerImageSize(BitmapFactory.decodeFile(compressPath));
 
                 refreshPuzzle();
             }

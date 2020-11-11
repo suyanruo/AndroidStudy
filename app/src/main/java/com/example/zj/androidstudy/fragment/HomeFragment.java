@@ -14,6 +14,7 @@ import com.example.zj.androidstudy.activity.ConstraintActivity;
 import com.example.zj.androidstudy.activity.CustomViewActivity;
 import com.example.zj.androidstudy.activity.DialogActivity;
 import com.example.zj.androidstudy.activity.H5ToAppActivity;
+import com.example.zj.androidstudy.activity.MessengerActivity;
 import com.example.zj.androidstudy.activity.ViewPagerActivity;
 import com.example.zj.androidstudy.autoFillCode.AutoFillSmsCodeActivity;
 import com.example.zj.androidstudy.baidu.MapActivity;
@@ -199,6 +200,14 @@ public class HomeFragment extends BaseFragment {
         getActivity().startActivity(new Intent(getActivity(), H5ToAppActivity.class));
       }
     });
+    view.findViewById(R.id.btn_activity_messenger).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        getActivity().startActivity(new Intent(getActivity(), MessengerActivity.class));
+      }
+    });
+
+    /*-----------------Navigation-----------------*/
     view.findViewById(R.id.btn_fragment_login).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {

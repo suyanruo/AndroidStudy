@@ -8,12 +8,21 @@
 
   <Button
       android:id="@+id/btn_go_main"
-      android:layout_width="match_parent"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintBottom_toTopOf="@+id/webviewh5"
       android:layout_marginTop="@dimen/dp_40"
       android:text="goMain"/>
+
+  <Button
+      android:id="@+id/btn_move"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:text="move"/>
 
   <WebView
       android:id="@+id/webviewh5"

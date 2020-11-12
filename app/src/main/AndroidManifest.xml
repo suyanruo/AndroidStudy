@@ -6,6 +6,9 @@
   <permission android:name="com.example.zj.androidstudy.permission.ACCESS_BOOK_SERVICE"
       android:protectionLevel="normal" />
 
+  <permission android:name="com.zj.PROVIDER"
+      android:protectionLevel="normal" />
+
   <application
       android:name=".StudyApplication"
       android:allowBackup="true"
@@ -177,5 +180,6 @@
 
   <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
   <uses-permission android:name="com.example.zj.androidstudy.permission.ACCESS_BOOK_SERVICE" />
+  <uses-permission android:name="com.zj.PROVIDER" />
 
 </manifest>

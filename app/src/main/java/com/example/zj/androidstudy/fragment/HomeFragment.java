@@ -66,8 +66,7 @@ public class HomeFragment extends BaseFragment {
     view.findViewById(R.id.btn_content_provider).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-//                startActivity(new Intent(getActivity(), ContentActivity.class));
-        NotificationUtil.showNotification(getActivity(), new Intent(getActivity(), ContentActivity.class));
+        startActivity(new Intent(getActivity(), ContentActivity.class));
       }
     });
 

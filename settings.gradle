@@ -35,4 +35,4 @@ def initGradleEnvironment(){
 // settings.gradle加载的时候，会执行initGradleEnvironment
 initGradleEnvironment()
 
-include ':app', ':modulepluginlib'
+include ':app', ':modulepluginlib', ':bookprovider'

@@ -3,9 +3,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.zj.androidstudy.view.CustomSlideView
-        android:id="@+id/custom_slide_view"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="#FFCCCC" />
+    <Button
+        android:id="@+id/btn_scroller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="scroller" />
+
+    <Button
+        android:id="@+id/btn_view_animation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/btn_scroller"
+        android:textAllCaps="false"
+        android:text="view Animator" />
+
+    <Button
+        android:id="@+id/btn_object_animation_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_scroller"
+        android:textAllCaps="false"
+        android:text="ob Animator 1" />
+
+    <Button
+        android:id="@+id/btn_object_animation_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_scroller"
+        android:layout_toRightOf="@id/btn_object_animation_one"
+        android:textAllCaps="false"
+        android:text="ob An 2" />
+
+    <Button
+        android:id="@+id/btn_object_animation_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_scroller"
+        android:layout_toRightOf="@id/btn_object_animation_two"
+        android:textAllCaps="false"
+        android:text="ob An 3" />
+
+    <Button
+        android:id="@+id/btn_object_animation_four"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_scroller"
+        android:layout_toRightOf="@id/btn_object_animation_three"
+        android:textAllCaps="false"
+        android:text="ob An 4" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btn_object_animation_one"
+        android:layout_marginTop="@dimen/dp_20" >
+
+        <com.example.zj.androidstudy.view.CustomSlideView
+            android:id="@+id/custom_slide_view"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#FFCCCC" />
+    </FrameLayout>
 </RelativeLayout>

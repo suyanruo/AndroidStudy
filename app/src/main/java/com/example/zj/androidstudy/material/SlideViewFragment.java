@@ -11,12 +11,13 @@ import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.base.BaseFragment;
 import com.example.zj.androidstudy.view.CustomSlideView;
 
-public class SlideViewFragment extends BaseFragment {
+public class SlideViewFragment extends BaseFragment implements View.OnClickListener {
     private CustomSlideView mCustomSlideView;
 
     @Nullable
@@ -29,18 +30,21 @@ public class SlideViewFragment extends BaseFragment {
     protected void initViews(View view) {
         mCustomSlideView = view.findViewById(R.id.custom_slide_view);
         // 设置view平移
-        // 方式三：使用补间动画  setAnimation方法
-//        mCustomSlideView.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.translate));
-        // 方法四：使用属性动画
-//        ObjectAnimator.ofFloat(mCustomSlideView, "translationX", 0, 300).setDuration(1000).start();
-//        mCustomSlideView.smoothScroll(-400, 0);
+        view.findViewById(R.id.btn_scroller).setOnClickListener(this);
+        view.findViewById(R.id.btn_view_animation).setOnClickListener(this);
+        view.findViewById(R.id.btn_object_animation_one).setOnClickListener(this);
+        view.findViewById(R.id.btn_object_animation_two).setOnClickListener(this);
+        view.findViewById(R.id.btn_object_animation_three).setOnClickListener(this);
+        view.findViewById(R.id.btn_object_animation_four).setOnClickListener(this);
     }
 
     @Override
     protected void initWorkers() {
-        startAnimatorFromXml(mCustomSlideView);
     }
 
+    /**
+     * 借助AnimatorSet，根据属性设置属性动画
+     */
     private void playObjectAnimator(View target) {
         ObjectAnimator animator = ObjectAnimator.ofFloat(target, "translationX", 0, 1000, 0);
         ObjectAnimator animator2 = ObjectAnimator.ofFloat(target, "scaleX", 1f, 2f);
@@ -53,18 +57,50 @@ public class SlideViewFragment extends BaseFragment {
 
     /**
      * 使用PropertyValuesHolder进行组合动画
-     * @param target
      */
     private void playProperty(View target) {
         PropertyValuesHolder holder = PropertyValuesHolder.ofFloat("scaleX", 1f, 2f);
         PropertyValuesHolder holder2 = PropertyValuesHolder.ofFloat("alpha", 0.5f, 1f);
-        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(target, holder, holder2);
+        PropertyValuesHolder holder3 = PropertyValuesHolder.ofFloat("translationX", 0f, 1000f);
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(target, holder, holder2, holder3);
         animator.setDuration(1000).start();
     }
 
+    /**
+     * 根据xml文件设置属性动画
+     */
     private void startAnimatorFromXml(View target) {
         Animator animator = AnimatorInflater.loadAnimator(getActivity(), R.animator.scale);
         animator.setTarget(target);
         animator.start();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_scroller:
+                // 方式一：使用Scroller.这种平移不能改变view位置，所以移动后位置不响应点击事件
+                mCustomSlideView.smoothScroll(-400, 0);
+                break;
+            case R.id.btn_view_animation:
+                // 方式二：使用补间动画setAnimation方法.这种平移不能改变view位置，所以移动后位置不响应点击事件
+                mCustomSlideView.setAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.translate));
+                break;
+            case R.id.btn_object_animation_one:
+                // 方法三：使用属性动画.可以处理点击事件
+                ObjectAnimator.ofFloat(mCustomSlideView, "translationX", 0, 300).setDuration(1000).start();
+                break;
+            case R.id.btn_object_animation_two:
+                playObjectAnimator(mCustomSlideView);
+                break;
+            case R.id.btn_object_animation_three:
+                startAnimatorFromXml(mCustomSlideView);
+                break;
+            case R.id.btn_object_animation_four:
+                playProperty(mCustomSlideView);
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -16,4 +16,6 @@ public class Constants {
 
   public static final int MSG_FROM_CLIENT = 1000;
   public static final int MSG_FROM_SERVICE = 1001;
+
+  public static final String INTENT_KEY_DOWNLOAD_URL = "download_url";
 }

@@ -17,6 +17,7 @@ import android.os.Message;
 
 import com.example.zj.androidstudy.Constants;
 import com.example.zj.androidstudy.tool.AppUtil;
+import com.example.zj.androidstudy.tool.SharedPreferenceUtil;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -47,7 +48,7 @@ public class DownloadService extends Service {
         case HANDLE_DOWNLOAD:
           if (onProgressListener != null) {
             if (msg.arg1 >= 0 && msg.arg2 > 0) {
-              onProgressListener.onProgress(msg.arg1 / msg.arg2);
+              onProgressListener.onProgress(msg.arg1 / (float) msg.arg2);
             }
           }
           break;
@@ -186,13 +187,15 @@ public class DownloadService extends Service {
             Uri downIdUri = downloadManager.getUriForDownloadedFile(downloadId);
             close();
             if (downIdUri != null) {
-              AppUtil.installApk(getApplicationContext(), downIdUri);
+              SharedPreferenceUtil.saveString(getApplicationContext(), Constants.SP_DOWNLOAD_PATH, downIdUri.getPath());
+//              AppUtil.installApk(getApplicationContext(), downIdUri);
             }
             if (onProgressListener != null) {
               onProgressListener.onProgress(UNBIND_SERVICE);
             }
           }
           break;
+        case DownloadManager.ACTION_NOTIFICATION_CLICKED:
         default:
           break;
       }

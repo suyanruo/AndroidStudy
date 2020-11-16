@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.example.zj.androidstudy.Constants;
 import com.example.zj.androidstudy.R;
+import com.example.zj.androidstudy.tool.SharedPreferenceUtil;
+
+import java.io.File;
 
 public class DownloadActivity extends AppCompatActivity {
   private TextView tvDownload;
@@ -30,6 +33,7 @@ public class DownloadActivity extends AppCompatActivity {
           if (fraction == DownloadService.UNBIND_SERVICE && isBindService) {
             unbindService(connection);
             isBindService = false;
+            tvDownload.setText("Finished!");
           }
         }
       });
@@ -47,6 +51,8 @@ public class DownloadActivity extends AppCompatActivity {
     setContentView(R.layout.activity_download);
 
     tvDownload = findViewById(R.id.tv_download_progress);
+
+    removeOldApk();
   }
 
   @Override
@@ -59,5 +65,17 @@ public class DownloadActivity extends AppCompatActivity {
     Intent intent = new Intent(DownloadActivity.this, DownloadService.class);
     intent.putExtra(Constants.INTENT_KEY_DOWNLOAD_URL, apkUrl);
     isBindService = bindService(intent, connection, Context.BIND_AUTO_CREATE);
+  }
+
+  /**
+   * 删除上次更新存储在本地的apk
+   */
+  private void removeOldApk() {
+    //获取老ＡＰＫ的存储路径
+    File fileName = new File(SharedPreferenceUtil.getString(this, Constants.SP_DOWNLOAD_PATH, ""));
+
+    if (fileName != null && fileName.exists() && fileName.isFile()) {
+      fileName.delete();
+    }
   }
 }

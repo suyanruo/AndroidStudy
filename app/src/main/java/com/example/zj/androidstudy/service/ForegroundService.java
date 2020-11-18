@@ -23,7 +23,7 @@ public class ForegroundService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d(TAG, "onCreate: ");
+        Log.e(TAG, "onCreate");
 
 
         createAndShowForegroundNotification(1);
@@ -61,7 +61,20 @@ public class ForegroundService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
+        Log.e(TAG, "onBind");
         return new Binder();
+    }
+
+    @Override
+    public boolean onUnbind(Intent intent) {
+        Log.e(TAG, "onUnbind");
+        return super.onUnbind(intent);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.e(TAG, "onDestroy");
     }
 
     public class Binder extends android.os.Binder {

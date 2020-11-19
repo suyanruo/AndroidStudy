@@ -27,6 +27,10 @@ android {
                 LAUNCH_ICON: "@mipmap/ic_learn"
         ]
 
+        // 设置ndk打包哪些平台的so文件到apk中
+//        ndk {
+//            abiFilters "armeabi", "armeabi-v7a", 'arm64-v8a', "x86"
+//        }
         multiDexEnabled true
     }
     buildTypes {
@@ -105,7 +109,10 @@ android {
     // 保证百度地图开发包中拷贝需要的CPU架构对应的so文件文件夹可以在app/libs目录下使用
     sourceSets {
         main {
-            jniLibs.srcDir 'libs'
+            jniLibs.srcDirs = ['libs', 'jniLibs']
+            jni {
+                srcDirs 'src/main/jni'
+            }
             // 把 java 代码的访问路径设置成了 java 包和 aidl 包，这样一来系统就会到 aidl 包里面去查找 java 文件
             // java.srcDirs = ['src/main/java', 'src/main/aidl']
         }

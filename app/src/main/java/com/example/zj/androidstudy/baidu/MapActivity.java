@@ -1,8 +1,16 @@
 package com.example.zj.androidstudy.baidu;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import android.util.Log;
+import android.widget.Toast;
 
 import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
@@ -14,11 +22,13 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
+import com.example.zj.androidstudy.Constants;
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.base.BaseActivity;
 
 public class MapActivity extends BaseActivity {
     private static final String TAG = "MapActivity";
+
     private MapView mMapView;
     private BaiduMap mBaiduMap;
     private LocationClient mLocationClient;
@@ -33,13 +43,22 @@ public class MapActivity extends BaseActivity {
         mBaiduMap = mMapView.getMap();
         // 开启地图的定位图层
         mBaiduMap.setMyLocationEnabled(true);
-
         // 设置缩放比率
 //        MapStatus.Builder builder = new MapStatus.Builder();
 //        builder.zoom(18.0f);
 //        mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
 
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION},
+                    Constants.REQUEST_PERMISSION_CODE);
+        } else {
+            initLoacationClient();
+        }
+    }
 
+    private void initLoacationClient() {
         //定位初始化
         mLocationClient = new LocationClient(getApplicationContext());
         //通过LocationClientOption设置LocationClient相关参数
@@ -57,6 +76,21 @@ public class MapActivity extends BaseActivity {
         mLocationClient.registerLocationListener(myLocationListener);
         //开启地图定位图层
         mLocationClient.start();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case Constants.REQUEST_PERMISSION_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    initLoacationClient();
+                } else {
+                    Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     @Override
@@ -84,12 +118,13 @@ public class MapActivity extends BaseActivity {
     }
 
     private boolean isFirstLocation = true;
+
     // 我们通过继承抽象类BDAbstractListener并重写其onReceieveLocation方法来获取定位数据，并将其传给MapView。
     public class MyLocationListener extends BDAbstractLocationListener {
         @Override
         public void onReceiveLocation(BDLocation location) {
             //mapView 销毁后不在处理新接收的位置
-            if (location == null || mMapView == null){
+            if (location == null || mMapView == null) {
                 return;
             }
             StringBuilder currentLoc = new StringBuilder();

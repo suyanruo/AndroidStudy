@@ -20,4 +20,6 @@ public class Constants {
 
   public static final String SP_DOWNLOAD_PATH = "download_path";
   public static final String INTENT_KEY_DOWNLOAD_URL = "download_url";
+
+  public static final int REQUEST_PERMISSION_CODE = 10000;
 }

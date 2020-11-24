@@ -16,6 +16,10 @@ android {
 
     buildTypes {
         release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -31,4 +35,14 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
+
+/**
+ * 如果library只提供最终的release编译出来的Jar包给其他人，所以不需要编译debug版的东西
+ * 当Project创建完所有任务的有向图后，我通过afterEvaluate函数设置一个回调Closure。在这个回调
+ * Closure里，我disable了所有Debug的Task
+ */
+project.afterEvaluate {
+    println project.name + " afterEvaluate"
+    disableDebugBuild()
 }

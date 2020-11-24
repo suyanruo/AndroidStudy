@@ -10,6 +10,7 @@ def rmFile(String targetFile){
 
 def cleanOutput(boolean bJar = true){
     //clean的时候清理
+    println "custom cleanOutput"
 }
 
 def copyOutput(boolean bJar = true){
@@ -34,7 +35,7 @@ def disableDebugBuild() {
     }
     //对满足条件的task，设置它为disable。如此这般，这个Task就不会被执行
     targetTasks.each{
-        println"disable debug task  :${it.name}"
+//        println"disable debug task  :${it.name}"
         it.setEnabled false
     }
 }

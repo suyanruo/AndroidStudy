@@ -29,6 +29,43 @@ subprojects {
     }
 }
 
+// 介于Initiliazation phase和Configuration phase之间，setting.gralde已执行完
+gradle.beforeProject {
+    println "execute before project configuration"
+
+    // Delete large build log files from ~/.gradle/daemon/X.X/daemon-XXX.out.log
+    // Source: https://discuss.gradle.org/t/gradle-daemon-produces-a-lot-of-logs/9905
+    def gradle = project.getGradle()
+    new File("${gradle.getGradleUserHomeDir().getAbsolutePath()}/daemon/${gradle.getGradleVersion()}").listFiles().each {
+        if (it.getName().endsWith('.out.log')) {
+            println("Deleting gradle log file: $it") // Optional debug output
+            // it.delete()
+        }
+    }
+}
+
+// 介于Configuration phase与Execution phase之间，各个module的build.gradle已经解析完毕，生成tasks执行顺序图
+gradle.taskGraph.whenReady {
+    println("taskGraph when ready function")
+}
+
+TaskExecutionGraph taskGraph = gradle.getTaskGraph()
+taskGraph.whenReady {
+    println "task whenReady"
+}
+
+// 在Execution phase之后，tasks执行完成
+gradle.buildFinished {
+    println "build is finished"
+    println "Home Dir:" + gradle.gradleHomeDir
+    println "User Home Dir:" + gradle.gradleUserHomeDir
+}
+
+/**
+ * Gradle提供了一种名为extra property的方法。extra property是额外属性的意思，在第一次定义该属性的时候需要通过ext
+ * 前缀来标示它是一个额外的属性。定义好之后，后面的存取就不需要ext前缀了。ext属性支持Project和Gradle对象。即Project
+ * 和Gradle对象都可以设置ext属性
+ */
 ext {
     compileSdkVersion = 30
     targetSdkVersion = 30

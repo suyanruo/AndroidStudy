@@ -42,11 +42,7 @@ repositories {
     google()
 }
 
-/*
-  如果library只提供最终的release编译出来的Jar包给其他人，所以不需要编译debug版的东西
-  当Project创建完所有任务的有向图后，我通过afterEvaluate函数设置一个回调Closure。在这个回调
-  Closure里，我disable了所有Debug的Task
-*/
+// 当Project创建完所有任务的有向图后，我通过afterEvaluate函数设置一个回调Closure。在这个回调Closure里可以做操作task的动作
 project.afterEvaluate{
-    disableDebugBuild()
+    println project.name + " afterEvaluate"
 }

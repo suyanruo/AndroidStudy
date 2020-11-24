@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'com.google.gms.google-services'
 
-//com.test.gradle为resources/META-INF/gradle-plugins下的properties文件名称
+// "com.example.modulepluginlib"为resources/META-INF/gradle-plugins下的properties文件名称
 apply plugin: 'com.example.modulepluginlib'
 
 // Apply the Crashlytics Gradle plugin
@@ -107,14 +107,16 @@ android {
     }
 
     // 保证百度地图开发包中拷贝需要的CPU架构对应的so文件文件夹可以在app/libs目录下使用
-    sourceSets {
+    sourceSets { //配置源码路径。这个sourceSets是Java插件引入
         main {
+            manifest.srcFile 'src/main/AndroidManifest.xml' //这是一个函数，设置manifest.srcFile
+            assets.srcDirs = ['src/main/assets', 'assets/']
             jniLibs.srcDirs = ['libs', 'jniLibs']
             jni {
                 srcDirs 'src/main/jni'
             }
             // 把 java 代码的访问路径设置成了 java 包和 aidl 包，这样一来系统就会到 aidl 包里面去查找 java 文件
-            // java.srcDirs = ['src/main/java', 'src/main/aidl']
+//            java.srcDirs = ['src/main/java', 'src/main/aidl']
         }
     }
 
@@ -122,18 +124,19 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    // dir:'libs'，表示搜索目录的名称是libs。include:['*.jar']，表示搜索目录下满足*.jar名字的jar
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 //    implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation "androidx.legacy:legacy-support-v4:${rootProject.ext.androidxVersion}"
+    implementation "androidx.legacy:legacy-support-v4:${rootProject.androidxVersion}"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
-    implementation "com.google.android.material:material:${rootProject.ext.androidxVersion}"
-    implementation "androidx.recyclerview:recyclerview:${rootProject.ext.androidxVersion}"
-    implementation "androidx.cardview:cardview:${rootProject.ext.androidxVersion}"
+    implementation "com.google.android.material:material:${androidxVersion}"
+    implementation "androidx.recyclerview:recyclerview:${androidxVersion}"
+    implementation "androidx.cardview:cardview:${androidxVersion}"
     implementation "androidx.palette:palette:${rootProject.ext.androidxVersion}"
 
     implementation 'org.greenrobot:eventbus:3.1.1'
@@ -179,26 +182,43 @@ buildscript {
     }
 }
 
-// 介于Initiliazation phase和Configuration phase之间，setting.gralde已执行完
-gradle.beforeProject {
-    println "execute before project configuration"
+// 来看如何动态生成runtime_config文件
+def  runtime_config_file = "$projectDir/src/main/assets/runtime_config"
+/**
+ *  我们在gradle解析完整个任务之后，找到对应的Task，然后在里边添加一个doFirst Action，这样能确保编译开始的时候，
+ *  我们就把runtime_config文件准备好了。
+ *  注意，必须在afterEvaluate里边才能做，否则gradle没有建立完任务有向图，你是找不到什么preDebugBuild之类的任务的
+ */
+project.afterEvaluate{
+    println "projectDir: $projectDir\n rootDir: $rootDir\n"
+
+    //找到preDebugBuild任务，然后添加一个Action
+    tasks.getByName("preMinApi19DemoDebugBuild"){
+        it.doFirst{
+            println "generate debug configuration for ${project.name}"
+            def configFile = new File(runtime_config_file)
+            configFile.withOutputStream{os->
+                os << 'I am Debug\n'  //往配置文件里写 I am Debug
+            }
+        }
+    }
+    //找到preReleaseBuild任务
+    tasks.getByName("preMinApi19DemoReleaseBuild"){
+        it.doFirst{
+            println "generate release configuration for ${project.name}"
+            def configFile = new File(runtime_config_file)
+            configFile.withOutputStream{os->
+                os << 'I am release\n'
+            }
+        }
+    }
 }
 
-// 介于Configuration phase与Execution phase之间，各个module的build.gradle已经解析完毕，生成tasks执行顺序图
-gradle.taskGraph.whenReady {
-    println "taskGraph when ready function"
-}
-
-// 在Execution phase之后，tasks执行完成
-gradle.buildFinished {
-    println "build is finished"
-
-    println "User Home Dir:" + gradle.gradleUserHomeDir
-}
-
-//clean是一个Task的名字，这个Task好像是Java插件（这里是Android插件）引入的。
-//dependsOn是一个函数，下面这句话的意思是 clean任务依赖casCleanTask任务。所以
-//当你gradle clean以执行clean Task的时候，casCleanTask也会执行
+/**
+ * clean是一个Task的名字，这个Task好像是Java插件（这里是Android插件）引入的。
+ * dependsOn是一个函数，下面这句话的意思是 clean任务依赖casCleanTask任务。
+ * 所以当你gradle clean以执行clean Task的时候，casCleanTask也会执行
+ */
 clean.dependsOn 'casCleanTask'
 //创建一个Task
 task casCleanTask() {

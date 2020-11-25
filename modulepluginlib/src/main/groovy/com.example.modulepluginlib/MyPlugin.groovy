@@ -11,6 +11,7 @@ import org.gradle.api.Project
 class MyPlugin implements Plugin<Project> {
 
     void apply(Project project) {
+        println("========================")
         System.out.println("hello gradle plugin!")
 
         // 获取Android扩展

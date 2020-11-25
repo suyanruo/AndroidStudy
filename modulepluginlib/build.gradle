@@ -11,8 +11,8 @@ uploadArchives {
             // repository(url: "http://www.xxx.com/repos") {
             //    authentication(userName: "admin", password: "admin")
             // }
-            //本地的Maven地址设置。不同设备系统，目录需要自行调整!!!
-            repository(url: uri('/Users/zhangjian/AndroidStudioProjects/GradleTest'))
+            //本地Maven仓库路径，以放到项目根目录下的 repo 的文件夹为例
+            repository(url: uri('../repo'))
         }
     }
 }

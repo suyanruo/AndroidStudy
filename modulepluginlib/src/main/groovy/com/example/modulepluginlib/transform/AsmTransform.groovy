@@ -1,8 +1,8 @@
-package com.example.modulepluginlib
+package com.example.modulepluginlib.transform
 
 import com.android.build.api.transform.*
 import com.android.build.gradle.internal.pipeline.TransformManager
-import com.example.modulepluginlib.addlog.TestMethodClassAdapter
+import com.example.modulepluginlib.addlog.TestMethodClassVisitor
 import org.apache.commons.io.FileUtils
 import org.gradle.api.Project
 import org.objectweb.asm.ClassReader
@@ -22,22 +22,29 @@ class AsmTransform extends Transform {
 
     @Override
     Set<QualifiedContent.ContentType> getInputTypes() {
+        /**
+         * 输入类型，可以使class文件，也可以是源码文件。
+         * CLASSES类型表示的是在jar包或者文件夹中的.class文件；RESOURCES类型表示的是标准的Java源文件。
+         */
         return TransformManager.CONTENT_CLASS
     }
 
     @Override
     Set<? super QualifiedContent.Scope> getScopes() {
+        // 作用范围
         return TransformManager.SCOPE_FULL_PROJECT
     }
 
     @Override
     boolean isIncremental() {
+        // 是否支持增量编译，返回true的话表示可以根据 com.android.build.api.transform.TransformInput 来获得更改、移除或者添加的文件目录或者jar包。
         return true
     }
 
     @Override
     void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
         super.transform(transformInvocation)
+        // 在这里对输入输出的class进行处理
         println("===== ASM Transform =====")
 //        println("${transformInvocation.inputs}")
 //        println("${transformInvocation.referencedInputs}")
@@ -113,7 +120,7 @@ class AsmTransform extends Transform {
             FileInputStream is = new FileInputStream(inputPath)
             ClassReader cr = new ClassReader(is)
             ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES)
-            TestMethodClassAdapter adapter = new TestMethodClassAdapter(cw)
+            TestMethodClassVisitor adapter = new TestMethodClassVisitor(cw)
             cr.accept(adapter, 0)
             FileOutputStream fos = new FileOutputStream(outputPath)
             fos.write(cw.toByteArray())

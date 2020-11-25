@@ -1,8 +1,9 @@
-package com.example.modulepluginlib
+package com.example.modulepluginlib.transform
 
 import com.android.build.api.transform.*
 import com.android.build.gradle.internal.pipeline.TransformManager
 import com.android.utils.FileUtils
+import com.example.modulepluginlib.helper.InjectByJavassit
 import org.apache.commons.codec.digest.DigestUtils
 import org.gradle.api.Project
 

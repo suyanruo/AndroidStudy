@@ -1,4 +1,4 @@
-package com.example.modulepluginlib
+package com.example.modulepluginlib.helper
 
 import javassist.ClassPool
 import javassist.CtClass

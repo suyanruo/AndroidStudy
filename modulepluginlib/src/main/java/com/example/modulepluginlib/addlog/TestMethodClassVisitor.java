@@ -8,8 +8,8 @@ import org.objectweb.asm.Opcodes;
  * Created on 2020-04-02.
  * ref: https://juejin.im/post/5cc3db486fb9a03202222154
  */
-public class TestMethodClassAdapter extends ClassVisitor implements Opcodes {
-  public TestMethodClassAdapter(ClassVisitor classVisitor) {
+public class TestMethodClassVisitor extends ClassVisitor implements Opcodes {
+  public TestMethodClassVisitor(ClassVisitor classVisitor) {
     super(ASM7, classVisitor);
   }
 

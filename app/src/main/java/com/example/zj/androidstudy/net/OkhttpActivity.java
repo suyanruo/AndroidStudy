@@ -71,9 +71,9 @@ public class OkhttpActivity extends BaseActivity {
     if (ContextCompat.checkSelfPermission(this,
         Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) { //表示未授权时
       //进行授权
-      ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 1);
+      ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 1);
     } else {
-      //调用打电话的方法
+      // 下载图片
       downloadImage();
     }
   }

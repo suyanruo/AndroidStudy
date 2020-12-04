@@ -1,7 +1,9 @@
 package com.example.zj.androidstudy.activity;
 
+import android.Manifest;
 import android.content.Intent;
 
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
@@ -11,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.palette.graphics.Palette;
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         showPalette();
         fetchIntentData();
+        requestPermission();
 
 //        FragmentManager manager = getSupportFragmentManager();
 //        FragmentTransaction transaction = manager.beginTransaction();
@@ -85,4 +90,16 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
         }
     }
+
+    /**
+     * 请求授权
+     */
+    private void requestPermission() {
+        if (ContextCompat.checkSelfPermission(this,
+            Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) { //表示未授权时
+            //进行授权
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 1);
+        }
+    }
+
 }

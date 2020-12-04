@@ -6,6 +6,14 @@
     android:paddingLeft="25dp"
     android:paddingRight="25dp" >
 
+    <ImageView
+        android:id="@+id/iv_login_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/til_username"
+        android:layout_marginBottom="@dimen/dp_60"/>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_username"
         android:layout_width="match_parent"

@@ -2,6 +2,8 @@ package com.example.zj.androidstudy.material;
 
 import android.os.Bundle;
 
+import com.bumptech.glide.Glide;
+import com.example.zj.androidstudy.tool.GlideUtil;
 import com.example.zj.androidstudy.viewModel.LoginViewModel;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.base.BaseFragment;
@@ -24,6 +27,13 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 public class LoginFragment extends BaseFragment {
+    // 静态图片资源
+    private static final String LOGIN_URL = "http://cn.bing.com/az/hprichbg/rb/Dongdaemun_ZH-CN10736487148_1920x1080.jpg";
+    // Gif资源
+    private static final  String GIF_URL = "http://p1.pstatp.com/large/166200019850062839d3";
+    private String test = "https://dss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2246271396,3843662332&fm=85&app=79&f=JPG?w=121&h=75&s=39C718720E8EBE011B398BAC0300F024";
+
+    private ImageView mIvLoginTop;
     private TextInputLayout mTilUsername;
     private EditText mEtUsername;
     private TextInputLayout mTilPassword;
@@ -42,12 +52,15 @@ public class LoginFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
+        mIvLoginTop = view.findViewById(R.id.iv_login_top);
         mTilUsername = view.findViewById(R.id.til_username);
         mEtUsername = view.findViewById(R.id.et_username);
         mTilPassword = view.findViewById(R.id.til_password);
         mEtPassword = view.findViewById(R.id.et_password);
         mBtnLogin = view.findViewById(R.id.btn_login);
         mBtnRegister= view.findViewById(R.id.btn_register);
+
+        Glide.with(getActivity()).load(GIF_URL).into(mIvLoginTop);
 
         mBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

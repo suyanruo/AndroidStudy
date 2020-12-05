@@ -40,7 +40,7 @@
         android:roundIcon="@mipmap/ic_learn"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
 
         <activity android:name=".jni.JniActivity" />
         <activity android:name=".download.DownloadActivity" />
@@ -129,16 +129,16 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="FnLX3vzTOsavvqiPqcAhPwNuf6ehIZXV" />
         <!--
- Set custom default icon. This is used when no icon is set for incoming notification messages.
-     See README(https://goo.gl/l4GJaQ) for more.
-        -->
+             Set custom default icon. This is used when no icon is set for incoming notification messages.
+                 See README(https://goo.gl/l4GJaQ) for more.
+                    -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="${LAUNCH_ICON}" />
         <!--
- Set color used with incoming notification messages. This is used when no color is set for the incoming
-         notification message. See README(https://goo.gl/6BKBk7) for more.
-        -->
+             Set color used with incoming notification messages. This is used when no color is set for the incoming
+                     notification message. See README(https://goo.gl/6BKBk7) for more.
+                    -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" /> <!-- firebase message通知渠道 -->

@@ -188,7 +188,8 @@ dependencies {
 //}
 
 // 来看如何动态生成runtime_config文件
-def  runtime_config_file = "$projectDir/src/main/assets/runtime_config"
+def runtime_config_file = "$projectDir/src/main/assets/runtime_config"
+
 /**
  *  我们在gradle解析完整个任务之后，找到对应的Task，然后在里边添加一个doFirst Action，这样能确保编译开始的时候，
  *  我们就把runtime_config文件准备好了。
@@ -198,6 +199,32 @@ project.afterEvaluate{
     println "projectDir: $projectDir\n rootDir: $rootDir\n"
 
     //找到preDebugBuild任务，然后添加一个Action
+    tasks.find{
+        if (it.name.endsWith("DebugGoogleServices")) {
+            it.doFirst{
+                def debugSourceFile = new File("$projectDir/src/debug/google-services.json")
+                def targetFile = new File("$projectDir/google-services.json")
+                def bytes = debugSourceFile.getBytes()
+                targetFile.withOutputStream{os->
+                    os << bytes
+                }
+            }
+        }
+    }
+
+    tasks.find{
+        if (it.name.endsWith("ReleaseGoogleServices")) {
+            it.doFirst{
+                def releaseSourceFile = new File("$projectDir/src/release/google-services.json")
+                def targetFile = new File("$projectDir/google-services.json")
+                def bytes = releaseSourceFile.getBytes()
+                targetFile.withOutputStream{os->
+                    os << bytes
+                }
+            }
+        }
+    }
+
     tasks.getByName("preMinApi19DemoDebugBuild"){
         it.doFirst{
             println "generate debug configuration for ${project.name}"

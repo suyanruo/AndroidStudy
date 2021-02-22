@@ -17,6 +17,16 @@
       android:text="goMain"/>
 
   <Button
+      android:id="@+id/btn_jump_app"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toEndOf="@id/btn_go_main"
+      app:layout_constraintBottom_toTopOf="@+id/webviewh5"
+      android:layout_marginTop="@dimen/dp_40"
+      android:text="jumpApp"/>
+
+  <Button
       android:id="@+id/btn_move"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -58,7 +59,7 @@ public class ViewPagerActivity extends AppCompatActivity  {
   private Button tabBtnSettings;
 
 
-  Handler mainHandler = new Handler() {
+  Handler mainHandler = new Handler(Looper.getMainLooper()) {
 
 
     /*

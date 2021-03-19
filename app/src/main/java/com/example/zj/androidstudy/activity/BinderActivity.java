@@ -7,10 +7,14 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.Message;
 import android.os.RemoteException;
 import androidx.appcompat.app.AppCompatActivity;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.zj.aidl.Book;
 import com.example.zj.aidl.IBookManager;
@@ -20,12 +24,15 @@ import com.example.zj.androidstudy.R;
 import java.util.List;
 
 public class BinderActivity extends AppCompatActivity {
+    private TextView tvContent;
+    private Button btnAddBook;
 
-    private Handler mHandler = new Handler(){
+    private Handler mHandler = new Handler(Looper.getMainLooper()){
         @Override
         public void handleMessage(Message msg) {
             Book book = (Book) msg.obj;
-            Log.e("zj", "new book arrive: " + book.name);
+            Toast.makeText(BinderActivity.this,
+                "new book arrive: " + book.name, Toast.LENGTH_SHORT).show();
         }
     };
     private IBookManager mRemoteBookManager;
@@ -63,9 +70,6 @@ public class BinderActivity extends AppCompatActivity {
                 // 为了防止耗时操作导致ANR，建议执行服务端耗时方法时放在子线程中执行
                 List<Book> books = iBookManager.getBookList();
                 printBook(books);
-                iBookManager.addBook(new Book("android", 100));
-                List<Book> newBooks = iBookManager.getBookList();
-                printBook(newBooks);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -85,6 +89,21 @@ public class BinderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_binder);
+
+        tvContent = findViewById(R.id.tv_content);
+        btnAddBook = findViewById(R.id.btn_add_book);
+        btnAddBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    mRemoteBookManager.addBook(new Book("android", 100));
+                    List<Book> newBooks = mRemoteBookManager.getBookList();
+                    printBook(newBooks);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         bindBinderService();
     }
@@ -112,9 +131,10 @@ public class BinderActivity extends AppCompatActivity {
 
     private void printBook(List<Book> bookList) {
         StringBuffer sb = new StringBuffer();
+        sb.append("Book List\n");
         for (Book book : bookList) {
             sb.append(book.name + " : " + book.price).append("   ");
         }
-        Log.e("zj", sb.toString());
+        tvContent.setText(sb);
     }
 }

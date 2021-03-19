@@ -24,6 +24,7 @@ public class MessengerActivity extends AppCompatActivity {
   private static final String TAG = "MessengerActivity";
 
   private Messenger mService;
+  private Messenger mGetReplyMessenger = new Messenger(new ClientMesHandler(Looper.getMainLooper()));
 
   private ServiceConnection mConnection = new ServiceConnection() {
     @Override
@@ -47,25 +48,6 @@ public class MessengerActivity extends AppCompatActivity {
     }
   };
 
-  private static class ClientMesHandler extends Handler {
-    public ClientMesHandler(@NonNull Looper looper) {
-      super(looper);
-    }
-
-    @Override
-    public void handleMessage(@NonNull Message msg) {
-      switch (msg.what) {
-        case Constants.MSG_FROM_SERVICE:
-          Log.e(TAG, "Receive Message from service: " + msg.getData().getString("reply"));
-          break;
-        default:
-          super.handleMessage(msg);
-      }
-    }
-  }
-
-  private Messenger mGetReplyMessenger = new Messenger(new ClientMesHandler(Looper.getMainLooper()));
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -83,5 +65,22 @@ public class MessengerActivity extends AppCompatActivity {
   protected void onDestroy() {
     unbindService(mConnection);
     super.onDestroy();
+  }
+
+  private static class ClientMesHandler extends Handler {
+    public ClientMesHandler(@NonNull Looper looper) {
+      super(looper);
+    }
+
+    @Override
+    public void handleMessage(@NonNull Message msg) {
+      switch (msg.what) {
+        case Constants.MSG_FROM_SERVICE:
+          Log.e(TAG, "Receive Message from service: " + msg.getData().getString("reply"));
+          break;
+        default:
+          super.handleMessage(msg);
+      }
+    }
   }
 }

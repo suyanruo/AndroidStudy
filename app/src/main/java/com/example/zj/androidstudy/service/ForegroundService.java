@@ -47,20 +47,22 @@ public class ForegroundService extends Service {
   }
 
     private void createAndShowForegroundNotification(int notificationId) {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         Intent intent = new Intent(this, MaterialDesignActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
         final NotificationCompat.Builder builder = NotificationUtil.getNotificationBuilder(this,
-                "com.example.your_app.notification.CHANNEL_ID_FOREGROUND", // Channel id
-                NotificationManagerCompat.IMPORTANCE_LOW); //Low importance prevent visual appearance for this notification channel on top
+            "com.example.your_app.notification.CHANNEL_ID_FOREGROUND", // Channel id
+            NotificationManagerCompat.IMPORTANCE_LOW); //Low importance prevent visual appearance for this notification channel on top
         builder
-                .setOngoing(true)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("title")
-                .setContentText("text")
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
-                .setWhen(System.currentTimeMillis())
-                .setContentIntent(pendingIntent);
+            .setOngoing(true)
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setContentTitle("Foreground Service")
+            .setContentText("Now we have started a foreground service")
+            .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
+            .setWhen(System.currentTimeMillis())
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true);
 
         Notification notification = builder.build();
 
@@ -72,6 +74,7 @@ public class ForegroundService extends Service {
 //            nm.cancel(lastShownNotificationId);
 //        }
 //        lastShownNotificationId = notificationId;
+      }
     }
 
     private void createDialog() {
@@ -108,6 +111,8 @@ public class ForegroundService extends Service {
     }
 
     public class Binder extends android.os.Binder {
-
+      public ForegroundService getForegroundService() {
+        return ForegroundService.this;
+      }
     }
 }

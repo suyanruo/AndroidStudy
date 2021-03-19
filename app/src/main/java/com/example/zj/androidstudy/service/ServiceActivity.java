@@ -24,14 +24,21 @@ public class ServiceActivity extends BaseActivity {
     private Button mBtnStopService;
     private Button mBtnBindService;
     private Button mBtnUnbindService;
+    private boolean isServiceStart;
+    private boolean isServiceBound;
 
     private ServiceConnection mServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
+            ForegroundService.Binder binder = (ForegroundService.Binder) service;
+            ForegroundService foregroundService = binder.getForegroundService();
+            isServiceBound = true;
         }
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
+            // 当与服务的连接意外中断时，例如服务崩溃或被终止时，Android 系统会调用该方法。当客户端取消绑定时，系统不会调用该方法。
+            isServiceBound = false;
         }
     };
 
@@ -63,26 +70,34 @@ public class ServiceActivity extends BaseActivity {
                 bindService();
             }
         });
-         mBtnUnbindService.setOnClickListener(new View.OnClickListener() {
+        mBtnUnbindService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 unbindService();
             }
         });
 
-         checkAlertPermission();
+        checkAlertPermission();
     }
 
     private void startService() {
+//        Intent startIntent = new Intent(Intent.ACTION_VIEW);
+//        startIntent.setClassName("com.example.zj.androidstudy", "com.example.zj.androidstudy.service.ForegroundService");
         Intent startIntent = new Intent(this, ForegroundService.class);
-        startService(startIntent);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(startIntent);
+        } else {
+            startService(startIntent);
+        }
         mBtnStopService.setEnabled(true);
+        isServiceStart = true;
     }
 
     private void stopService() {
         Intent stopIntent = new Intent(this, ForegroundService.class);
         stopService(stopIntent);
         mBtnStopService.setEnabled(false);
+        isServiceStart = false;
     }
 
     private void bindService() {
@@ -90,13 +105,15 @@ public class ServiceActivity extends BaseActivity {
 //        intent.setAction("com.example.zj.androidstudy.service.ForegroundService");
 //        intent.setPackage("com.example.zj.androidstudy");
         Intent intent = new Intent(this, ForegroundService.class);
-        bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
+        boolean bindSuccess = bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
         mBtnUnbindService.setEnabled(true);
+        isServiceBound = true;
     }
 
     private void unbindService() {
         unbindService(mServiceConnection);
         mBtnUnbindService.setEnabled(false);
+        isServiceBound = false;
     }
 
     private void checkAlertPermission() {
@@ -120,6 +137,18 @@ public class ServiceActivity extends BaseActivity {
                     Toast.makeText(this, "未被授予权限，相关功能不可用", Toast.LENGTH_SHORT).show();
                 }
             }
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // 如果您只需在 Activity 可见时与服务交互，应在 onStart() 期间进行绑定，在 onStop() 期间取消绑定
+        if (isServiceStart) {
+            stopService();
+        }
+        if (isServiceBound) {
+            unbindService();
         }
     }
 }

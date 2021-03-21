@@ -3,18 +3,24 @@ package com.example.zj.aidl;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.zj.androidstudy.model.AuthorInfo;
+
 public class Book implements Parcelable {
     public String name;
     public int price;
+    // 实现Serializable接口的变量
+    public AuthorInfo authorInfo;
 
     public Book(String name, int price) {
         this.name = name;
         this.price = price;
+        this.authorInfo = new AuthorInfo("Unknown", 20);
     }
 
     public Book(Parcel in) {
         name = in.readString();
         price = in.readInt();
+        authorInfo = (AuthorInfo) in.readSerializable();
     }
 
     @Override
@@ -26,6 +32,7 @@ public class Book implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeInt(price);
+        dest.writeSerializable(authorInfo);
     }
 
     /**

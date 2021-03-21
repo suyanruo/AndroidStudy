@@ -118,6 +118,7 @@ public class BookManagerService extends Service {
         for (int i = 0; i < size; i++) {
             IOnNewBookArrivedListener listener = mRemoteListenerList.getBroadcastItem(i);
             if (listener != null) {
+                // 此回调会运行在客服端的binder线程池中，不能在UI线程中调用此回调
                 listener.onNewBookArrived(book);
             }
         }

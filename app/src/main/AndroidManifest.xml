@@ -30,6 +30,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="com.example.zj.androidstudy.permission.ACCESS_BOOK_SERVICE" />
     <uses-permission android:name="com.zj.PROVIDER" />
 
@@ -196,5 +197,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+        <service android:name=".service.BackJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
 </manifest>

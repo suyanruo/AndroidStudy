@@ -51,6 +51,7 @@ public class BookProvider extends ContentProvider {
   @Override
   public String getType(Uri uri) {
     return null;
+//    return "*/*";
   }
 
   @Override
@@ -94,6 +95,7 @@ public class BookProvider extends ContentProvider {
   @Override
   public Cursor query(Uri uri, String[] projection, String selection,
                       String[] selectionArgs, String sortOrder) {
+    // 除了onCreate方法其他方法均运行在Binder线程池
     Log.e(TAG, "query. Current Thread is " + Thread.currentThread().getName());
     String tableName = getTableName(uri);
     if (tableName == null) {

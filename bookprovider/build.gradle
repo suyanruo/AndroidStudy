@@ -44,5 +44,5 @@ dependencies {
  */
 project.afterEvaluate {
     println project.name + " afterEvaluate"
-    disableDebugBuild()
+//    disableDebugBuild()
 }

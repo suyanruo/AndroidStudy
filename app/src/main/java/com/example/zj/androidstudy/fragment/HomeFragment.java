@@ -25,6 +25,7 @@ import com.example.zj.androidstudy.contentProvider.ContentActivity;
 import com.example.zj.androidstudy.cutOut.CutOutActivity;
 import com.example.zj.androidstudy.download.DownloadActivity;
 import com.example.zj.androidstudy.firebase.FirebaseActivity;
+import com.example.zj.androidstudy.lazyLoad.LazyFragmentActivity;
 import com.example.zj.androidstudy.markdown.MarkdownActivity;
 import com.example.zj.androidstudy.material.MaterialDesignActivity;
 import com.example.zj.androidstudy.media.PhotoActivity;
@@ -209,6 +210,12 @@ public class HomeFragment extends BaseFragment {
       @Override
       public void onClick(View view) {
         getActivity().startActivity(new Intent(getActivity(), DownloadActivity.class));
+      }
+    });
+    view.findViewById(R.id.btn_activity_lazy_load).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        getActivity().startActivity(new Intent(getActivity(), LazyFragmentActivity.class));
       }
     });
 

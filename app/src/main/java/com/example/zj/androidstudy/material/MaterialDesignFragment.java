@@ -26,13 +26,13 @@ public class MaterialDesignFragment extends BaseFragment {
         view.findViewById(R.id.btn_go_toast).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentUtil.enterNewFragment((AppCompatActivity) getActivity(), R.id.root_material, MaterialDesignFragment.this, new ShowToastFragment());
+                FragmentUtil.enterNewFragment(getActivity(), R.id.root_material, new ShowToastFragment());
             }
         });
         view.findViewById(R.id.btn_go_login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentUtil.enterNewFragment((AppCompatActivity) getActivity(), R.id.root_material, MaterialDesignFragment.this, new LoginFragment());
+                FragmentUtil.enterNewFragment(getActivity(), R.id.root_material, new LoginFragment());
             }
         });
         view.findViewById(R.id.btn_tablayout).setOnClickListener(new View.OnClickListener() {
@@ -59,19 +59,19 @@ public class MaterialDesignFragment extends BaseFragment {
         view.findViewById(R.id.btn_slide_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentUtil.enterNewFragment((AppCompatActivity) getActivity(), R.id.root_material, MaterialDesignFragment.this, new SlideViewFragment());
+                FragmentUtil.enterNewFragment(getActivity(), R.id.root_material, new SlideViewFragment());
             }
         });
         view.findViewById(R.id.btn_go_tint).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentUtil.enterNewFragment((AppCompatActivity) getActivity(), R.id.root_material, MaterialDesignFragment.this, new TintFragment());
+                FragmentUtil.enterNewFragment(getActivity(), R.id.root_material, new TintFragment());
             }
         });
         view.findViewById(R.id.btn_go_recycler).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentUtil.enterNewFragment((AppCompatActivity) getActivity(), R.id.root_material, MaterialDesignFragment.this, new RecyclerFragment());
+                FragmentUtil.enterNewFragment(getActivity(), R.id.root_material, new RecyclerFragment());
             }
         });
     }

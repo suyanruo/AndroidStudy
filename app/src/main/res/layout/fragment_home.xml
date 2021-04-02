@@ -232,12 +232,21 @@
       app:layout_constraintTop_toBottomOf="@id/btn_activity_pdf"
       app:layout_constraintStart_toEndOf="@id/btn_activity_messenger" />
 
+  <Button
+      android:id="@+id/btn_activity_lazy_load"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="LazyFragment"
+      app:layout_constraintTop_toBottomOf="@id/btn_activity_thread"
+      app:layout_constraintStart_toStartOf="parent"/>
+
   <!--下方是使用Navigation技术导航组件的-->
   <TextView
       android:id="@+id/tv_navigation_format"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      app:layout_constraintTop_toBottomOf="@id/btn_activity_h5_jump"
+      app:layout_constraintTop_toBottomOf="@id/btn_activity_lazy_load"
       android:layout_marginTop="@dimen/dp_10"
       android:text="Navigation Format to go to new page:"/>
 
@@ -276,4 +285,5 @@
       android:text="profile"
       app:layout_constraintTop_toBottomOf="@id/tv_navigation_format"
       app:layout_constraintStart_toEndOf="@id/btn_fragment_include_start"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

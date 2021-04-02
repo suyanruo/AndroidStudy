@@ -126,6 +126,7 @@
             android:name=".cutOut.CutOutActivity"
             android:theme="@style/ActivityCutOutTheme" />
         <activity android:name=".net.OkhttpActivity" />
+        <activity android:name=".lazyLoad.LazyFragmentActivity" />
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

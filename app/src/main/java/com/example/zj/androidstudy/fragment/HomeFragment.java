@@ -12,6 +12,7 @@ import com.example.zj.androidstudy.activity.CustomViewActivity;
 import com.example.zj.androidstudy.activity.DialogActivity;
 import com.example.zj.androidstudy.activity.H5ToAppActivity;
 import com.example.zj.androidstudy.activity.MessengerActivity;
+import com.example.zj.androidstudy.viewpager.ViewPager2Activity;
 import com.example.zj.androidstudy.viewpager.ViewPagerActivity;
 import com.example.zj.androidstudy.autoFillCode.AutoFillSmsCodeActivity;
 import com.example.zj.androidstudy.baidu.MapActivity;
@@ -132,6 +133,13 @@ public class HomeFragment extends BaseFragment {
       @Override
       public void onClick(View v) {
         getActivity().startActivity(new Intent(getActivity(), ViewPagerActivity.class));
+      }
+    });
+
+    view.findViewById(R.id.btn_activity_viewpager2).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        getActivity().startActivity(new Intent(getActivity(), ViewPager2Activity.class));
       }
     });
 

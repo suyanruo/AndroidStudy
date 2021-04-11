@@ -118,7 +118,7 @@
             android:name=".activity.CustomViewActivity"
             android:theme="@style/DialogStyle" />
         <activity android:name=".autoFillCode.AutoFillSmsCodeActivity" />
-        <activity android:name=".activity.ViewPagerActivity" />
+        <activity android:name=".viewpager.ViewPagerActivity" />
         <activity android:name=".activity.ConstraintActivity" />
         <activity android:name=".shareElement.ShareElement2Activity" />
         <activity android:name=".shareElement.ShareElementActivity" />

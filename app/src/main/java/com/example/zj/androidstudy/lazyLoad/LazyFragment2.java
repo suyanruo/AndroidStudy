@@ -9,7 +9,7 @@ import com.example.zj.androidstudy.base.BaseFragment;
  * 使用add+show+hide管理的Fragment继承此类可实现懒加载
  */
 
-public class LazyFragment2 extends BaseFragment {
+public abstract class LazyFragment2 extends BaseFragment {
   private boolean isLoaded;
 
   @Override
@@ -21,8 +21,18 @@ public class LazyFragment2 extends BaseFragment {
   }
 
   @Override
+  public void onHiddenChanged(boolean hidden) {
+    super.onHiddenChanged(hidden);
+    judgeLazyLoad();
+  }
+
+  @Override
   public void onResume() {
     super.onResume();
+    judgeLazyLoad();
+  }
+
+  private void judgeLazyLoad() {
     //增加了Fragment是否可见的判断
     if (!isLoaded && !isHidden()) {
       lazyInit();
@@ -35,4 +45,9 @@ public class LazyFragment2 extends BaseFragment {
     super.onDestroyView();
     isLoaded = false;
   }
+
+  /**
+   * 子类通过覆写此方法实现懒加载
+   */
+  public abstract void lazyInit();
 }

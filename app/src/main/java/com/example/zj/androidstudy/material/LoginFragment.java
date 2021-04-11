@@ -3,14 +3,11 @@ package com.example.zj.androidstudy.material;
 import android.os.Bundle;
 
 import com.bumptech.glide.Glide;
-import com.example.zj.androidstudy.tool.GlideUtil;
 import com.example.zj.androidstudy.viewModel.LoginViewModel;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -44,9 +41,8 @@ public class LoginFragment extends BaseFragment {
     private LoginViewModel viewModel;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return init(inflater.inflate(R.layout.fragment_login, container, false));
+    protected int getLayoutId() {
+        return R.layout.fragment_login;
     }
 
     @Override

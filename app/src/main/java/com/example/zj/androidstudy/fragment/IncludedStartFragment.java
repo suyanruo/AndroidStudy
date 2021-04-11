@@ -1,7 +1,5 @@
 package com.example.zj.androidstudy.fragment;
 
-import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
@@ -10,9 +8,7 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.zj.androidstudy.R;
@@ -21,9 +17,8 @@ import com.example.zj.androidstudy.base.BaseFragment;
 public class IncludedStartFragment extends BaseFragment {
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
-    return init(inflater.inflate(R.layout.fragment_included_start, container, false));
+  protected int getLayoutId() {
+    return R.layout.fragment_included_start;
   }
 
   @Override

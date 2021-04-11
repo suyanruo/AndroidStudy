@@ -20,10 +20,9 @@ import com.example.zj.androidstudy.view.CustomSlideView;
 public class SlideViewFragment extends BaseFragment implements View.OnClickListener {
     private CustomSlideView mCustomSlideView;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return init(inflater.inflate(R.layout.fragment_slide_view, container, false));
+    protected int getLayoutId() {
+        return R.layout.fragment_slide_view;
     }
 
     @Override

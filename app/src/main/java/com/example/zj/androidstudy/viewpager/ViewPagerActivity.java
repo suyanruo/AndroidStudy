@@ -1,4 +1,4 @@
-package com.example.zj.androidstudy.activity;
+package com.example.zj.androidstudy.viewpager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,14 +19,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.zj.androidstudy.R;
-import com.example.zj.androidstudy.fragment.MainTab01;
-import com.example.zj.androidstudy.fragment.MainTab02;
-import com.example.zj.androidstudy.fragment.MainTab03;
-import com.example.zj.androidstudy.fragment.MainTab04;
-import com.example.zj.androidstudy.fragment.MainTab05;
-import com.example.zj.androidstudy.fragment.MainTab06;
-import com.example.zj.androidstudy.fragment.MainTab07;
-import com.example.zj.androidstudy.fragment.MainTab08;
+import com.example.zj.androidstudy.fragment.TabFragment;
 
 public class ViewPagerActivity extends AppCompatActivity  {
   private static final String TAG = "ViewPagerActivity";
@@ -35,15 +28,14 @@ public class ViewPagerActivity extends AppCompatActivity  {
   ViewPager viewPager;
   FragmentPagerAdapter adapter;
 
-
-  MainTab01 tab01 = new MainTab01();
-  MainTab02 tab02 = new MainTab02();
-  MainTab03 tab03 = new MainTab03();
-  MainTab04 tab04 = new MainTab04();
-  MainTab05 tab05 = new MainTab05();
-  MainTab06 tab06 = new MainTab06();
-  MainTab07 tab07 = new MainTab07();
-  MainTab08 tab08 = new MainTab08();
+  TabFragment tab01 = TabFragment.getInstance("Fragment Tab1");
+  TabFragment tab02 = TabFragment.getInstance("Fragment Tab2");
+  TabFragment tab03 = TabFragment.getInstance("Fragment Tab3");
+  TabFragment tab04 = TabFragment.getInstance("Fragment Tab4");
+  TabFragment tab05 = TabFragment.getInstance("Fragment Tab5");
+  TabFragment tab06 = TabFragment.getInstance("Fragment Tab6");
+  TabFragment tab07 = TabFragment.getInstance("Fragment Tab7");
+  TabFragment tab08 = TabFragment.getInstance("Fragment Tab8");
 
   Fragment[] fragments = { tab01, tab02, tab03, tab04 };
   Fragment[] replaceFragments = {tab05, tab06, tab07, tab08 };
@@ -71,11 +63,11 @@ public class ViewPagerActivity extends AppCompatActivity  {
     public void handleMessage(Message msg) {
       super.handleMessage(msg);
       int w = msg.what;
-//      fragments[w] = replaceFragments[w];
-//      fragmentsUpdateFlag[w] = true;
-//      adapter.notifyDataSetChanged();
+      fragments[w] = replaceFragments[w];
+      fragmentsUpdateFlag[w] = true;
+      adapter.notifyDataSetChanged();
 
-      changeFragment(fragments[0], replaceFragments[w]);
+//      changeFragment(fragments[0], replaceFragments[w]);
     }
   };
 
@@ -194,6 +186,11 @@ public class ViewPagerActivity extends AppCompatActivity  {
       //得到tag，这点很重要
       String fragmentTag = fragment.getTag();
 
+      if (fragment == fragments[position % fragments.length]) { // 如果新fragment和原fragment相同则不用替换
+        //复位更新标志
+        fragmentsUpdateFlag[position % fragmentsUpdateFlag.length] = false;
+        return fragment;
+      }
 
       if (fragmentsUpdateFlag[position % fragmentsUpdateFlag.length]) {
       //如果这个fragment需要更新

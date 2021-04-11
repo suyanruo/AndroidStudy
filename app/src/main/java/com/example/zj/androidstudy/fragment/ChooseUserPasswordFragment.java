@@ -25,9 +25,8 @@ public class ChooseUserPasswordFragment extends BaseFragment {
   private RegistrationViewModel registrationViewModel;
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
-    return init(inflater.inflate(R.layout.fragment_choose_user_password, container, false));
+  protected int getLayoutId() {
+    return R.layout.fragment_choose_user_password;
   }
 
   @Override

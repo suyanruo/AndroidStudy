@@ -3,12 +3,7 @@ package com.example.zj.androidstudy.material;
 import android.annotation.TargetApi;
 import android.graphics.Outline;
 import android.os.Build;
-import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.widget.TextView;
 
@@ -19,10 +14,9 @@ public class TintFragment extends BaseFragment {
     private TextView mRectTextView;
     private TextView mCircleTextView;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return init(inflater.inflate(R.layout.fragment_tint, container, false));
+    protected int getLayoutId() {
+        return R.layout.fragment_tint;
     }
 
     @Override

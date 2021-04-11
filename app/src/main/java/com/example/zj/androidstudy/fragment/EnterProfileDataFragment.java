@@ -1,9 +1,7 @@
 package com.example.zj.androidstudy.fragment;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.zj.androidstudy.R;
@@ -26,10 +24,9 @@ import com.example.zj.androidstudy.viewModel.RegistrationViewModel.RegistrationS
 public class EnterProfileDataFragment extends BaseFragment {
   private RegistrationViewModel registrationViewModel;
 
-  @Nullable
   @Override
-  public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-    return init(inflater.inflate(R.layout.fragment_enter_profile_data, container, false));
+  protected int getLayoutId() {
+    return R.layout.fragment_enter_profile_data;
   }
 
   @Override

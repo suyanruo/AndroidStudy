@@ -9,7 +9,7 @@ import com.example.zj.androidstudy.base.BaseFragment;
  * 在ViewPager中使用的Fragment继承此类可实现懒加载
  */
 
-public class LazyFragment extends BaseFragment {
+public abstract class LazyFragment extends BaseFragment {
   private boolean isLoaded;
 
   @Override
@@ -34,4 +34,9 @@ public class LazyFragment extends BaseFragment {
     super.onDestroyView();
     isLoaded = false;
   }
+
+  /**
+   * 子类通过覆写此方法实现懒加载
+   */
+  public abstract void lazyInit();
 }

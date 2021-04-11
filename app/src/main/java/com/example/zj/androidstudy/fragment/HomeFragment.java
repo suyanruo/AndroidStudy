@@ -2,11 +2,8 @@ package com.example.zj.androidstudy.fragment;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.activity.BinderActivity;
@@ -15,7 +12,7 @@ import com.example.zj.androidstudy.activity.CustomViewActivity;
 import com.example.zj.androidstudy.activity.DialogActivity;
 import com.example.zj.androidstudy.activity.H5ToAppActivity;
 import com.example.zj.androidstudy.activity.MessengerActivity;
-import com.example.zj.androidstudy.activity.ViewPagerActivity;
+import com.example.zj.androidstudy.viewpager.ViewPagerActivity;
 import com.example.zj.androidstudy.autoFillCode.AutoFillSmsCodeActivity;
 import com.example.zj.androidstudy.baidu.MapActivity;
 import com.example.zj.androidstudy.base.BaseFragment;
@@ -43,11 +40,10 @@ import androidx.navigation.fragment.NavHostFragment;
 public class HomeFragment extends BaseFragment {
 
   @Override
-  public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                           Bundle savedInstanceState) {
-    return init(inflater.inflate(R.layout.fragment_home, container, false));
+  protected int getLayoutId() {
+    return R.layout.fragment_home;
   }
-  
+
   @Override
   protected void initViews(View view) {
     view.findViewById(R.id.btn_binder).setOnClickListener(new View.OnClickListener() {

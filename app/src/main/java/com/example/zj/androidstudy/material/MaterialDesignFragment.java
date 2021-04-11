@@ -1,13 +1,7 @@
 package com.example.zj.androidstudy.material;
 
 import android.content.Intent;
-import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.base.BaseFragment;
@@ -15,10 +9,9 @@ import com.example.zj.androidstudy.tool.FragmentUtil;
 
 public class MaterialDesignFragment extends BaseFragment {
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return init(inflater.inflate(R.layout.fragment_material_design, container, false));
+    protected int getLayoutId() {
+        return R.layout.fragment_material_design;
     }
 
     @Override

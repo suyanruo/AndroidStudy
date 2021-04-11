@@ -4,15 +4,10 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.os.Build;
-import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.base.BaseFragment;
@@ -26,10 +21,9 @@ public class RecyclerFragment extends BaseFragment {
     private RecyclerView.LayoutManager mLayoutManager;
     private List<String> mData = new ArrayList<>();
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return init(inflater.inflate(R.layout.fragment_recycler, container, false));
+    protected int getLayoutId() {
+        return R.layout.fragment_recycler;
     }
 
     @Override

@@ -6,14 +6,11 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
 import android.provider.ContactsContract;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -35,8 +32,8 @@ public class ContentProviderFragment extends BaseFragment {
     private List<String> mContactsList = new ArrayList<>();
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return init(inflater.inflate(R.layout.fragment_contentprovider, container, false));
+    protected int getLayoutId() {
+        return R.layout.fragment_contentprovider;
     }
 
     @Override

@@ -1,13 +1,8 @@
 package com.example.zj.androidstudy.material;
 
-import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.google.android.material.snackbar.Snackbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -19,12 +14,10 @@ public class ShowToastFragment extends BaseFragment {
     private CoordinatorLayout mRlFragment;
     private Button mBtnShowToast;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return init(inflater.inflate(R.layout.fragment_show_toast, container, false));
+    protected int getLayoutId() {
+        return R.layout.fragment_show_toast;
     }
-
 
     @Override
     protected void initViews(View view) {

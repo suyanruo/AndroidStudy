@@ -1,13 +1,21 @@
 package com.example.zj.androidstudy.base;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 public abstract class BaseFragment extends Fragment {
-    private boolean isLoaded = false;
 
-    protected abstract void initViews(View view);
-    protected abstract void initWorkers();
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(getLayoutId(), container, false);
+        return init(view);
+    }
 
     public View init(View view) {
         initViews(view);
@@ -15,27 +23,7 @@ public abstract class BaseFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        judgeLazyInit();
-    }
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        judgeLazyInit();
-    }
-
-    private void judgeLazyInit() {
-        if (!isLoaded && !isHidden()) {
-            lazyInit();
-            isLoaded = true;
-        }
-    }
-
-    /**
-     * 子类通过覆写此方法实现懒加载
-     */
-    public void lazyInit() {}
+    protected abstract int getLayoutId();
+    protected abstract void initViews(View view);
+    protected abstract void initWorkers();
 }

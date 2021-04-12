@@ -16,13 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created on 4/11/21.
+ * ViewPager2 + RecyclerView
  */
 
-public class Fragment2Adapter extends RecyclerView.Adapter<Fragment2Adapter.ViewPagerHolder> {
+public class ViewPager2RecyclerViewAdapter extends RecyclerView.Adapter<ViewPager2RecyclerViewAdapter.ViewPagerHolder> {
   private Context mContext;
   private List<Integer> mList;
 
-  public Fragment2Adapter(Context context, List<Integer> list) {
+  public ViewPager2RecyclerViewAdapter(Context context, List<Integer> list) {
     this.mContext = context;
     this.mList = list;
   }

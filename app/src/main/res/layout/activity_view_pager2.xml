@@ -5,7 +5,51 @@
     android:layout_height="match_parent" >
 
   <androidx.viewpager2.widget.ViewPager2
-      android:id="@+id/vp2"
+      android:id="@+id/vp2_recyclerview"
       android:layout_width="match_parent"
-      android:layout_height="match_parent" />
+      android:layout_height="@dimen/dp_200"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintBottom_toTopOf="@+id/vp2_fragment"/>
+
+  <com.google.android.material.tabs.TabLayout
+      android:id="@+id/tab_layout"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/dp_40"
+      app:layout_constraintTop_toBottomOf="@id/vp2_recyclerview"
+      app:tabGravity="center"
+      app:tabIndicatorColor="#ff678f"
+      app:tabIndicatorFullWidth="false"
+      app:tabIndicatorHeight="@dimen/dp_2"
+      app:tabMode="auto"
+      app:tabSelectedTextColor="#ff678f"
+      app:tabTextColor="#333333"
+      app:tabUnboundedRipple="true" />
+
+  <!--
+        tabIndicatorColor  指示器颜色
+        tabIndicatorHeight 指示器高度
+        tabIndicatorFullWidth  设置为false 则指示器跟文本宽度一致
+        tabUnboundedRipple 设置为true点击时会有一个水波纹效果
+        tabGravity 可设置center或fill；center指的是居中显示，fill指的是沾满全屏。
+        tabMode 可设置fixed和 scrollable；fixed：指的是固定tab；scrollable指的是tab可滑动。
+        tabTextColor tab文字颜色
+        tabSelectedTextColor 选中时的tab颜色
+    -->
+
+  <androidx.viewpager2.widget.ViewPager2
+      android:id="@+id/vp2_fragment"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/dp_0"
+      app:layout_constraintTop_toBottomOf="@id/tab_layout"
+      app:layout_constraintBottom_toBottomOf="parent"/>
+
+  <Button
+      android:id="@+id/btn_fake_drag"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@android:color/white"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:text="fake drag"
+      android:textAllCaps="false"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

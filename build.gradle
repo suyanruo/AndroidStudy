@@ -1,8 +1,12 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 subprojects {
-    println"Configure for $project.name" //遍历子Project，project变量对应每个子Project
+    println "Configure for $project.name" //遍历子Project，project变量对应每个子Project
     buildscript {
+        ext {
+            nav_version = "2.3.0-alpha01"
+            kotlin_version = '1.3.72'
+        }
         repositories {
             google()
             jcenter()
@@ -15,13 +19,14 @@ subprojects {
             classpath 'com.android.tools.build:gradle:3.6.4'
             classpath 'com.google.gms:google-services:4.3.4'
 
+            classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
             classpath 'org.aspectj:aspectjtools:1.8.10'
             classpath 'org.aspectj:aspectjweaver:1.8.8'
 
             // Add the Crashlytics Gradle plugin.
             classpath 'com.google.firebase:firebase-crashlytics-gradle:2.1.1'
 
-            def nav_version = "2.3.0-alpha01"
             classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
 
             //格式为-->group:module:version

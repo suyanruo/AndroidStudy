@@ -253,13 +253,22 @@
       app:layout_constraintTop_toBottomOf="@id/btn_activity_auto_fill_sms"
       app:layout_constraintStart_toEndOf="@id/btn_activity_lazy_load" />
 
+  <Button
+      android:id="@+id/btn_activity_picture"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="picture"
+      app:layout_constraintTop_toBottomOf="@id/btn_activity_lazy_load"
+      app:layout_constraintStart_toStartOf="parent" />
+
 
   <!--下方是使用Navigation技术导航组件的-->
   <TextView
       android:id="@+id/tv_navigation_format"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      app:layout_constraintTop_toBottomOf="@id/btn_activity_lazy_load"
+      app:layout_constraintTop_toBottomOf="@id/btn_activity_picture"
       android:layout_marginTop="@dimen/dp_10"
       android:text="Navigation Format to go to new page:"/>
 

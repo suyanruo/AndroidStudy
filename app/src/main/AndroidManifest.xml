@@ -128,6 +128,7 @@
         <activity android:name=".net.OkhttpActivity" />
         <activity android:name=".lazyLoad.LazyFragmentActivity" />
         <activity android:name=".viewpager.ViewPager2Activity" />
+        <activity android:name=".picture.PictureActivity"></activity>
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

@@ -101,12 +101,8 @@ public class LoginFragment extends BaseFragment {
             }
         });
 
-        mBtnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navController.navigate(R.id.action_login_fragment_to_register_fragment);
-            }
-        });
+        mBtnRegister.setOnClickListener(view1 ->
+            navController.navigate(R.id.action_login_fragment_to_register_fragment));
     }
 
     @Override

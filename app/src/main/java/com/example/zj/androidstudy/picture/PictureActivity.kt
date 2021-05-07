@@ -46,7 +46,7 @@ class PictureActivity : AppCompatActivity() {
         initRecyclerView()
         if (pictureList.isNullOrEmpty()) {
             initWorker()
-            if (checkStoragePermission()) {
+            if (checkPermission()) {
 //            startFetch()
                 startWorker()
             }
@@ -60,10 +60,15 @@ class PictureActivity : AppCompatActivity() {
         rvPicture.adapter = adapter
     }
 
-    private fun checkStoragePermission(): Boolean {
+    private fun checkPermission(): Boolean {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), Constants.REQUEST_PERMISSION_CODE)
+            return false
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_MEDIA_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_MEDIA_LOCATION), Constants.REQUEST_PERMISSION_CODE)
             return false
         }
         return true

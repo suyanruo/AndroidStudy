@@ -3,8 +3,10 @@ package com.example.zj.androidstudy.picture
 import android.content.ContentUris
 import android.content.Context
 import android.net.Uri
+import android.os.Build
 import android.provider.MediaStore
 import android.util.Log
+import androidx.exifinterface.media.ExifInterface
 import com.example.zj.androidstudy.model.PictureInfo
 
 /**
@@ -46,7 +48,18 @@ object ImageHelper {
                 val id = cursor.getLong(idColumn)
                 val name = cursor.getString(nameColumn)
                 val size = cursor.getInt(sizeColumn)
-                val contentUri: Uri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id)
+                var contentUri: Uri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, id)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    // 获取图片位置信息
+                    contentUri = MediaStore.setRequireOriginal(contentUri)
+                    context.contentResolver.openInputStream(contentUri)?.use { inputStream ->
+                        ExifInterface(inputStream).run {
+                            val latLong = latLong ?: doubleArrayOf(0.0, 0.0)
+                            Log.e("ImageHelper", "lat: " + latLong[0] + "  " + latLong[1])
+                        }
+                    }
+
+                }
                 pictureList += PictureInfo(contentUri, name, size)
                 Log.e("ImageHelper", "picture name:" + name + ", size:" + size)
             }

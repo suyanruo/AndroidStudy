@@ -30,8 +30,7 @@ class NameActivity : AppCompatActivity() {
         }
 
         // Observe the LiveData, passing in this activity as the LifecycleOwner and the observer.
-        model.currentName.observe(this, nameObserver)
-
-        model.currentName.value = "Mars"
+        model.getName().observe(this, nameObserver)
+        model.setName("Mars")
     }
 }

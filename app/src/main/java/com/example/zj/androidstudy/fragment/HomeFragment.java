@@ -225,12 +225,9 @@ public class HomeFragment extends BaseFragment {
       }
     });
 
-    view.findViewById(R.id.btn_activity_picture).setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        getActivity().startActivity(new Intent(getActivity(), PictureActivity.class));
-      }
-    });
+    view.findViewById(R.id.btn_activity_picture).setOnClickListener(view12 ->
+        getActivity().startActivity(new Intent(getActivity(), PictureActivity.class)));
+
     view.findViewById(R.id.btn_activity_live_data).setOnClickListener(view1 ->
         getActivity().startActivity(new Intent(getActivity(), NameActivity.class)));
 

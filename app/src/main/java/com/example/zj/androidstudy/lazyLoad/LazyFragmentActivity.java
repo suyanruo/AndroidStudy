@@ -3,6 +3,7 @@ package com.example.zj.androidstudy.lazyLoad;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 
 import com.example.zj.androidstudy.R;
@@ -10,10 +11,12 @@ import com.example.zj.androidstudy.fragment.TabFragment;
 import com.example.zj.androidstudy.tool.FragmentUtil;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -40,25 +43,22 @@ public class LazyFragmentActivity extends AppCompatActivity {
 
   protected void initViews() {
     final FragmentHandler handler = new FragmentHandler(this);
-    findViewById(R.id.btn_change_visibility).setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        if (i < 4) {
-          Message message = Message.obtain();
-          message.arg1 = i;
-          handler.sendMessage(message);
+    findViewById(R.id.btn_change_visibility).setOnClickListener(v -> {
+      if (i < 4) {
+        Message message = Message.obtain();
+        message.arg1 = i;
+        handler.sendMessage(message);
+      } else {
+        if (i % 2 == 0) {
+          FragmentUtil.showFragment(LazyFragmentActivity.this, mainTab03);
         } else {
-          if (i % 2 == 0) {
-            FragmentUtil.showFragment(LazyFragmentActivity.this, mainTab03);
-          } else {
-            FragmentManager manager = getSupportFragmentManager();
-            FragmentTransaction transaction = manager.beginTransaction();
-            transaction.hide(mainTab03);
-            transaction.commit();
-          }
+          FragmentManager manager = getSupportFragmentManager();
+          FragmentTransaction transaction = manager.beginTransaction();
+          transaction.hide(mainTab03);
+          transaction.commit();
         }
-        i++;
       }
+      i++;
     });
   }
 
@@ -125,5 +125,17 @@ public class LazyFragmentActivity extends AppCompatActivity {
         }
       }
     }
+  }
+
+  private void log() {
+    int count = 0;
+    FragmentManager manager = getSupportFragmentManager();
+    List<Fragment> fragmentList = manager.getFragments();
+    for (Fragment fragment : fragmentList) {
+      if (fragment.isResumed()) {
+        count++;
+      }
+    }
+    Log.e("LazyFragmentActivity", "fragment size: " + count);
   }
 }

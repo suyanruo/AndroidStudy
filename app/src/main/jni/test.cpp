@@ -3,7 +3,8 @@
 //
 #include <jni.h>
 #include <stdio.h>
-#include <LogUtil.h>
+#include "LogUtil.h"
+#include "TimeUtil.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -30,6 +31,8 @@ void callJavaMethod(JNIEnv *env, jobject thiz) {
 //    jobject data_obj = env->NewObject(clazz, construct_id);
 //    env->CallVoidMethod(data_obj, id2);
 
+    __TIC1__(callJavaMethod)
+    __TOC1__(callJavaMethod)
     LOGE("version: %d", env->GetVersion());
 }
 

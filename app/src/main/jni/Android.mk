@@ -7,4 +7,7 @@ LOCAL_SRC_FILES := test.cpp \
 
 LOCAL_LDLIBS:=-L$(SYSROOT)/usr/lib -llog
 
+# 设置支持C++ 11
+LOCAL_CFLAGS += -std=c++11
+
 include $(BUILD_SHARED_LIBRARY)

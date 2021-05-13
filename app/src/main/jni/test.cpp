@@ -3,6 +3,7 @@
 //
 #include <jni.h>
 #include <stdio.h>
+#include <LogUtil.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -29,7 +30,7 @@ void callJavaMethod(JNIEnv *env, jobject thiz) {
 //    jobject data_obj = env->NewObject(clazz, construct_id);
 //    env->CallVoidMethod(data_obj, id2);
 
-    printf("version: %d", env->GetVersion());
+    LOGE("version: %d", env->GetVersion());
 }
 
 // 使用"Java + 包名 + 类名 + 方法名"静态注册方法

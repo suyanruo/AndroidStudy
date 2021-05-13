@@ -12,6 +12,7 @@ import com.example.zj.androidstudy.activity.CustomViewActivity;
 import com.example.zj.androidstudy.activity.DialogActivity;
 import com.example.zj.androidstudy.activity.H5ToAppActivity;
 import com.example.zj.androidstudy.activity.MessengerActivity;
+import com.example.zj.androidstudy.jni.JniActivity;
 import com.example.zj.androidstudy.liveData.NameActivity;
 import com.example.zj.androidstudy.picture.PictureActivity;
 import com.example.zj.androidstudy.viewpager.ViewPager2Activity;
@@ -130,6 +131,9 @@ public class HomeFragment extends BaseFragment {
         getActivity().startActivity(new Intent(getActivity(), ConstraintActivity.class));
       }
     });
+
+    view.findViewById(R.id.btn_activity_jni).setOnClickListener(v ->
+        getActivity().startActivity(new Intent(getActivity(), JniActivity.class)));
 
     view.findViewById(R.id.btn_activity_viewpager).setOnClickListener(new View.OnClickListener() {
       @Override

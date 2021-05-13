@@ -24,10 +24,16 @@ public class JniActivity extends AppCompatActivity {
         textView.setText(get());
     }
 
+    public static void staticMethodCalledByJni(String s) {
+        Log.e(TAG, "staticMethodCalledByJni: " + s);
+    }
+
     public void methodCalledByJni(String s) {
         Log.e(TAG, "methodCalledByJni: " + s);
+        Log.e(TAG, "methodCalledByJni: " + change());
     }
 
     public native void set(String s);
     public native String get();
+    public native String change();
 }

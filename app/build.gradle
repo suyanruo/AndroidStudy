@@ -201,6 +201,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 
     implementation "androidx.activity:activity-ktx:1.2.2"
+
+    // ZXing
+    implementation 'com.king.zxing:zxing-lite:1.1.9-androidx'
 }
 
 // 如果只有app module使用MyPlugin，那么在当前gradle文件中引入，否则需要把Script Block放在根gradle文件中

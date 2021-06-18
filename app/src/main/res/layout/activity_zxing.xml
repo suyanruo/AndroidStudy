@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".zxing.ZXingActivity">
+
+  <SurfaceView
+      android:id="@+id/surfaceView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+
+  <com.king.zxing.ViewfinderView
+      android:id="@+id/viewfinderView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:paddingBottom="@dimen/dp_50"
+      app:labelText="@string/tips_scan_code"
+      app:labelTextSize="@dimen/sp_14"
+      app:laserColor="@android:color/holo_green_light"
+      app:frameColor="@android:color/transparent"
+      app:cornerColor="@android:color/transparent"
+      app:resultPointColor="@color/colorAccent"
+      app:scannerLineHeight="@dimen/dp_4"
+      app:frameRatio="0.625"
+      app:labelTextLocation="bottom"
+      app:laserStyle="line" />
+
+  <ImageView
+      android:id="@+id/ivTorch"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/flash_selected_selector"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      android:layout_marginTop="160dp" />
+
+<!--  <include layout="@layout/toolbar_capture"/>-->
+</androidx.constraintlayout.widget.ConstraintLayout>

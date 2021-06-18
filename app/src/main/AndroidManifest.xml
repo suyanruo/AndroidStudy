@@ -131,6 +131,12 @@
         <activity android:name=".viewpager.ViewPager2Activity" />
         <activity android:name=".picture.PictureActivity" />
         <activity android:name=".liveData.NameActivity" />
+        <activity android:name=".zxing.CaptureActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CaptureTheme" />
+        <activity android:name=".zxing.ZXingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CaptureTheme" />
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

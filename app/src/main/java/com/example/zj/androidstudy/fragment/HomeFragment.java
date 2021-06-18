@@ -37,6 +37,7 @@ import com.example.zj.androidstudy.scrollAndViewpager.ScrollViewPagerActivity;
 import com.example.zj.androidstudy.service.ServiceActivity;
 import com.example.zj.androidstudy.shareElement.ShareElementActivity;
 import com.example.zj.androidstudy.thread.ThreadActivity;
+import com.example.zj.androidstudy.zxing.ZXingActivity;
 
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
@@ -228,6 +229,10 @@ public class HomeFragment extends BaseFragment {
         getActivity().startActivity(new Intent(getActivity(), LazyFragmentActivity.class));
       }
     });
+
+    view.findViewById(R.id.btn_activity_zxing).setOnClickListener(view13 ->
+        getActivity().startActivity(new Intent(getActivity(), ZXingActivity.class)));
+
 
     view.findViewById(R.id.btn_activity_picture).setOnClickListener(view12 ->
         getActivity().startActivity(new Intent(getActivity(), PictureActivity.class)));

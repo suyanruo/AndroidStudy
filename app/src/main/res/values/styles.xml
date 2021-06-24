@@ -64,4 +64,8 @@
   <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
     <item name="android:background">#FFFFFF</item>
   </style>
+
+  <style name="dialogStyle" parent="@android:style/Animation">
+    <item name="android:windowEnterAnimation">@anim/dialog_anim_slide_bottom</item>
+  </style>
 </resources>

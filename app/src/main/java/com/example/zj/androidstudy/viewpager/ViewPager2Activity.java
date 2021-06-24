@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
@@ -25,6 +26,7 @@ import com.example.zj.androidstudy.fragment.TabFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
 
@@ -71,24 +73,21 @@ public class ViewPager2Activity extends AppCompatActivity {
       super.onPageScrollStateChanged(state);
     }
   };
-  private TabLayoutMediator.TabConfigurationStrategy mStrategy = new TabLayoutMediator.TabConfigurationStrategy() {
-    @Override
-    public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-      // 这里可以自定义TabView
-      TextView tabView = new TextView(ViewPager2Activity.this);
-      int[][] states = new int[2][];
-      states[0] = new int[]{android.R.attr.state_selected};
-      states[1] = new int[]{};
-      int[] colors = new int[]{activeColor, normalColor};
-      ColorStateList colorStateList = new ColorStateList(states, colors);
-      tabView.setText(tabs[position]);
-      tabView.setTextSize(normalSize);
-      tabView.setTextColor(colorStateList);
-      tab.setCustomView(tabView);
+  private TabLayoutMediator.TabConfigurationStrategy mStrategy = (tab, position) -> {
+    // 这里可以自定义TabView
+    TextView tabView = new TextView(ViewPager2Activity.this);
+    int[][] states = new int[2][];
+    states[0] = new int[]{android.R.attr.state_selected};
+    states[1] = new int[]{};
+    int[] colors = new int[]{activeColor, normalColor};
+    ColorStateList colorStateList = new ColorStateList(states, colors);
+    tabView.setText(tabs[position]);
+    tabView.setTextSize(normalSize);
+    tabView.setTextColor(colorStateList);
+    tab.setCustomView(tabView);
 
-      // 也可以直接设置tab，不过这种方式没有提供设置字体颜色大小的方法
+    // 也可以直接设置tab，不过这种方式没有提供设置字体颜色大小的方法
 //      tab.setText(tabs[position]);
-    }
   };
 
   @Override
@@ -127,6 +126,8 @@ public class ViewPager2Activity extends AppCompatActivity {
     int padding = getResources().getDimensionPixelOffset(R.dimen.dp_20);
     recyclerView.setPadding(padding, 0, padding, 0);
     recyclerView.setClipToPadding(false);
+
+    setDuration();
   }
 
   private void initViewPagerFragment() {
@@ -135,9 +136,25 @@ public class ViewPager2Activity extends AppCompatActivity {
     mVp2Fragment.setAdapter(adapter);
     // 页面滑动事件监听
     mVp2Fragment.registerOnPageChangeCallback(mPageChangeCallback);
+    mVp2Fragment.setPageTransformer(new NGGuidePageTransformer());
     mTabLayoutMediator = new TabLayoutMediator(mTabLayout, mVp2Fragment, mStrategy);
     // 要执行这一句才是真正将两者绑定起来
     mTabLayoutMediator.attach();
+  }
+
+  /**
+   * 设置viewpager切换花费时间
+   */
+  private void setDuration() {
+    try {
+      Field field = ViewPager.class.getDeclaredField("mScroller");
+      field.setAccessible(true);
+      ViewPagerScroller scroller = new ViewPagerScroller(this);
+      scroller.setDuration(2000);
+      field.set(mVp2Recyclerview, scroller);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   private SparseArray<Fragment> initFragmentArray() {
@@ -148,15 +165,12 @@ public class ViewPager2Activity extends AppCompatActivity {
   }
 
   private void initButton() {
-    mBtnFakeDrag.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        // 模拟拖拽
-        mVp2Recyclerview.beginFakeDrag();
-        // fakeDragBy返回一个boolean值，表示是否正在滑动。当参数值为正数时表示向前一个页面滑动，当值为负数时表示向下一个页面滑动
-        if (mVp2Recyclerview.fakeDragBy(-10f)) {
-          mVp2Recyclerview.endFakeDrag();
-        }
+    mBtnFakeDrag.setOnClickListener(v -> {
+      // 模拟拖拽
+      mVp2Recyclerview.beginFakeDrag();
+      // fakeDragBy返回一个boolean值，表示是否正在滑动。当参数值为正数时表示向前一个页面滑动，当值为负数时表示向下一个页面滑动
+      if (mVp2Recyclerview.fakeDragBy(-10f)) {
+        mVp2Recyclerview.endFakeDrag();
       }
     });
   }

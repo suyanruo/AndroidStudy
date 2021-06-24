@@ -2,6 +2,7 @@ package com.example.zj.androidstudy.tool;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
 import android.text.TextUtils;
@@ -44,6 +45,11 @@ public class ScreenUtil {
 
   public static int dp2px(Context context, int dp) {
     return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
+  }
+
+  public static int px2dip(float pxValue) {
+    float scale = Resources.getSystem().getDisplayMetrics().density;
+    return (int) (pxValue / scale + 0.5f);
   }
 
   /**

@@ -12,6 +12,8 @@ import com.example.zj.androidstudy.activity.CustomViewActivity;
 import com.example.zj.androidstudy.activity.DialogActivity;
 import com.example.zj.androidstudy.activity.H5ToAppActivity;
 import com.example.zj.androidstudy.activity.MessengerActivity;
+import com.example.zj.androidstudy.scaling.CollapsingDemoActivity;
+import com.example.zj.androidstudy.scaling.ScalingActivity;
 import com.example.zj.androidstudy.jni.JniActivity;
 import com.example.zj.androidstudy.liveData.NameActivity;
 import com.example.zj.androidstudy.picture.PictureActivity;
@@ -239,6 +241,12 @@ public class HomeFragment extends BaseFragment {
 
     view.findViewById(R.id.btn_activity_live_data).setOnClickListener(view1 ->
         getActivity().startActivity(new Intent(getActivity(), NameActivity.class)));
+
+    view.findViewById(R.id.btn_activity_scaling).setOnClickListener(view1 ->
+        getActivity().startActivity(new Intent(getActivity(), ScalingActivity.class)));
+
+    view.findViewById(R.id.btn_activity_collaps).setOnClickListener(view1 ->
+        getActivity().startActivity(new Intent(getActivity(), CollapsingDemoActivity.class)));
 
     /*-----------------Navigation-----------------*/
     view.findViewById(R.id.btn_fragment_login).setOnClickListener(new View.OnClickListener() {

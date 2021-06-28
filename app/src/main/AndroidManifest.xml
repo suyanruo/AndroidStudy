@@ -137,6 +137,9 @@
         <activity android:name=".zxing.ZXingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/CaptureTheme" />
+        <activity android:name=".scaling.ScalingActivity" />
+        <activity android:name=".scaling.CollapsingDemoActivity"
+            android:theme="@style/AppThemeNoActionBar" />
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

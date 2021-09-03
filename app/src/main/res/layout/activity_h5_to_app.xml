@@ -13,7 +13,6 @@
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintBottom_toTopOf="@+id/webviewh5"
-      android:layout_marginTop="@dimen/dp_40"
       android:text="goMain"/>
 
   <Button
@@ -23,7 +22,6 @@
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintStart_toEndOf="@id/btn_go_main"
       app:layout_constraintBottom_toTopOf="@+id/webviewh5"
-      android:layout_marginTop="@dimen/dp_40"
       android:text="jumpApp"/>
 
   <Button
@@ -37,7 +35,7 @@
   <WebView
       android:id="@+id/webviewh5"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
+      android:layout_height="0dp"
       app:layout_constraintTop_toBottomOf="@id/btn_go_main"
       app:layout_constraintBottom_toBottomOf="parent"/>
 

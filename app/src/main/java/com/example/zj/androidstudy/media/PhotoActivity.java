@@ -52,7 +52,7 @@ public class PhotoActivity extends BaseActivity {
             e.printStackTrace();
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            mImageUri = FileProvider.getUriForFile(this, "com.example.zj.androidstudy.fileprovider", file);
+            mImageUri = FileProvider.getUriForFile(this, getPackageName() + ".fileprovider", file);
         } else {
             mImageUri = Uri.fromFile(file);
         }

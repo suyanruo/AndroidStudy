@@ -4,10 +4,10 @@
     android:versionName="AndroidStudy">
 
     <permission
-        android:name="com.example.zj.androidstudy.permission.ACCESS_BOOK_SERVICE"
+        android:name="${applicationId}.permission.ACCESS_BOOK_SERVICE"
         android:protectionLevel="normal" />
     <permission
-        android:name="com.zj.PROVIDER"
+        android:name="${applicationId}.PROVIDER"
         android:protectionLevel="normal" />
 
     <!-- 这个权限用于访问GPS定位 -->
@@ -32,14 +32,14 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
-    <uses-permission android:name="com.example.zj.androidstudy.permission.ACCESS_BOOK_SERVICE" />
-    <uses-permission android:name="com.zj.PROVIDER" />
+    <uses-permission android:name="${applicationId}.permission.ACCESS_BOOK_SERVICE" />
+    <uses-permission android:name="${applicationId}.PROVIDER" />
 
     <application
         android:name=".StudyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_learn"
-        android:label="@string/app_name"
+        android:icon="${LAUNCH_ICON}"
+        android:label="${APP_NAME}"
         android:roundIcon="@mipmap/ic_learn"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -164,7 +164,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.zj.androidstudy.fileprovider"
+            android:authorities="${applicationId}.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

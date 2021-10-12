@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.base.BaseFragment;
@@ -19,6 +20,7 @@ import com.example.zj.androidstudy.view.CustomSlideView;
 
 public class SlideViewFragment extends BaseFragment implements View.OnClickListener {
     private CustomSlideView mCustomSlideView;
+    private Button mBtnScroller;
 
     @Override
     protected int getLayoutId() {
@@ -29,7 +31,8 @@ public class SlideViewFragment extends BaseFragment implements View.OnClickListe
     protected void initViews(View view) {
         mCustomSlideView = view.findViewById(R.id.custom_slide_view);
         // 设置view平移
-        view.findViewById(R.id.btn_scroller).setOnClickListener(this);
+        mBtnScroller = view.findViewById(R.id.btn_scroller);
+        mBtnScroller.setOnClickListener(this);
         view.findViewById(R.id.btn_view_animation).setOnClickListener(this);
         view.findViewById(R.id.btn_object_animation_one).setOnClickListener(this);
         view.findViewById(R.id.btn_object_animation_two).setOnClickListener(this);

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.WindowInsets;
 import android.view.WindowManager;
+import android.widget.EditText;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -212,5 +213,20 @@ public class ScreenUtil {
   public static int getMeasureHeight(View view) {
     view.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED), MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
     return view.getMeasuredHeight();
+  }
+
+  /**
+   * 禁用系统软键盘
+   */
+  public static void disableSysKeyboard(Activity context, EditText etInput) {
+    context.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    try {
+      Class<EditText>  cls = EditText.class;
+      Method setShowSoftInputOnFocus = cls.getMethod("setShowSoftInputOnFocus", boolean.class);
+      setShowSoftInputOnFocus.setAccessible(true);
+      setShowSoftInputOnFocus.invoke(etInput, false);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }

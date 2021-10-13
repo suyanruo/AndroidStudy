@@ -13,6 +13,7 @@ import com.example.zj.androidstudy.activity.ConstraintActivity;
 import com.example.zj.androidstudy.activity.CustomViewActivity;
 import com.example.zj.androidstudy.activity.DialogActivity;
 import com.example.zj.androidstudy.activity.H5ToAppActivity;
+import com.example.zj.androidstudy.keyboard.KeyboardActivity;
 import com.example.zj.androidstudy.activity.MessengerActivity;
 import com.example.zj.androidstudy.scaling.CollapsingDemoActivity;
 import com.example.zj.androidstudy.scaling.ScalingActivity;
@@ -137,8 +138,12 @@ public class HomeFragment extends BaseFragment {
       }
     });
 
-    view.findViewById(R.id.btn_activity_jni).setOnClickListener(v ->
-        getActivity().startActivity(new Intent(getActivity(), JniActivity.class)));
+    view.findViewById(R.id.btn_activity_jni).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        getActivity().startActivity(new Intent(getActivity(), JniActivity.class));
+      }
+    });
 
     view.findViewById(R.id.btn_activity_viewpager).setOnClickListener(new View.OnClickListener() {
       @Override
@@ -234,22 +239,46 @@ public class HomeFragment extends BaseFragment {
       }
     });
 
-    view.findViewById(R.id.btn_activity_zxing).setOnClickListener(view13 ->
-        getActivity().startActivity(new Intent(getActivity(), ZXingActivity.class)));
+    view.findViewById(R.id.btn_activity_zxing).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        getActivity().startActivity(new Intent(getActivity(), ZXingActivity.class));
+      }
+    });
 
+    view.findViewById(R.id.btn_activity_picture).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        getActivity().startActivity(new Intent(getActivity(), PictureActivity.class));
+      }
+    });
 
-    view.findViewById(R.id.btn_activity_picture).setOnClickListener(view12 ->
-        getActivity().startActivity(new Intent(getActivity(), PictureActivity.class)));
+    view.findViewById(R.id.btn_activity_live_data).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        getActivity().startActivity(new Intent(getActivity(), NameActivity.class));
+      }
+    });
 
-    view.findViewById(R.id.btn_activity_live_data).setOnClickListener(view1 ->
-        getActivity().startActivity(new Intent(getActivity(), NameActivity.class)));
+    view.findViewById(R.id.btn_activity_scaling).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        getActivity().startActivity(new Intent(getActivity(), ScalingActivity.class));
+      }
+    });
 
-    view.findViewById(R.id.btn_activity_scaling).setOnClickListener(view1 ->
-        getActivity().startActivity(new Intent(getActivity(), ScalingActivity.class)));
-
-    view.findViewById(R.id.btn_activity_collaps).setOnClickListener(view1 ->
-        getActivity().startActivity(new Intent(getActivity(), CollapsingDemoActivity.class)));
-
+    view.findViewById(R.id.btn_activity_collaps).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        getActivity().startActivity(new Intent(getActivity(), CollapsingDemoActivity.class));
+      }
+    });
+    view.findViewById(R.id.btn_activity_keyboard).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View view) {
+        getActivity().startActivity(new Intent(getActivity(), KeyboardActivity.class));
+      }
+    });
     /*-----------------Navigation-----------------*/
     view.findViewById(R.id.btn_fragment_login).setOnClickListener(new View.OnClickListener() {
       @Override

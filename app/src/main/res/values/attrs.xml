@@ -23,4 +23,7 @@
     <declare-styleable name="ScalingLayout">
         <attr name="radiusFactor" format="float"/>
     </declare-styleable>
+    <declare-styleable name="NumericKeyboard">
+        <attr name="dot_availability" format="boolean" />
+    </declare-styleable>
 </resources>

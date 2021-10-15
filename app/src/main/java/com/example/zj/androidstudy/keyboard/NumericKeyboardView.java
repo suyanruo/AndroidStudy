@@ -29,6 +29,7 @@ public class NumericKeyboardView extends RelativeLayout {
     private List<String> mDataList = new ArrayList<>();
     private boolean dotAvailability;
     private OnKeyboardListener mOnKeyboardListener;
+    private onCloseListener mOnCloseListener;
 
     public NumericKeyboardView(Context context) {
         this(context, null);
@@ -81,7 +82,11 @@ public class NumericKeyboardView extends RelativeLayout {
         mIvBack.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) { // 点击关闭键盘
-                dismiss();
+                if (mOnCloseListener != null) {
+                    mOnCloseListener.onClose();
+                } else {
+                    dismiss();
+                }
             }
         });
 
@@ -98,10 +103,12 @@ public class NumericKeyboardView extends RelativeLayout {
             @Override
             public void onKeyPressed(int position) {
                 onKeyClick(position);
-                mOnKeyboardListener.onKeyResult(mDataList.get(position));
+                if (mOnKeyboardListener != null) {
+                    mOnKeyboardListener.onKeyResult(mDataList.get(position));
+                }
             }
         });
-        setVisibility(GONE);
+//        setVisibility(GONE);
     }
 
     // 初始化动画效果
@@ -131,8 +138,12 @@ public class NumericKeyboardView extends RelativeLayout {
         return getVisibility() == VISIBLE;
     }
 
-    public void setOnKeyboardClickListener(final OnKeyboardListener listener) {
+    public void setOnKeyboardClickListener(OnKeyboardListener listener) {
         mOnKeyboardListener = listener;
+    }
+
+    public void setOnCloseListener(onCloseListener listener) {
+        mOnCloseListener = listener;
     }
 
     public void setEtInput(EditText mEtInput) {
@@ -205,5 +216,9 @@ public class NumericKeyboardView extends RelativeLayout {
 
     public interface OnKeyboardListener {
         void onKeyResult(String pressedKey);
+    }
+
+    public interface onCloseListener {
+        void onClose();
     }
 }

@@ -70,7 +70,7 @@ public class LoginFragment extends BaseFragment {
 //                    Toast.makeText(getActivity(), "login success", Toast.LENGTH_SHORT).show();
 //                }
 
-                viewModel.authenticate(mEtUsername.getText().toString(), mEtPassword.getText().toString());
+                viewModel.authenticate(requireActivity(), mEtUsername.getText().toString(), mEtPassword.getText().toString());
             }
         });
 

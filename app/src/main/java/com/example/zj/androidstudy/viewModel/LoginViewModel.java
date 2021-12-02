@@ -1,5 +1,12 @@
 package com.example.zj.androidstudy.viewModel;
 
+import android.content.Context;
+import android.text.TextUtils;
+
+import com.example.zj.androidstudy.Constants;
+import com.example.zj.androidstudy.tool.EncryptionUtil;
+import com.example.zj.androidstudy.tool.SharedPreferenceUtil;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -22,8 +29,8 @@ public class LoginViewModel extends ViewModel {
     this.userName = "";
   }
 
-  public void authenticate(String userName, String password) {
-    if (passwordIsValidForUserName(userName, password)) {
+  public void authenticate(Context context, String userName, String password) {
+    if (passwordIsValidForUserName(context, userName, password)) {
       this.userName = userName;
       authenticationState.setValue(AuthenticationState.AUTHENTICATED);
     } else {
@@ -31,8 +38,14 @@ public class LoginViewModel extends ViewModel {
     }
   }
 
-  private boolean passwordIsValidForUserName(String userName, String password) {
-    return true;
+  private boolean passwordIsValidForUserName(Context context, String userName, String password) {
+    String storePwd = SharedPreferenceUtil.getString(context, Constants.USER_PASSWORD, "");
+    if (TextUtils.isEmpty(storePwd)) {
+      storePwd = "123456";
+    } else {
+      storePwd = EncryptionUtil.INSTANCE.getDe3DesString(storePwd);
+    }
+    return TextUtils.equals(password, storePwd);
   }
 
   public void refuseAuthentication() {

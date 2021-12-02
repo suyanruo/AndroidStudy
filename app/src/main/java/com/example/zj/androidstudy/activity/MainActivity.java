@@ -19,14 +19,19 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.palette.graphics.Palette;
 
+import android.util.Log;
 import android.view.Window;
 import android.widget.Toast;
 
+import com.example.zj.androidstudy.Constants;
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.aspectj.TimeSpend;
 import com.example.zj.androidstudy.fragment.HomeFragment;
+import com.example.zj.androidstudy.tool.EncryptionUtil;
+import com.example.zj.androidstudy.tool.SharedPreferenceUtil;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         showPalette();
         fetchIntentData();
         requestPermission();
+
+        initPassword();
 
 //        FragmentManager manager = getSupportFragmentManager();
 //        FragmentTransaction transaction = manager.beginTransaction();
@@ -100,6 +107,13 @@ public class MainActivity extends AppCompatActivity {
             //进行授权
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, 1);
         }
+    }
+
+    private void initPassword() {
+        // 设置用户登录密码为"111111"
+        String password = EncryptionUtil.INSTANCE.get3DesString("111111");
+        Log.e(TAG, "password: " + password);
+        SharedPreferenceUtil.saveString(this, Constants.USER_PASSWORD, password);
     }
 
 }

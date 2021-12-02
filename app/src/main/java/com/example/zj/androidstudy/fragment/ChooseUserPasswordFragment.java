@@ -66,7 +66,7 @@ public class ChooseUserPasswordFragment extends BaseFragment {
           // status will be tested and should be authenticated.
           String authToken = registrationViewModel.getAuthToken();
           String[] infos = authToken.split("$");
-          loginViewModel.authenticate(infos[0], infos[1]);
+          loginViewModel.authenticate(requireActivity(), infos[0], infos[1]);
           navController.popBackStack(R.id.profile_fragment, false);
         }
       }

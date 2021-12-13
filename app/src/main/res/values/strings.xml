@@ -1,20 +1,20 @@
 <resources>
-  <string name="app_name">AndroidStudy</string>
+    <string name="app_name">AndroidStudy</string>
 
-  <string name="coordinator_footer_behavior">com.example.zj.androidstudy.behavior.FooterBehavior</string>
-  <string name="coordinator_footer_appbar_behavior">com.example.zj.androidstudy.behavior.FooterAppBarBehavior</string>
+    <string name="coordinator_footer_behavior">com.example.zj.androidstudy.behavior.FooterBehavior</string>
+    <string name="coordinator_footer_appbar_behavior">com.example.zj.androidstudy.behavior.FooterAppBarBehavior</string>
 
-  <string name="notifications_channel_description">notification_channel</string>
-  <string name="dota2_info">Ti9国际邀请赛，第九届DOTA2国际邀请赛赛程已于5月份正式公布，公开赛时间定于7月3日-6日进行，各地区预选赛将在7月7日-14日进行，而主赛事将在8月20-25日在上海梅赛德斯奔驰文化中心举行。六大赛区（中国、欧洲、南美、北美、东南亚、独联体），总共18支战队将在上海争夺冠军盾。Ti9基础奖金为160万美元，小绿本收入的25%将加入总奖金池。</string>
-  <string name="chinese_english">请将近3个月的通话详单发送至以下邮箱地址。请以姓名和cpf号命名邮件主题，例：MarceloAzerelaPaulo67876598701</string>
+    <string name="notifications_channel_description">notification_channel</string>
+    <string name="dota2_info">Ti9国际邀请赛，第九届DOTA2国际邀请赛赛程已于5月份正式公布，公开赛时间定于7月3日-6日进行，各地区预选赛将在7月7日-14日进行，而主赛事将在8月20-25日在上海梅赛德斯奔驰文化中心举行。六大赛区（中国、欧洲、南美、北美、东南亚、独联体），总共18支战队将在上海争夺冠军盾。Ti9基础奖金为160万美元，小绿本收入的25%将加入总奖金池。</string>
+    <string name="chinese_english">请将近3个月的通话详单发送至以下邮箱地址。请以姓名和cpf号命名邮件主题，例：MarceloAzerelaPaulo67876598701</string>
 
-  <string name="share_element_img">share element</string>
+    <string name="share_element_img">share element</string>
 
-  <string name="hello_blank_fragment">Hello blank fragment</string>
-  <string name="tips_scan_code">将二维码/条形码放入框内，即可自动扫描</string>
-  <string name="username">Username</string>
-  <string name="password">Password</string>
-  <string name="lorem_ipsum">Lorem ipsum dolor sit amet, an sit fugit officiis deserunt, audiam disputando at sit. Eu mel expetenda voluptatibus. Ius no accusam scripserit.\n\n Sea error iracundia ne, duo ne dicat partem sententiae. Nibh admodum facilisi ius in. Ius legere intellegam ei, in zril deserunt qui.At alii audire scripta mea, errem disputando quo in.\n\n Elit vocent legimus cum ei. Eu nonumes eligendi pericula sit. Ceteros omnesque facilisis id vix, at dico choro perpetua est, et dolore oblique vituperata qui. \n\nLorem ipsum dolor sit amet, an sit fugit officiis deserunt, audiam disputando at sit. Eu mel expetenda voluptatibus. Ius no accusam scripserit.\n\n Sea error iracundia ne, duo ne dicat partem sententiae. Nibh admodum facilisi ius in. Ius legere intellegam ei, in zril deserunt qui.At alii audire scripta mea, errem disputando quo in.\n\n Elit vocent legimus cum ei. Eu nonumes eligendi pericula sit. Ceteros omnesque facilisis id vix, at dico choro perpetua est, et dolore oblique vituperata qui.\n\nLorem ipsum dolor sit amet, an sit fugit officiis deserunt, audiam disputando at sit. Eu mel expetenda voluptatibus. Ius no accusam scripserit.\n\n Sea error iracundia ne, duo ne dicat partem sententiae. Nibh admodum facilisi ius in. Ius legere intellegam ei, in zril deserunt qui.At alii audire scripta mea, errem disputando quo in.\n\n Elit vocent legimus cum ei. Eu nonumes eligendi pericula sit. Ceteros omnesque facilisis id vix, at dico choro perpetua est, et dolore oblique vituperata qui. \n\nLorem ipsum dolor sit amet, an sit fugit officiis deserunt, audiam disputando at sit. Eu mel expetenda voluptatibus. Ius no accusam scripserit.\n\n Sea error iracundia ne, duo ne dicat partem sententiae. Nibh admodum facilisi ius in. Ius legere intellegam ei, in zril deserunt qui.At alii audire scripta mea, errem disputando quo in.\n\n Elit vocent legimus cum ei. Eu nonumes eligendi pericula sit. Ceteros omnesque facilisis id vix, at dico choro perpetua est, et dolore oblique vituperata qui.</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tips_scan_code">将二维码/条形码放入框内，即可自动扫描</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, an sit fugit officiis deserunt, audiam disputando at sit. Eu mel expetenda voluptatibus. Ius no accusam scripserit.\n\n Sea error iracundia ne, duo ne dicat partem sententiae. Nibh admodum facilisi ius in. Ius legere intellegam ei, in zril deserunt qui.At alii audire scripta mea, errem disputando quo in.\n\n Elit vocent legimus cum ei. Eu nonumes eligendi pericula sit. Ceteros omnesque facilisis id vix, at dico choro perpetua est, et dolore oblique vituperata qui. \n\nLorem ipsum dolor sit amet, an sit fugit officiis deserunt, audiam disputando at sit. Eu mel expetenda voluptatibus. Ius no accusam scripserit.\n\n Sea error iracundia ne, duo ne dicat partem sententiae. Nibh admodum facilisi ius in. Ius legere intellegam ei, in zril deserunt qui.At alii audire scripta mea, errem disputando quo in.\n\n Elit vocent legimus cum ei. Eu nonumes eligendi pericula sit. Ceteros omnesque facilisis id vix, at dico choro perpetua est, et dolore oblique vituperata qui.\n\nLorem ipsum dolor sit amet, an sit fugit officiis deserunt, audiam disputando at sit. Eu mel expetenda voluptatibus. Ius no accusam scripserit.\n\n Sea error iracundia ne, duo ne dicat partem sententiae. Nibh admodum facilisi ius in. Ius legere intellegam ei, in zril deserunt qui.At alii audire scripta mea, errem disputando quo in.\n\n Elit vocent legimus cum ei. Eu nonumes eligendi pericula sit. Ceteros omnesque facilisis id vix, at dico choro perpetua est, et dolore oblique vituperata qui. \n\nLorem ipsum dolor sit amet, an sit fugit officiis deserunt, audiam disputando at sit. Eu mel expetenda voluptatibus. Ius no accusam scripserit.\n\n Sea error iracundia ne, duo ne dicat partem sententiae. Nibh admodum facilisi ius in. Ius legere intellegam ei, in zril deserunt qui.At alii audire scripta mea, errem disputando quo in.\n\n Elit vocent legimus cum ei. Eu nonumes eligendi pericula sit. Ceteros omnesque facilisis id vix, at dico choro perpetua est, et dolore oblique vituperata qui.</string>
 
     <string name="disable_dot">disable dot</string>
     <string name="enable_dot">enable dot</string>

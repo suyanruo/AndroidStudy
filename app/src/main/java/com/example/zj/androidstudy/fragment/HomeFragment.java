@@ -1,7 +1,5 @@
 package com.example.zj.androidstudy.fragment;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
@@ -13,6 +11,7 @@ import com.example.zj.androidstudy.activity.ConstraintActivity;
 import com.example.zj.androidstudy.activity.CustomViewActivity;
 import com.example.zj.androidstudy.activity.DialogActivity;
 import com.example.zj.androidstudy.activity.H5ToAppActivity;
+import com.example.zj.androidstudy.baidu.MapActivity;
 import com.example.zj.androidstudy.keyboard.KeyboardActivity;
 import com.example.zj.androidstudy.activity.MessengerActivity;
 import com.example.zj.androidstudy.scaling.CollapsingDemoActivity;
@@ -23,7 +22,6 @@ import com.example.zj.androidstudy.picture.PictureActivity;
 import com.example.zj.androidstudy.viewpager.ViewPager2Activity;
 import com.example.zj.androidstudy.viewpager.ViewPagerActivity;
 import com.example.zj.androidstudy.autoFillCode.AutoFillSmsCodeActivity;
-import com.example.zj.androidstudy.baidu.MapActivity;
 import com.example.zj.androidstudy.base.BaseFragment;
 import com.example.zj.androidstudy.bigImage.LargeImageViewActivity;
 import com.example.zj.androidstudy.camera.CameraActivity;

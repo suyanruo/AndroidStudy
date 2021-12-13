@@ -18,6 +18,7 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapStatus;
+import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationData;
@@ -26,17 +27,18 @@ import com.example.zj.androidstudy.Constants;
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.base.BaseActivity;
 
-public class MapActivity extends BaseActivity {
+public class MapInViewActivity extends BaseActivity {
     private static final String TAG = "MapActivity";
 
     private MapView mMapView;
     private BaiduMap mBaiduMap;
     private LocationClient mLocationClient;
+    private boolean isFirstLocation = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
+        setContentView(R.layout.activity_map_in_view);
 
         //获取地图控件引用
         mMapView = findViewById(R.id.mapView);
@@ -54,11 +56,25 @@ public class MapActivity extends BaseActivity {
                     new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION},
                     Constants.REQUEST_PERMISSION_CODE);
         } else {
-            initLoacationClient();
+            initLocationClient();
         }
     }
 
-    private void initLoacationClient() {
+    private void initMapType() {
+        mBaiduMap = mMapView.getMap();
+        // 设置地图类型
+        mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
+        // 开启交通图
+        mBaiduMap.setTrafficEnabled(true);
+        mBaiduMap.setCustomTrafficColor("#ffba0101", "#fff33131", "#ffff9e19", "#00000000");
+        //  对地图状态做更新，否则可能不会触发渲染，造成样式定义无法立即生效。
+        MapStatusUpdate u = MapStatusUpdateFactory.zoomTo(13);
+        mBaiduMap.animateMapStatus(u);
+        //开启热力图
+        mBaiduMap.setBaiduHeatMapEnabled(true);
+    }
+
+    private void initLocationClient() {
         //定位初始化
         mLocationClient = new LocationClient(getApplicationContext());
         //通过LocationClientOption设置LocationClient相关参数
@@ -80,10 +96,11 @@ public class MapActivity extends BaseActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case Constants.REQUEST_PERMISSION_CODE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    initLoacationClient();
+                    initLocationClient();
                 } else {
                     Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
                 }
@@ -102,7 +119,6 @@ public class MapActivity extends BaseActivity {
 
     @Override
     protected void onPause() {
-
         super.onPause();
         //在activity执行onPause时执行mMapView. onPause ()，实现地图生命周期管理
         mMapView.onPause();
@@ -116,8 +132,6 @@ public class MapActivity extends BaseActivity {
         mMapView = null;
         super.onDestroy();
     }
-
-    private boolean isFirstLocation = true;
 
     // 我们通过继承抽象类BDAbstractListener并重写其onReceieveLocation方法来获取定位数据，并将其传给MapView。
     public class MyLocationListener extends BDAbstractLocationListener {
@@ -152,7 +166,6 @@ public class MapActivity extends BaseActivity {
                 builder.target(ll).zoom(18.0f);
                 mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
             }
-
         }
     }
 }

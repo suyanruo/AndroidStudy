@@ -140,7 +140,8 @@ public static ** valueOf(java.lang.String);
 # ---------------------- 针对第三方jar包的解决方案 ----------------------
 # 百度地图
 -keep class com.baidu.** {*;}
--keep class mapsdkvi.com.** {*;}
+-keep class vi.com.** {*;}
+-keep class com.baidu.vi.** {*;}
 -dontwarn com.baidu.**
 
 # Glide

@@ -159,6 +159,9 @@ dependencies {
 
     implementation 'org.greenrobot:eventbus:3.1.1'
 
+    // 百度地图
+    implementation(name: 'BaiduLBS_AndroidSDK_Lib', ext: 'aar')
+
     // firebase
     implementation 'com.google.firebase:firebase-core:17.4.3'
     implementation 'com.google.firebase:firebase-messaging:20.2.0'
@@ -226,6 +229,11 @@ dependencies {
 //        classpath 'com.example.modulepluginlib:modulepluginlib:1.0.0'
 //    }
 //}
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
 
 // 来看如何动态生成runtime_config文件
 def runtime_config_file = "$projectDir/src/main/assets/runtime_config"

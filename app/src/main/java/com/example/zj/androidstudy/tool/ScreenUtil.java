@@ -3,6 +3,7 @@ package com.example.zj.androidstudy.tool;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.os.Build;
 import android.provider.Settings;
@@ -51,10 +52,10 @@ public class ScreenUtil {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
     }
 
-  public static int px2dip(float pxValue) {
-    float scale = Resources.getSystem().getDisplayMetrics().density;
-    return (int) (pxValue / scale + 0.5f);
-  }
+    public static int px2dip(float pxValue) {
+        float scale = Resources.getSystem().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
+    }
 
     /**
      * 判断是否为刘海屏
@@ -283,7 +284,8 @@ public class ScreenUtil {
         try {
             Method method = Class.forName("android.os.Build").getMethod("hasSmartBar");
             return ((Boolean) method.invoke(null)).booleanValue();
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
         if (Build.DEVICE.equals("mx2")) {
             return true;
         } else if (Build.DEVICE.equals("mx") || Build.DEVICE.equals("m9")) {

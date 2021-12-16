@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name">AndroidStudy</string>
-
     <string name="coordinator_footer_behavior">com.example.zj.androidstudy.behavior.FooterBehavior</string>
     <string name="coordinator_footer_appbar_behavior">com.example.zj.androidstudy.behavior.FooterAppBarBehavior</string>
 

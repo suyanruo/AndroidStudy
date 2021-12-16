@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.work.*
+import com.example.zj.androidstudy.BuildConfig
 import com.example.zj.androidstudy.Constants
 import com.example.zj.androidstudy.R
 import com.example.zj.androidstudy.adapter.PictureAdapter
@@ -85,7 +86,7 @@ class PictureActivity : AppCompatActivity() {
         workRequest = OneTimeWorkRequestBuilder<ImageScanWorker>()
                 .setConstraints(constraints)
                 .setInitialDelay(10, TimeUnit.SECONDS)
-                .setInputData(workDataOf("IMAGE_URI" to "https://www.baidu.com"))
+                .setInputData(workDataOf("IMAGE_URI" to BuildConfig.API_URL))
                 .build()
     }
 

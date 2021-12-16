@@ -16,6 +16,8 @@ apply plugin: 'kotlin-android'
 //import org.aspectj.tools.ajc.Main
 
 android {
+    def final APP_NAME = "AndroidStudy"
+
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "com.example.zj.androidstudy"
@@ -38,7 +40,7 @@ android {
     }
 
     signingConfigs {
-        localkey {
+        release {
             storeFile file("KeyStores/LocalKey.keystore")
             storePassword "19910216"
             keyAlias "local_sign_key"
@@ -52,9 +54,13 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // 签名
+            signingConfig signingConfigs.release
             manifestPlaceholders = [
                     FIREBASE_MESSAGE_CHANNEL_ID: "firebase_message_channel_release"
             ]
+            buildConfigField "String", "API_URL", "\"https://www.baidu.com\""
+
         }
         debug {
             minifyEnabled false
@@ -62,6 +68,13 @@ android {
             manifestPlaceholders = [
                     FIREBASE_MESSAGE_CHANNEL_ID: "firebase_message_channel_debug"
             ]
+            buildConfigField "String", "API_URL", "\"http://www.baidu.com\""
+        }
+        staging.initWith(buildTypes.debug)
+        staging {
+            applicationIdSuffix ".staging"
+            versionNameSuffix "-staging"
+            debuggable = false
         }
     }
 
@@ -93,15 +106,16 @@ android {
             // the highest compatible API level, assign version codes in increasing
             // value with API level. To learn more about assigning version codes to
             // support app updates and uploading to Google Play, read Multiple APK Support
-            versionCode 30000 + android.defaultConfig.versionCode
+            versionCode 10000 + android.defaultConfig.versionCode
             versionNameSuffix "-minApi24"
+            resValue "string", "app_name", APP_NAME + "-Api24"
         }
 
         minApi21 {
             dimension "api"
             minSdkVersion 21
-            versionCode 20000 + android.defaultConfig.versionCode
             versionNameSuffix "-minApi21"
+            resValue "string", "app_name", APP_NAME
         }
     }
 
@@ -111,6 +125,14 @@ android {
         if (names.contains("minApi24") && names.contains("demo")) {
             // Gradle ignores any variants that satisfy the conditions above.
             setIgnore(true)
+        }
+        def buildName = variant.buildType.name
+        if (buildName == 'release') {
+            variant.getFlavors().each() { flavor ->
+                if (flavor.name == 'demo') {
+                    variant.setIgnore(true)
+                }
+            }
         }
     }
 
@@ -273,7 +295,7 @@ project.afterEvaluate{
         }
     }
 
-    tasks.getByName("preMinApi21DemoDebugBuild"){
+    tasks.getByName("preMinApi21FullDebugBuild"){
         it.doFirst{
             println "generate debug configuration for ${project.name}"
             def configFile = new File(runtime_config_file)
@@ -283,7 +305,7 @@ project.afterEvaluate{
         }
     }
     //找到preReleaseBuild任务
-    tasks.getByName("preMinApi21DemoReleaseBuild"){
+    tasks.getByName("preMinApi21FullReleaseBuild"){
         it.doFirst{
             println "generate release configuration for ${project.name}"
             def configFile = new File(runtime_config_file)

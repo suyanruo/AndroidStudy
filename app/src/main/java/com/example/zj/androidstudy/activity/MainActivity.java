@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.os.Build;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -79,10 +78,8 @@ public class MainActivity extends AppCompatActivity {
                 Palette.Swatch vibrant = palette.getVibrantSwatch();
                 // 将颜色设置给对应的组件
                 getSupportActionBar().setBackgroundDrawable(new ColorDrawable(vibrant.getRgb()));
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    Window window = getWindow();
-                    window.setStatusBarColor(vibrant.getRgb());
-                }
+                Window window = getWindow();
+                window.setStatusBarColor(vibrant.getRgb());
             }
         });
 

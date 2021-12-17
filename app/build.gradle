@@ -72,8 +72,8 @@ android {
         }
         staging.initWith(buildTypes.debug)
         staging {
-            applicationIdSuffix ".staging"
-            versionNameSuffix "-staging"
+//            applicationIdSuffix ".staging"
+//            versionNameSuffix "-staging"
             debuggable = false
         }
     }
@@ -173,8 +173,9 @@ dependencies {
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    androidTestImplementation 'androidx.test:runner:1.3.0'
+    androidTestImplementation 'androidx.test:rules:1.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation "androidx.recyclerview:recyclerview:1.2.0"
     implementation "androidx.cardview:cardview:${androidxVersion}"
     implementation "androidx.palette:palette:${rootProject.ext.androidxVersion}"

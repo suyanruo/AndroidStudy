@@ -9,6 +9,9 @@ subprojects {
             camerax_version = "1.0.0-rc03"
         }
         repositories {
+            maven { url 'https://maven.aliyun.com/repository/google' }
+            maven { url 'https://maven.aliyun.com/repository/jcenter' }
+            maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
             google()
             jcenter()
             maven {
@@ -91,6 +94,9 @@ ext {
 
 allprojects {
     repositories {
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
         google()
         jcenter()
         maven { url 'https://jitpack.io' }

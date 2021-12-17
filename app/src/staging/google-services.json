@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "302539272900",
+    "firebase_url": "https://myapplication-suyanruo.firebaseio.com",
+    "project_id": "myapplication-suyanruo",
+    "storage_bucket": "myapplication-suyanruo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302539272900:android:c917934993524eef14cf91",
+        "android_client_info": {
+          "package_name": "com.example.zj.androidstudy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "302539272900-j29366h5ngu8jkorqih1ka5gnhjlbmm8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0NjbXsSjJQ0O4HLlSzZbtibWIvtlF43M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "302539272900-j29366h5ngu8jkorqih1ka5gnhjlbmm8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

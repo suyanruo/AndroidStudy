@@ -25,26 +25,24 @@ public class TintFragment extends BaseFragment {
         mCircleTextView = view.findViewById(R.id.tv_circle);
 
         // 获取OutLine
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            ViewOutlineProvider providerRect = new ViewOutlineProvider() {
-                @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-                @Override
-                public void getOutline(View view, Outline outline) {
-                    // 修改outline形状
-                    outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), 15);
-                }
-            };
-            ViewOutlineProvider providerCircle = new ViewOutlineProvider() {
-                @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-                @Override
-                public void getOutline(View view, Outline outline) {
-                    outline.setOval(0, 0, view.getWidth(), view.getHeight());
-                }
-            };
-            // 重新设置外形
-            mRectTextView.setOutlineProvider(providerRect);
-            mCircleTextView.setOutlineProvider(providerCircle);
-        }
+        ViewOutlineProvider providerRect = new ViewOutlineProvider() {
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void getOutline(View view, Outline outline) {
+                // 修改outline形状
+                outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), 15);
+            }
+        };
+        ViewOutlineProvider providerCircle = new ViewOutlineProvider() {
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void getOutline(View view, Outline outline) {
+                outline.setOval(0, 0, view.getWidth(), view.getHeight());
+            }
+        };
+        // 重新设置外形
+        mRectTextView.setOutlineProvider(providerRect);
+        mCircleTextView.setOutlineProvider(providerCircle);
     }
 
     @Override

@@ -22,12 +22,10 @@ public class ShareElementActivity extends AppCompatActivity {
     ivShareElement.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-          Intent intent = new Intent(ShareElementActivity.this, ShareElement2Activity.class);
-          ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
-              ShareElementActivity.this, ivShareElement, getString(R.string.share_element_img));
-          startActivity(intent, options.toBundle());
-        }
+        Intent intent = new Intent(ShareElementActivity.this, ShareElement2Activity.class);
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
+            ShareElementActivity.this, ivShareElement, getString(R.string.share_element_img));
+        startActivity(intent, options.toBundle());
       }
     });
   }

@@ -1,12 +1,22 @@
 package com.example.zj.androidstudy;
 
 import android.content.Context;
+
+import com.example.zj.androidstudy.activity.ConstraintActivity;
+
 import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
 
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.*;
 
 /**
@@ -22,5 +32,13 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
         assertEquals("com.example.zj.androidstudy", appContext.getPackageName());
+    }
+
+    @Rule
+    public ActivityTestRule<ConstraintActivity> mActivityRule = new ActivityTestRule<>(ConstraintActivity.class);
+
+    @Test
+    public void testButtonIsShown() {
+        onView(withId(R.id.button)).check(matches(isDisplayed()));
     }
 }

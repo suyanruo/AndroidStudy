@@ -11,6 +11,7 @@ import com.example.zj.androidstudy.activity.ConstraintActivity;
 import com.example.zj.androidstudy.activity.CustomViewActivity;
 import com.example.zj.androidstudy.activity.DialogActivity;
 import com.example.zj.androidstudy.activity.H5ToAppActivity;
+import com.example.zj.androidstudy.activity.ScreenShotActivity;
 import com.example.zj.androidstudy.baidu.MapActivity;
 import com.example.zj.androidstudy.keyboard.KeyboardActivity;
 import com.example.zj.androidstudy.activity.MessengerActivity;
@@ -277,6 +278,8 @@ public class HomeFragment extends BaseFragment {
         getActivity().startActivity(new Intent(getActivity(), KeyboardActivity.class));
       }
     });
+    view.findViewById(R.id.btn_activity_screenshot).setOnClickListener(v ->
+            requireActivity().startActivity(new Intent(getActivity(), ScreenShotActivity.class)));
     /*-----------------Navigation-----------------*/
     view.findViewById(R.id.btn_fragment_login).setOnClickListener(new View.OnClickListener() {
       @Override

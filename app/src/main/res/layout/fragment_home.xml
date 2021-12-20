@@ -313,7 +313,17 @@
       android:layout_height="wrap_content"
       android:textAllCaps="false"
       android:text="keyboard"
-      app:layout_constraintTop_toBottomOf="@id/btn_activity_picture" />
+      app:layout_constraintTop_toBottomOf="@id/btn_activity_picture"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <Button
+      android:id="@+id/btn_activity_screenshot"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="screenShot"
+      app:layout_constraintTop_toBottomOf="@id/btn_activity_picture"
+      app:layout_constraintStart_toEndOf="@id/btn_activity_keyboard" />
 
   <!--下方是使用Navigation技术导航组件的-->
   <TextView

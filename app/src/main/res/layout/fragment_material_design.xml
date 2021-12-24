@@ -69,4 +69,22 @@
         android:layout_marginTop="120dp"
         android:textAllCaps="false"
         android:text="recycler" />
+
+    <Button
+        android:id="@+id/btn_go_ruler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="160dp"
+        android:textAllCaps="false"
+        android:text="ruler" />
+
+    <Button
+        android:id="@+id/btn_go_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="160dp"
+        android:textAllCaps="false"
+        android:text="weather" />
 </FrameLayout>

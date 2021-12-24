@@ -15,4 +15,14 @@ public class MaterialDesignActivity extends AppCompatActivity {
 
         FragmentUtil.setRootFragment(MaterialDesignActivity.this, R.id.root_material, new MaterialDesignFragment());
     }
+
+    @Override
+    public void onBackPressed() {
+        // TODO: 2021/12/22 实现退出fragment功能
+//        if (FragmentUtil.hasFragment(this)) {
+//            FragmentUtil.exitLastFragment(this);
+//        } else {
+            super.onBackPressed();
+//        }
+    }
 }

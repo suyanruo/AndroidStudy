@@ -46,4 +46,16 @@ public class FragmentUtil {
         }
         transaction.commitAllowingStateLoss();
     }
+
+    public static void exitLastFragment(FragmentActivity activity) {
+        FragmentManager manager = activity.getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        List<Fragment> fragments = manager.getFragments();
+        // TODO: 2021/12/24 完善退出fragment流程
+    }
+
+    public static boolean hasFragment(FragmentActivity activity) {
+        FragmentManager manager = activity.getSupportFragmentManager();
+        return manager.getFragments().size() > 1;
+    }
 }

@@ -6,4 +6,8 @@
     <color name="c_light_gray">#EBEBEB</color>
     <color name="c_regular_gray">#CCCCCC</color>
     <color name="c_bg_gray">#F5F6FB</color>
+    <color name="c_green">#45C01A</color>
+    <color name="c_green2">#A3DEA3</color>
+    <color name="c_line">#D2D2D2</color>
+
 </resources>

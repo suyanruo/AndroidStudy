@@ -20,6 +20,7 @@ public class ListFragment extends BaseFragment {
 
     @Override
     protected void initViews(View view) {
+        mRecyclerView = (RecyclerView) view;
     }
 
     @Override
@@ -29,7 +30,7 @@ public class ListFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mRecyclerView.getContext()));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         mRecyclerView.setAdapter(new RecyclerViewAdapter(getActivity()));
     }
 }

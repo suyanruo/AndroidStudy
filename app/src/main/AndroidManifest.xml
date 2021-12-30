@@ -145,9 +145,11 @@
         <activity
             android:name=".scaling.CollapsingDemoActivity"
             android:theme="@style/AppThemeNoActionBar" />
-
-        <activity android:name=".activity.ScreenShotActivity"
-            android:label="截屏"/>
+        <activity
+            android:name=".activity.ScreenShotActivity"
+            android:label="截屏" />
+        <activity android:name=".music.MusicActivity" />
+        <activity android:name=".activity.SessionActivity" />
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
@@ -198,9 +200,11 @@
                 <action android:name="com.example.zj.bookManagerService" />
             </intent-filter>
         </service>
-        <!--如果前台服务需要使用定位权限（API level 29）、相机或麦克风权限（API level 30）需要声明
+        <!--
+如果前台服务需要使用定位权限（API level 29）、相机或麦克风权限（API level 30）需要声明
         foregroundServiceType属性，而且要在startForeground方法传入对应type值
-        ref: "https://developer.android.com/guide/components/foreground-services?hl=zh-cn" -->
+        ref: "https://developer.android.com/guide/components/foreground-services?hl=zh-cn"
+        -->
         <service
             android:name=".service.ForegroundService"
             android:foregroundServiceType="location|camera" />

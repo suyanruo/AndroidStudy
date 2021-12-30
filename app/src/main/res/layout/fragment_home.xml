@@ -325,6 +325,24 @@
       app:layout_constraintTop_toBottomOf="@id/btn_activity_picture"
       app:layout_constraintStart_toEndOf="@id/btn_activity_keyboard" />
 
+  <Button
+      android:id="@+id/btn_activity_music"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="music"
+      app:layout_constraintTop_toBottomOf="@id/btn_activity_picture"
+      app:layout_constraintStart_toEndOf="@id/btn_activity_screenshot" />
+
+  <Button
+      android:id="@+id/btn_activity_session"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="session"
+      app:layout_constraintTop_toBottomOf="@id/btn_activity_picture"
+      app:layout_constraintStart_toEndOf="@id/btn_activity_music" />
+
   <!--下方是使用Navigation技术导航组件的-->
   <TextView
       android:id="@+id/tv_navigation_format"

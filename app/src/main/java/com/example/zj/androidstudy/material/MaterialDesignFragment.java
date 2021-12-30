@@ -74,6 +74,8 @@ public class MaterialDesignFragment extends BaseFragment {
                 FragmentUtil.enterNewFragment(requireActivity(), R.id.root_material, new RulerFragment()));
         view.findViewById(R.id.btn_go_weather).setOnClickListener(v ->
                 FragmentUtil.enterNewFragment(requireActivity(), R.id.root_material, new WeatherViewFragment()));
+        view.findViewById(R.id.btn_go_bottom_sheet).setOnClickListener(v ->
+                FragmentUtil.enterNewFragment(requireActivity(), R.id.root_material, new BottomSheetFragment()));
     }
 
     private void animateView(Button button) {

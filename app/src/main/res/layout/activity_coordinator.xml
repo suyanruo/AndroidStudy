@@ -27,7 +27,8 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager_coo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"

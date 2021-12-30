@@ -11,6 +11,7 @@ import com.baidu.mapapi.SDKInitializer;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.multidex.MultiDex;
 
 public class StudyApplication extends Application {
@@ -28,8 +29,8 @@ public class StudyApplication extends Application {
         mContext = getApplicationContext();
 
         initBaiduMap();
-
         initFireBase();
+        initProcessObserver();
     }
 
     private void initBaiduMap() {
@@ -52,6 +53,10 @@ public class StudyApplication extends Application {
             }
         };
         handler.sendEmptyMessage(0);
+    }
+
+    private void initProcessObserver() {
+        ProcessLifecycleOwner.get().getLifecycle().addObserver(new ProcessLifecycleObserver());
     }
 
     public static Context getContext() {

@@ -5,6 +5,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -30,6 +31,9 @@ public class SessionActivity extends BaseActivity implements KeyboardChangeListe
     }
 
     private void initView() {
+        // 设置屏幕常亮
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         FrameLayout rootView = findViewById(android.R.id.content);
         LayoutInflater inflater = LayoutInflater.from(this);
         FrameLayout child = (FrameLayout) rootView.getChildAt(0);
@@ -59,8 +63,6 @@ public class SessionActivity extends BaseActivity implements KeyboardChangeListe
                 return false;
             }
         });
-
-//        getWindow().getAttributes().softInputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN;
     }
 
     @Override

@@ -11,8 +11,12 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 
 import com.example.zj.androidstudy.R;
+import com.example.zj.androidstudy.base.BaseActivity;
 
-public class MusicActivity extends AppCompatActivity {
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class MusicActivity extends BaseActivity {
     private static final String TAG = "MusicActivity";
 
     private ImageView mIvRotation;
@@ -285,5 +289,27 @@ public class MusicActivity extends AppCompatActivity {
      */
     private MediaPlayer createMediaPlayerFromRaw() {
         return MediaPlayer.create(this, R.raw.shengsheng);
+    }
+
+    private static final int PERIOD = 10 * 1000;
+    private static final int DELAY = 1000;
+    private Timer mTimer;
+    private TimerTask mTimerTask;
+
+    private void startLoop() {
+        mTimer = new Timer();
+        mTimerTask = new TimerTask() {
+            @Override
+            public void run() {
+
+            }
+        };
+        mTimer.scheduleAtFixedRate(mTimerTask, DELAY, PERIOD);
+    }
+
+    private void stopLoop() {
+        if (mTimer != null) {
+            mTimer.cancel();
+        }
     }
 }

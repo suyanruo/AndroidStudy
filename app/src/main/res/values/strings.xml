@@ -16,4 +16,8 @@
 
     <string name="disable_dot">disable dot</string>
     <string name="enable_dot">enable dot</string>
+    <string name="barrage">弹幕</string>
+    <string name="disable_chat">禁用聊天</string>
+    <string name="enable_chat">开启聊天</string>
+    <string name="live_stream">直播</string>
 </resources>

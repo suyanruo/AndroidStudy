@@ -149,7 +149,8 @@
             android:name=".activity.ScreenShotActivity"
             android:label="截屏" />
         <activity android:name=".music.MusicActivity" />
-        <activity android:name=".activity.SessionActivity" />
+        <activity android:name=".activity.SessionActivity"
+            android:windowSoftInputMode="adjustResize" />
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

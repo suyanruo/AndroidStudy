@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btn_barrage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/barrage"/>
+
+    <Button
+        android:id="@+id/btn_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/disable_chat"/>
+
+    <Button
+        android:id="@+id/btn_live_stream"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/live_stream"/>
+
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/ll_session"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/c_bg_gray"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        tools:visibility="visible" >
+
+        <EditText
+            android:id="@+id/et_session"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_margin="5dp"
+            android:maxLines="4"
+            android:maxLength="100"
+            android:includeFontPadding="false"
+            android:lineSpacingMultiplier="1.2"
+            android:padding="8dp"
+            android:hint="限制输入在30字以内"
+            android:textSize="14sp" />
+
+        <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:padding="6dp"
+            android:background="@drawable/shape_session_btn_send"
+            android:layout_margin="5dp"
+            android:text="发送"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+    </LinearLayout>
+</LinearLayout>

@@ -239,6 +239,8 @@ dependencies {
     implementation 'com.king.zxing:zxing-lite:1.1.9-androidx'
     // ProcessLifeCycle
     implementation  "androidx.lifecycle:lifecycle-process:$lifecycle_version"
+    // 长图
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0'
 }
 
 // 如果只有app module使用MyPlugin，那么在当前gradle文件中引入，否则需要把Script Block放在根gradle文件中

@@ -44,6 +44,7 @@ import com.example.zj.androidstudy.service.ServiceActivity;
 import com.example.zj.androidstudy.shareElement.ShareElementActivity;
 import com.example.zj.androidstudy.thread.ThreadActivity;
 import com.example.zj.androidstudy.zxing.ZXingActivity;
+import com.example.zj.video.VideoActivity;
 
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
@@ -60,7 +61,8 @@ public class HomeFragment extends BaseFragment {
     view.findViewById(R.id.btn_binder).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        startActivity(new Intent(getActivity(), BinderActivity.class));
+//        startActivity(new Intent(getActivity(), BinderActivity.class));
+        startActivity(new Intent(getActivity(), VideoActivity.class));
       }
     });
 

@@ -61,8 +61,7 @@ public class HomeFragment extends BaseFragment {
     view.findViewById(R.id.btn_binder).setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-//        startActivity(new Intent(getActivity(), BinderActivity.class));
-        startActivity(new Intent(getActivity(), VideoActivity.class));
+        startActivity(new Intent(getActivity(), BinderActivity.class));
       }
     });
 

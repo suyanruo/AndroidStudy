@@ -25,11 +25,12 @@ import android.widget.Toast;
 import com.example.zj.androidstudy.Constants;
 import com.example.zj.androidstudy.R;
 import com.example.zj.androidstudy.aspectj.TimeSpend;
+import com.example.zj.androidstudy.base.BaseActivity;
 import com.example.zj.androidstudy.fragment.HomeFragment;
 import com.example.zj.androidstudy.tool.EncryptionUtil;
 import com.example.zj.androidstudy.tool.SharedPreferenceUtil;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
 
     @Override

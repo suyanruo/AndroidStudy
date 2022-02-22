@@ -40,7 +40,7 @@ public class BaseActivity extends AppCompatActivity {
     protected void onUserLeaveHint() {
         // 监听Home键可以通过onUserLeaveHint()方法来实现
         super.onUserLeaveHint();
-        Toast.makeText(this, "程序已退到后台", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "程序已退到后台", Toast.LENGTH_SHORT).show();
     }
 
     @Override

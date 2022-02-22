@@ -65,13 +65,22 @@
       app:layout_constraintStart_toStartOf="parent"/>
 
   <Button
+      android:id="@+id/btn_map2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAllCaps="false"
+      android:text="map2"
+      app:layout_constraintTop_toBottomOf="@id/btn_content_provider"
+      app:layout_constraintLeft_toRightOf="@id/btn_map"/>
+
+  <Button
       android:id="@+id/btn_load_big_image"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:textAllCaps="false"
       android:text="加载大图片"
       app:layout_constraintTop_toBottomOf="@id/btn_content_provider"
-      app:layout_constraintLeft_toRightOf="@id/btn_map"/>
+      app:layout_constraintLeft_toRightOf="@id/btn_map2"/>
 
   <Button
       android:id="@+id/btn_puzzle"

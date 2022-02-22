@@ -6,6 +6,9 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.maps.MapsInitializer;
+import com.amap.api.services.core.ServiceSettings;
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
 import com.google.firebase.FirebaseApp;
@@ -28,9 +31,22 @@ public class StudyApplication extends Application {
         super.onCreate();
         mContext = getApplicationContext();
 
+        initGaodeMap();
         initBaiduMap();
         initFireBase();
         initProcessObserver();
+    }
+
+    private void initGaodeMap() {
+        // 地图隐私授权
+        MapsInitializer.updatePrivacyShow(this, true, true);
+        MapsInitializer.updatePrivacyAgree(this, true);
+        // 定位隐私授权
+        AMapLocationClient.updatePrivacyShow(this, true, true);
+        AMapLocationClient.updatePrivacyAgree(this, true);
+        // 搜索隐私授权
+        ServiceSettings.updatePrivacyShow(this, true, true);
+        ServiceSettings.updatePrivacyAgree(this, true);
     }
 
     private void initBaiduMap() {

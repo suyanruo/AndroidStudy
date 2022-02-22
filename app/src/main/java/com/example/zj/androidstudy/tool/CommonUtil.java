@@ -12,11 +12,12 @@ public class CommonUtil {
         String EMAIL_PATTERN = "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
         Matcher matcher = pattern.matcher(email);
-        return  matcher.matches();
+        return matcher.matches();
     }
 
     /**
      * 处理一行不满就自动换行问题
+     *
      * @param tv 需要设置换行的textview
      * @return
      */
@@ -56,5 +57,29 @@ public class CommonUtil {
         }
 
         tv.setText(sbNewText.toString());
+    }
+
+    private static final double EARTH_RADIUS = 6378.137;
+
+    //
+    private static double rad(double d) {
+        return d * Math.PI / 180.0;
+    }
+
+    // 返回单位是:米
+    public static double getDistance(double longitude1, double latitude1,
+                                     double longitude2, double latitude2) {
+        double Lat1 = rad(latitude1);
+        double Lat2 = rad(latitude2);
+        double a = Lat1 - Lat2;
+        double b = rad(longitude1) - rad(longitude2);
+        double s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2)
+                + Math.cos(Lat1) * Math.cos(Lat2)
+                * Math.pow(Math.sin(b / 2), 2)));
+        s = s * EARTH_RADIUS;
+        //有小数的情况;注意这里的10000d中的“d”
+        s = Math.round(s * 10000d) / 10000d;
+        s = s * 1000;//单位：米
+        return s;
     }
 }

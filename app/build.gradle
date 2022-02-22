@@ -242,6 +242,13 @@ dependencies {
     implementation  "androidx.lifecycle:lifecycle-process:$lifecycle_version"
     // 长图
     implementation 'com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0'
+
+    // 高德地图 3D地图so及jar
+    implementation 'com.amap.api:3dmap:latest.integration'
+    // 定位功能
+    implementation 'com.amap.api:location:latest.integration'
+    // 搜索功能
+    implementation 'com.amap.api:search:latest.integration'
 }
 
 // 如果只有app module使用MyPlugin，那么在当前gradle文件中引入，否则需要把Script Block放在根gradle文件中

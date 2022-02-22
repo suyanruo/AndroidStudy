@@ -14,6 +14,7 @@ import com.example.zj.androidstudy.activity.H5ToAppActivity;
 import com.example.zj.androidstudy.activity.ScreenShotActivity;
 import com.example.zj.androidstudy.activity.SessionActivity;
 import com.example.zj.androidstudy.baidu.MapActivity;
+import com.example.zj.androidstudy.gaode.GaodeMapActivity;
 import com.example.zj.androidstudy.keyboard.KeyboardActivity;
 import com.example.zj.androidstudy.activity.MessengerActivity;
 import com.example.zj.androidstudy.music.MusicActivity;
@@ -97,6 +98,12 @@ public class HomeFragment extends BaseFragment {
       @Override
       public void onClick(View v) {
         startActivity(new Intent(getActivity(), MapActivity.class));
+      }
+    });
+    view.findViewById(R.id.btn_map2).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        startActivity(new Intent(getActivity(), GaodeMapActivity.class));
       }
     });
 

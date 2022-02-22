@@ -18,6 +18,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -31,6 +33,8 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="${applicationId}.permission.ACCESS_BOOK_SERVICE" />
     <uses-permission android:name="${applicationId}.PROVIDER" />
 
@@ -43,6 +47,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".gaode.GaodeMapActivity" />
         <activity android:name=".keyboard.KeyboardActivity" />
         <activity android:name=".slideConflict.ConflictActivity" />
         <activity android:name=".jni.JniActivity" />
@@ -154,9 +159,12 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.example.zj.video.VideoActivity"
-            android:screenOrientation="landscape"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
 
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="ab76d7dd6a2a4ffc5d3797fe78b07853" />
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="FnLX3vzTOsavvqiPqcAhPwNuf6ehIZXV" />
